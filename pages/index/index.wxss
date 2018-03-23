@@ -1,0 +1,223 @@
+/* banner */
+.banner{
+  width: 100%;
+  height: calc(100vw*45/75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.banner-img{
+  width: 100%;
+  height: 100%;
+}
+.banner-search-container{
+  position:absolute;
+  z-index: 2;
+  top: 20rpx;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  background: transparent;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.banner-search-content{
+  width: 100%;
+  height: 100%;
+  border-radius: 40rpx;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+  font-size: 30rpx;
+  font-weight: 300;
+}
+.banner-search-icon{
+  margin-right: 8rpx;
+}
+/* banner结束 */
+/* 分类 */
+.cat-container{
+  height: 180rpx;
+  width: 100vw;
+  background: #fff;
+}
+.cat-content{
+  height: 100%;
+  width: auto;
+  box-sizing: content-box;
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.cat-content::after{
+  content: '';
+  flex: 0 0 20rpx;
+  height: 120rpx;
+  display: block;
+}
+/* 单个分类 */
+.category{
+  flex: 0 0 210rpx;
+  height: 120rpx;
+  border: 1px solid #e5e5e5;
+  margin: 0 10rpx; 
+  box-sizing: border-box;
+  padding: 10rpx;
+  display: flex;
+  flex-direction: row;
+}
+/* 查看全部 */
+.category-left{
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.category-left::after{
+  content: '';
+  background: #C0A588;
+  width: 24rpx;
+  height: 2rpx;
+  margin-top: 26rpx;
+}
+.category-all-left::after{
+  display: none;
+  margin-top: 0;
+}
+.category-right{
+  width: 100rpx;
+  height: 100rpx;
+}
+/* 优惠 */
+.preference-container{
+  margin-top: 20rpx;
+  background: #fff;
+  width: 100%;
+  height: 180rpx;
+  box-sizing: border-box;
+  padding: 35rpx 0;
+  display: flex;
+  flex-direction: row;
+}
+.preference{
+  width: 50vw;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.preference-price{
+  width: 110rpx;
+  height: 110rpx;
+  text-align: center;
+  font-size: 110rpx;
+  font-weight: 900;
+  color: #C0A588;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+.preference-details{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.preference-description{
+  font-size: 26rpx;
+  color: #231916;
+  margin-bottom: 16rpx;
+}
+.preference-button{
+  width: 120rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  border: 0;
+  background: #BF4251;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 24rpx;
+}
+/* 商品列表 */
+.sku-list{
+  background: #fff;
+  margin-top: 20rpx;
+}
+.sku-list-title{
+  display: block;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #333;
+  font-size: 26rpx;
+  border-bottom: 1px solid #EFEFF4;
+}
+.sku-list-title::before, .sku-list-title::after{
+  content: '———';
+  color: #999;
+  font-weight: 300;
+}
+.sku-list-content{
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0 15rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.sku{
+  width: calc(100vw/2 - 45rpx);
+  /* height: calc(100vw/2 - 45rpx); */
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 15rpx;
+}
+.sku-image{
+  width: calc(100vw/2 - 45rpx);
+  height: calc(100vw/2 - 45rpx);
+}
+.sku-name{
+  display: block;
+  margin-top: 20rpx;
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.sku-info{
+  width: 100%;
+  margin-top: 14rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.sku-price{
+  font-size: 30rpx;
+  color: #A38064;
+}
+.sku-payednumber{
+  font-size: 24rpx;
+  color: #ccc;
+}

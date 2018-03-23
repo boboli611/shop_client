@@ -1,3 +1,78 @@
-<view class="container">
-  123
+<view class="page-container">
+  <!-- 顶部banner -->
+  <view class="banner" >
+    <!-- banner图片 -->
+    <image mode="scaleToFill" class="banner-img" src="{{bannerImage}}"></image>
+    <!-- 搜索框 -->
+    <view class="banner-search-container">
+      <view class="banner-search-content">
+        <icon type="search" class="banner-search-icon" color="#ccc" size="16"></icon>
+        <text>搜索您想要的宝贝</text>
+      </view>
+    </view>
+  </view>
+  <!-- 分类 -->
+  <scroll-view class="cat-container" scroll-x>
+    <view class="cat-content">
+      <!-- 单个分类 -->
+      <view wx:for="{{categories}}" wx:for-item="category" wx:key="{{category.name}}" class="category">
+        <view class="category-left">
+          <text>{{category.name}}</text>
+        </view>
+        <view class="category-right">
+          <image class="category-right" mode="scaleToFill" src="{{category.img}}"></image>
+        </view>
+      </view>
+      <!-- 查看全部 -->
+      <view class="category">
+        <view class="category-left category-all-left">
+          <text>查看 全部</text>
+        </view>
+        <view class="category-right">
+          <image class="category-right" mode="scaleToFill" src="./assets/icon-quanbu.png"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 优惠券 -->
+  <view class="preference-container">
+    <view class="preference" style="border-right: 1px solid #ccc">
+      <view class="preference-price">    
+        <text >50</text>
+      </view>
+      <view class="preference-details">
+        <view class="preference-details">
+          <text class="preference-description">满499可用</text>
+          <button class="preference-button">领取</button>
+        </view>
+      </view>
+    </view>
+    <view class="preference">
+      <view class="preference-price">    
+        <text >50</text>
+      </view>
+      <view class="preference-details">
+        <text class="preference-description">满499可用</text>
+        <button class="preference-button">领取</button>
+      </view>
+    </view>
+  </view>
+  <!-- sku列表 -->
+  <view class="sku-list" wx:for="{{skuLists}}" wx:key="index" wx:for-index="index"  wx:for-item="skuList">
+    <text class="sku-list-title">  {{skuList.title}}  </text>
+    <view class="sku-list-content">
+      <!-- 单个sku -->
+      <view class="sku" wx:for="{{skuList.skus}}" wx:key="skuIndex" wx:for-index="skuIndex" wx:for-item="sku">
+        <image src="{{sku.img}}" class="sku-image"></image>
+        <text class="sku-name">{{sku.name}}</text>
+        <view class="sku-info">
+          <text class="sku-price">21313</text>
+          <text class="sku-payednumber">21313</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 占位 -->
+  <view style="background: #fff;margin-top: 20px;"></view>
 </view>

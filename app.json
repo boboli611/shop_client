@@ -4,9 +4,41 @@
     "pages/logs/logs"
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTitleText": "Lipez",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh": true,
+    "backgroundColor": "#EFEFF4"
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#BB2638",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabbar/icon-shouye-g.png",
+        "selectedIconPath": "assets/tabbar/icon-shouye-r.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "分类",
+        "iconPath": "assets/tabbar/icon-fenlei-g.png",
+        "selectedIconPath": "assets/tabbar/icon-fenlei-r.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "购物袋",
+        "iconPath": "assets/tabbar/icon-gouwd-g.png",
+        "selectedIconPath": "assets/tabbar/icon-gouwd-r.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "assets/tabbar/icon-wode-g.png",
+        "selectedIconPath": "assets/tabbar/icon-wode-r.png"
+      }
+    ]
   }
 }
