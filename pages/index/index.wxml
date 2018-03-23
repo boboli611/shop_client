@@ -4,12 +4,12 @@
     <!-- banner图片 -->
     <image mode="scaleToFill" class="banner-img" src="{{bannerImage}}"></image>
     <!-- 搜索框 -->
-    <view class="banner-search-container">
+    <navigator class="banner-search-container" url="../search/search" hover-class="none">
       <view class="banner-search-content">
         <icon type="search" class="banner-search-icon" color="#ccc" size="16"></icon>
         <text>搜索您想要的宝贝</text>
       </view>
-    </view>
+    </navigator>
   </view>
   <!-- 分类 -->
   <scroll-view class="cat-container" scroll-x>
