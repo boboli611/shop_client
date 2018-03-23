@@ -1,26 +1,22 @@
 <view class="page-container" >
   <view class="search-input-container">
-    <input class="search-input" confirm-type="search" focus="true"></input>
+    <input class="search-input" confirm-type="search" focus="true" bindconfirm="searchSku"></input>
     <navigator open-type="navigateBack" hover-class="none">  
       <text class="search-cancel">取消</text>
     </navigator>
   </view>
-
-  <view class="recommend-container">
+  <!-- 历史记录 -->
+  <view class="recommend-container" wx:if="{{searchHistory.length > 0}}">
     <view class="recommend-header">
       <text>历史记录</text>
       <!-- <image src=""></image> -->
     </view>
     <view class="recommend-keywords-list">
-      <view class="recommend-keywords">搜索记录搜索记录</view>
-      <view class="recommend-keywords">123</view>
-      <view class="recommend-keywords">搜索记录搜索记录</view>
-      <view class="recommend-keywords">搜索记录搜索记录</view>
-      <view class="recommend-keywords">搜索记录搜索记录</view>
-      <view class="recommend-keywords">搜索记录搜索记录</view>
+      <!-- 单条历史记录 -->
+      <view class="recommend-keywords" wx:for="{{searchHistory}}" wx:for-item="history" wx:key="history">{{history}}</view>
     </view>
   </view>
-
+  <!-- 热门搜索 -->
   <view class="recommend-container">
     <view class="recommend-header">
       <text>热门搜索词</text>

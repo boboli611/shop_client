@@ -1,3 +1,5 @@
+const array = require('./array.js');
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -14,6 +16,11 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+const trimString = str => (str + '').replace(rtrim, '');
+
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  trimString,
+  array
 }
