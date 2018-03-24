@@ -1,0 +1,11 @@
+<view class="sku-list-content">
+  <!-- 单个sku -->
+  <view class="sku" wx:for="{{skuList}}" wx:key="skuIndex" wx:for-index="skuIndex" wx:for-item="sku">
+    <image src="{{sku.img}}" class="sku-image"></image>
+    <text class="sku-name">{{sku.name}}</text>
+    <view class="sku-info">
+      <text class="sku-price">¥{{sku.price}}</text>
+      <text class="sku-payednumber">{{sku.payedNumber}}人付款</text>
+    </view>
+  </view>
+</view>

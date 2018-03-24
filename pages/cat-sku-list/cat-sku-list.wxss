@@ -1,0 +1,6 @@
+.sku-list-container{
+  width: 100%;
+  background: #fff;
+  border-top: 1rpx solid #e5e5e5;
+  padding-top: 30rpx;
+}

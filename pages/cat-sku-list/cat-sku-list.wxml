@@ -1,0 +1,5 @@
+<view class="page-container" >
+  <view class="sku-list-container">
+    <sku-list skuList="{{skuList}}"></sku-list>
+  </view>
+</view>

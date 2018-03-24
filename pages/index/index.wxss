@@ -64,7 +64,7 @@
 .category{
   flex: 0 0 210rpx;
   height: 120rpx;
-  border: 1px solid #e5e5e5;
+  border: 1rpx solid #e5e5e5;
   margin: 0 10rpx; 
   box-sizing: border-box;
   padding: 10rpx;
@@ -166,58 +166,10 @@
   text-align: center;
   color: #333;
   font-size: 26rpx;
-  border-bottom: 1px solid #EFEFF4;
+  border-bottom: 1rpx solid #EFEFF4;
 }
 .sku-list-title::before, .sku-list-title::after{
   content: '———';
   color: #999;
   font-weight: 300;
-}
-.sku-list-content{
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  padding: 0 15rpx;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.sku{
-  width: calc(100vw/2 - 45rpx);
-  /* height: calc(100vw/2 - 45rpx); */
-  height: auto;
-  box-sizing: border-box;
-  overflow: hidden;
-  margin: 15rpx;
-}
-.sku-image{
-  width: calc(100vw/2 - 45rpx);
-  height: calc(100vw/2 - 45rpx);
-}
-.sku-name{
-  display: block;
-  margin-top: 20rpx;
-  width: 100%;
-  height: 40rpx;
-  line-height: 40rpx;
-  font-size: 28rpx;
-  color: #333;
-  overflow: hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
-}
-.sku-info{
-  width: 100%;
-  margin-top: 14rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.sku-price{
-  font-size: 30rpx;
-  color: #A38064;
-}
-.sku-payednumber{
-  font-size: 24rpx;
-  color: #ccc;
 }

@@ -1,6 +1,6 @@
 .page-container{
   background: #fff;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1rpx solid #f0f0f0;
 }
 .search-input-container{
   width: 100%;
@@ -26,6 +26,11 @@
 .search-cancel{
   font-size: 30rpx;
   color: #333;
+}
+
+.clear-search-history{
+  width: 48rpx;
+  height: 48rpx;
 }
 
 .recommend-container{
@@ -64,4 +69,15 @@
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+}
+
+.search-result-container{
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 20rpx;
+}
+.no-search-result-tip{
+  font-size: 30rpx;
+  color: #ccc;
+  display: block;
+  text-align: center;
 }

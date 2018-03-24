@@ -1,6 +1,5 @@
 {
-  "navigationBarTitleText": "商品搜索",
-  "enablePullDownRefresh": false,
+  "enablePullDownRefresh": true,      
   "usingComponents": {
     "sku-list": "../../components/sku-list/sku-list"
   }

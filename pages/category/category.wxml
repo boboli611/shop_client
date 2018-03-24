@@ -1,0 +1,64 @@
+<view class="page-container" >
+  <view class="header">
+    <navigator class="banner-search-container" url="../search/search" hover-class="none">
+      <view class="banner-search-content">
+        <icon type="search" class="banner-search-icon" color="#999" size="16"></icon>
+        <text>搜索您想要的宝贝</text>
+      </view>
+    </navigator>
+  </view>
+
+
+  <view class="cat-container">
+    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
+      <view> 
+        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      </view>
+
+      <view class="cat-name">
+        <text>衣服</text>
+      </view>
+
+      <view class="cat-line"></view>
+    </navigator>
+    
+
+    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
+      <view> 
+        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      </view>
+
+      <view class="cat-name">
+        <text>衣服</text>
+      </view>
+
+      <view class="cat-line"></view>
+    </navigator>
+
+    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
+      <view> 
+        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      </view>
+
+      <view class="cat-name">
+        <text>衣服</text>
+      </view>
+
+      <view class="cat-line"></view>
+    </navigator>
+
+    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
+      <view> 
+        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      </view>
+
+      <view class="cat-name">
+        <text>衣服</text>
+      </view>
+
+      <view class="cat-line"></view>
+    </navigator>
+  </view>
+
+  
+</view>

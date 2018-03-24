@@ -1,15 +1,17 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/search/search",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/category/category",
+    "pages/cat-sku-list/cat-sku-list",
+    "pages/mine/mine"
   ],
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "Lipez",
-    "navigationBarTextStyle":"black",
-    "enablePullDownRefresh": true,
+    "navigationBarTextStyle": "black",
     "backgroundColor": "#EFEFF4"
   },
   "tabBar": {
@@ -23,7 +25,7 @@
         "selectedIconPath": "assets/tabbar/icon-shouye-r.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/category/category",
         "text": "分类",
         "iconPath": "assets/tabbar/icon-fenlei-g.png",
         "selectedIconPath": "assets/tabbar/icon-fenlei-r.png"
@@ -35,7 +37,7 @@
         "selectedIconPath": "assets/tabbar/icon-gouwd-r.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/mine/mine",
         "text": "我的",
         "iconPath": "assets/tabbar/icon-wode-g.png",
         "selectedIconPath": "assets/tabbar/icon-wode-r.png"

@@ -37,7 +37,7 @@
 
   <!-- 优惠券 -->
   <view class="preference-container">
-    <view class="preference" style="border-right: 1px solid #ccc">
+    <view class="preference" style="border-right: 1rpx solid #ccc">
       <view class="preference-price">    
         <text >50</text>
       </view>
@@ -61,17 +61,7 @@
   <!-- sku列表 -->
   <view class="sku-list" wx:for="{{skuLists}}" wx:key="index" wx:for-index="index"  wx:for-item="skuList">
     <text class="sku-list-title">  {{skuList.title}}  </text>
-    <view class="sku-list-content">
-      <!-- 单个sku -->
-      <view class="sku" wx:for="{{skuList.skus}}" wx:key="skuIndex" wx:for-index="skuIndex" wx:for-item="sku">
-        <image src="{{sku.img}}" class="sku-image"></image>
-        <text class="sku-name">{{sku.name}}</text>
-        <view class="sku-info">
-          <text class="sku-price">21313</text>
-          <text class="sku-payednumber">21313</text>
-        </view>
-      </view>
-    </view>
+    <sku-list skuList="{{skuList.skus}}"></sku-list> 
   </view>
   <!-- 占位 -->
   <view style="background: #fff;margin-top: 20px;"></view>

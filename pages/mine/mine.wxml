@@ -1,0 +1,66 @@
+<view class="page-container" >
+  <view class="header">
+    <image class="header-bg" src="./assets/img-beijing.jpg"></image>
+    <view class="header-content">
+      <image class="avatar" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+
+      <text class="name">姓名</text>
+    </view>
+  </view>
+
+  <view class="order-info">
+    <view class="order-all">
+      <text class="black">我的订单</text>
+      <view>
+        <text class="gray">查看全部</text>
+        <image src="/assets/icon-arrow-r.png" mode="aspectFit" style="transform: translateY(15rpx)" class="icon-arrow"></image>
+      </view>
+    </view>
+
+    <view class="order-type">
+      <navigator class="type">
+        <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
+        <text class="type-name">待付款</text>
+      </navigator>
+
+      <navigator class="type">
+        <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
+        <text class="type-name">待发货</text>
+      </navigator>
+
+      <navigator class="type">
+        <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
+        <text class="type-name">已发货</text>
+      </navigator>
+
+      <navigator class="type">
+        <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
+        <text class="type-name">已付款</text>
+      </navigator>
+    </view>
+  </view>
+
+  <view class="list-container">
+    <navigator class="list" hover-class="list-hover">
+      <text>我的地址</text>
+      <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
+    </navigator>
+
+    <navigator class="list" hover-class="list-hover">
+      <text>我的优惠</text>
+      <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
+    </navigator>
+
+    <navigator class="list" hover-class="list-hover">
+      <text>我的会员</text>
+      <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
+    </navigator>   
+  </view>
+
+  <view class="list-container">
+    <navigator class="list" hover-class="list-hover">
+      <text>意见反馈</text>
+      <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
+    </navigator> 
+  </view>
+</view>
