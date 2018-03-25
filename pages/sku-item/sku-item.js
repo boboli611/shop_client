@@ -1,3 +1,4 @@
+const store = require('../../store/store.js');
 // pages/sku-item/sku-item.js
 Page({
 
@@ -13,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(store)
   },
 
   /**

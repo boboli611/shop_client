@@ -8,8 +8,6 @@ const storage = {
           resolve();
         },
         fail: (err) => {
-          console.log(111)
-          
           reject(err);
         }
       })
@@ -24,9 +22,15 @@ const storage = {
         },
         fail: (err) => {
           reject(err);
-        } 
+        }
       })
     });
+  },
+  getSync(key){
+    return wx.getStorageSync(key)
+  },
+  setSync(key, value){
+    return wx.setStorageSync(key, value);
   }
 }
 

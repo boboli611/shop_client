@@ -1,45 +1,6 @@
-const storage = require('../../utils/storage.js');
 const utils = require('../../utils/util.js');
 const service = require('../../service/service.js');
-
-
-const SEACH_HISTORY_KEY = 'search_history';
-// 搜索历史
-const searchHistory = {
-  get(){
-    return new Promise((res)=>{
-      storage
-        .get(SEACH_HISTORY_KEY)
-        .then((d)=>{
-          res(d);
-        })
-        .catch((err)=>{
-          // 如果报错或者没有查到历史记录，返回空数组
-          res([]);
-        })
-    })
-  },
-  set(value){
-    searchHistory
-      .get()
-      .then((d)=>{
-        if( d.indexOf(value) < 0 ){
-          d.unshift(value);
-        }
-        // 只保留10个历史记录
-        return d.splice(0, 10);
-      })
-      .then((newList)=>{
-        storage.set(SEACH_HISTORY_KEY, newList)
-      })
-      .catch((err)=>{
-
-      })
-  },
-  clear(){
-    storage.set(SEACH_HISTORY_KEY, []);
-  }
-}
+const store = require('../../store/store.js');
 
 Page({
 
@@ -57,27 +18,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    searchHistory
-      .get()
-      .then((d)=>{
-        this.setData({
-          searchHistory: d
-        })
-      })
+    store.addWatcher('searchHistory', this);
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
@@ -91,15 +46,15 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+    store.delWatcher('searchHistory', this);
   },
 
- 
+
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   },
   // 自定义方法
   // 点击搜索框确认按钮
@@ -108,7 +63,7 @@ Page({
     if (!value) {
       return;
     }
-    searchHistory.set(value);
+    // searchHistory.set(value);
     this.searchSku( value );
   },
   // 搜索sku
@@ -116,16 +71,17 @@ Page({
     service
       .searchService(keyword)
       .then((data)=>{
-
-        if (this.data.searchHistory.indexOf(keyword) < 0) {
-          this.data.searchHistory.unshift(keyword);
+        let searchHistoryList = store.getData('searchHistory');
+        if ( searchHistoryList.indexOf(keyword) < 0) {
+          searchHistoryList.unshift(keyword);
+          store.setData('searchHistory', searchHistoryList);
         }
 
-
-        this.setData({
-          searchResult: data,
-          pageState: 'result',
-          searchHistory: this.data.searchHistory
+        setTimeout(()=>{
+          this.setData({
+            searchResult: data,
+            pageState: 'result',
+          })
         })
       })
   },
