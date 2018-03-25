@@ -1,0 +1,45 @@
+<view class="page-container">
+  <swiper class="swiper" autoplay indicator-dots indicator-color="rgba(255, 255, 255, 0.7)" indicator-active-color="rgba(255,255,255, 1)">
+    <block wx:for="{{[1, 2, 3, 4, 5]}}" >
+      <swiper-item>
+        <image src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800" class="slide-image" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="sku-info">
+    <view class="title"><text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text></view>
+    <view class="sku-detail">
+      <text class="sku-price">¥ 399</text>
+      <text class="sku-payednumber">已售1234567件</text>
+    </view>
+  </view>
+
+  <view class="list-container">
+    <view class="list">
+      <text>规格尺寸</text>
+      <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
+    </view>
+    <view class="list">
+      <text>商品信息</text>
+      <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
+    </view>
+  </view>
+
+  <view class="operation">
+    <button class="service">
+      <image class="icon" mode="aspectFill" src="/assets/icon-kefu.png"></image>
+      <text class="service-text">客服</text>
+    </button>
+
+    <button class="service">
+      <image class="icon" mode="aspectFill" src="/assets/icon-gwd.png"></image>
+      <text class="service-text">购物袋</text>
+    </button>
+
+    <button class="add-cart" hover-class="add-cart-hover" bindtap="addCart">加入购物袋</button>
+    <navigator class="buy" hover-class="buy-hover">购买</navigator>
+  </view>
+
+  <image class="animation" wx:if="{{addCartAnimation}}" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+</view>

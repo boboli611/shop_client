@@ -7,7 +7,8 @@
     "pages/cat-sku-list/cat-sku-list",
     "pages/mine/mine",
     "pages/my-address/my-address",
-    "pages/edit-address/edit-address"
+    "pages/edit-address/edit-address",
+    "pages/sku-item/sku-item"
   ],
   "window": {
     "backgroundTextStyle": "dark",
