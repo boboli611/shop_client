@@ -1,0 +1,49 @@
+<view class="page-container" >
+
+  <view class="header">
+    <text>全部地址</text>
+    <view class="edit-button" bindtap="switchPageState">
+      <text wx:if="{{state === 'complete'}}">编辑</text>
+      <text wx:else>完成</text>
+    </view>
+  </view>
+
+  <view class="address-list">
+  
+    <view class="address-container" wx:for="{{ [1, 2, 3, 4, 5, 6] }}">
+      <view class="address-content">
+        <view class="address-header">
+          <text>收货人: 小王</text>
+          <text>13737888888</text>
+        </view>
+        <view class="address-detail">
+          <image src="/assets/icon-dingwei.png" class="address-icon" mode="aspectFit"></image>
+          <text>浙江省杭州市浙江省杭州市8号9路浙江省杭州市878浙江省杭州市</text>
+        </view>
+      </view>
+      <!-- address-editor end -->
+      <view class="address-editor" wx:if="{{state === 'edit'}}">
+        <view class="default">
+          <image src="./assets/icon-xuan-r.png" class="icon-selector"></image>
+          <text>设为默认</text>
+        </view>
+
+        <view class="button-group">
+          <view class="edit">
+            <image class="icon-button" mode="aspectFill" src="./assets/icon-bianji.png"></image>
+            <text>编辑</text>
+          </view>
+          <view class="delete">
+            <image class="icon-button" mode="aspectFill" src="./assets/icon-bianji.png"></image>
+            <text>编辑</text>
+          </view>
+        </view>
+      </view>
+      <!-- address-editor end -->
+    </view>
+    <!-- address-container end -->
+  </view>
+
+
+  <navigator class="add-address">新增地址</navigator>
+</view>

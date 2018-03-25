@@ -9,16 +9,16 @@
   </view>
 
   <view class="order-info">
-    <view class="order-all">
+    <navigator class="order-all" url="../my-address/my-address">
       <text class="black">我的订单</text>
       <view>
         <text class="gray">查看全部</text>
         <image src="/assets/icon-arrow-r.png" mode="aspectFit" style="transform: translateY(15rpx)" class="icon-arrow"></image>
       </view>
-    </view>
+    </navigator>
 
-    <view class="order-type">
-      <navigator class="type">
+    <view class="order-type" bindtap="test">
+      <navigator class="type" >
         <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
         <text class="type-name">待付款</text>
       </navigator>
@@ -41,7 +41,7 @@
   </view>
 
   <view class="list-container">
-    <navigator class="list" hover-class="list-hover">
+    <navigator class="list" hover-class="list-hover" url="../my-address/my-address">
       <text>我的地址</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
     </navigator>

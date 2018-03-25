@@ -42,7 +42,7 @@
 .category{
   width: calc(50vw - 45rpx);
   box-sizing: border-box;
-  border: 1rpx solid #e5e5e5; 
+  border: 1px solid #e5e5e5; 
   padding: 30rpx 45rpx;
   margin-bottom: 30rpx;
 }

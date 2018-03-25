@@ -5,7 +5,8 @@
     "pages/logs/logs",
     "pages/category/category",
     "pages/cat-sku-list/cat-sku-list",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/my-address/my-address"
   ],
   "window": {
     "backgroundTextStyle": "dark",
