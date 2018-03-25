@@ -1,0 +1,26 @@
+<view class="page-container">
+
+  <form>
+    <view class="input-container">
+      <label>收货人</label>
+      <input class="input" placeholder="请输入"></input>
+    </view>
+
+    <view class="input-container">
+      <label>联系电话</label>
+      <input class="input" placeholder="请输入"></input>
+    </view>
+
+    <view class="input-container">
+      <label>所在地区</label>
+      <input class="input" placeholder="请输入"></input>
+    </view>
+
+    <view class="input-container">
+      <label>详细地址</label>
+      <input class="input" placeholder="请输入"></input>
+    </view>
+
+    <view class="save">保存</view>
+  </form>
+</view>

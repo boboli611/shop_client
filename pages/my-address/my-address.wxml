@@ -29,10 +29,10 @@
         </view>
 
         <view class="button-group">
-          <view class="edit">
+          <navigator class="edit" url="../edit-address/edit-address">
             <image class="icon-button" mode="aspectFill" src="./assets/icon-bianji.png"></image>
             <text>编辑</text>
-          </view>
+          </navigator>
           <view class="delete">
             <image class="icon-button" mode="aspectFill" src="./assets/icon-bianji.png"></image>
             <text>编辑</text>
@@ -45,5 +45,5 @@
   </view>
 
 
-  <navigator class="add-address">新增地址</navigator>
+  <navigator class="add-address" url="../edit-address/edit-address">新增地址</navigator>
 </view>
