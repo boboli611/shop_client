@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    addCartAnimation: false
+    addCartAnimation: false,
+    detailsVisible: false
   },
 
   /**
@@ -73,5 +74,10 @@ Page({
         addCartAnimation: false
       })
     }, 1000);
+  },
+  switchDetails(){
+    this.setData({
+      detailsVisible: !this.data.detailsVisible
+    })
   }
 })

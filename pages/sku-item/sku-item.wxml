@@ -16,11 +16,11 @@
   </view>
 
   <view class="list-container">
-    <view class="list">
+    <view class="list" bindtap="switchDetails">
       <text>规格尺寸</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
     </view>
-    <view class="list">
+    <view class="list" bindtap="switchDetails">
       <text>商品信息</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
     </view>
@@ -42,4 +42,6 @@
   </view>
 
   <image class="animation" wx:if="{{addCartAnimation}}" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+
+  <cover-card wx:if="{{detailsVisible}}" bind:close="switchDetails"></cover-card>
 </view>
