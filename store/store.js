@@ -40,10 +40,11 @@ class Store{
         return this.shadow[key].value
       },
       set: (newValue) => {
+        let oldValue = this.shadow[key].value;
         this.shadow[key].value = newValue;
         for( let watcher of this.shadow[key].watchers.values() ){
           if( typeof watcher  === 'function'){
-            watcher(newValue);
+            watcher(newValue, oldValue);
           }else{
             watcher.setData({
               [key]: newValue

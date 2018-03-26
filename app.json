@@ -8,7 +8,9 @@
     "pages/mine/mine",
     "pages/my-address/my-address",
     "pages/edit-address/edit-address",
-    "pages/sku-item/sku-item"
+    "pages/sku-item/sku-item",
+    "pages/order-list/order-list",
+    "pages/feedback/feedback"
   ],
   "window": {
     "backgroundTextStyle": "dark",

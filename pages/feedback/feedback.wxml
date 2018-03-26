@@ -1,0 +1,15 @@
+<view class="page-container">
+
+  <textarea class="feedback"></textarea>
+
+  <view class="input-container">
+    <label>联系电话</label>
+    <input placeholder="请输入" class="input"></input>
+  </view>
+
+  <view class="tip">
+    <text>请留下您的联系方式，方便我们与您联系</text>
+  </view>
+
+  <button class="save">提交</button>
+</view>

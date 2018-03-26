@@ -1,27 +1,43 @@
-// pages/mine/mine.js
+// pages/order-list/order-list.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    state: '全部',
+    headerLine: {
+      left: 0,
+      width: 0
+    },
+    loading: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      state: options.state
+    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.updateHeaderLine();
   },
-
+  updateHeaderLine(){
+    wx.createSelectorQuery().select('.order-type-current').boundingClientRect((rect)=>{
+      this.setData({
+        headerLine: {
+          left: rect.left,
+          width: rect.width
+        }
+      })
+    }).exec()
+  },
   /**
    * 生命周期函数--监听页面显示
    */
@@ -33,7 +49,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
@@ -62,5 +78,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  switchOrderState(event){
+    let stateName = event.currentTarget.dataset.stateName;
+
+    this.setData({
+      state: stateName
+    }, this.updateHeaderLine);
+
+    // this.updateHeaderLine();
   }
 })

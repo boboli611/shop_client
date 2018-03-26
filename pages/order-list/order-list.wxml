@@ -1,0 +1,57 @@
+<view class="page-container">
+
+  <view class="header">
+    <text class="order-type {{ state === '全部'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="全部">全部</text>
+    <text class="order-type {{ state === '待付款'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="待付款">待付款</text>
+    <text class="order-type {{ state === '待发货'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="待发货">待发货</text>
+    <text class="order-type {{ state === '已发货'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="已发货">已发货</text>
+    <text class="order-type {{ state === '已完成'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="已完成">已完成</text>
+
+    <view class="header-order-line" style="width: {{headerLine.width}}px; transform: translateX({{headerLine.left}}px)"></view>
+  </view>
+
+
+  <view wx:if="{{!loading}}">
+
+
+    <view class="order-container" wx:for="{{[1, 2, 3, 4, 5, 6]}}">
+      <view class="order-title">
+        <text class="black order-number">订单编号: kjl12345678901234556566</text>
+        <text class="gray order-state">待付款</text>
+      </view>
+      <view class="order-sku" wx:for="{{[1, 2, 3]}}">
+        <image class="order-sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+        <view class="order-sku-details">
+          <view class="sku-name black">
+            <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+          </view>
+          <view>
+            <text class="gray" style="margin-right: 20rpx;"> 颜色 </text>
+            <text class="black" style="margin-right: 20rpx;"> 中蓝 </text>
+            <text class="gray" style="margin-right: 20rpx;"> | </text>
+            <text class="gray" style="margin-right: 20rpx;"> 尺码 </text>
+            <text class="black"> M </text>
+          </view>
+
+          <view class="price-and-number">
+            <text style="color:#A38064">¥49999</text>
+            <text class="black">X1</text>
+          </view>
+          <!-- price-and-number end -->
+        </view>
+        <!-- order-sku-details end -->
+      </view>
+      <!-- order-sku end -->
+      <view class="order-operation">
+        <text class="gray">共1件商品</text>
+        <view class="button-group">
+          <button class="button button-red">提醒发货</button>
+          <button class="button button-black">取消订单</button>
+        </view>
+      </view>
+    </view>
+
+
+  </view>
+
+</view>

@@ -9,7 +9,7 @@
   </view>
 
   <view class="order-info">
-    <navigator class="order-all" url="../my-address/my-address">
+    <navigator class="order-all" url="../order-list/order-list?state=全部">
       <text class="black">我的订单</text>
       <view>
         <text class="gray">查看全部</text>
@@ -17,25 +17,25 @@
       </view>
     </navigator>
 
-    <view class="order-type" bindtap="test">
-      <navigator class="type" >
+    <view class="order-type">
+      <navigator class="type" url="../order-list/order-list?state=待付款">
         <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
         <text class="type-name">待付款</text>
       </navigator>
 
-      <navigator class="type">
+      <navigator class="type" url="../order-list/order-list?state=待发货">
         <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
         <text class="type-name">待发货</text>
       </navigator>
 
-      <navigator class="type">
+      <navigator class="type" url="../order-list/order-list?state=已发货">
         <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
         <text class="type-name">已发货</text>
       </navigator>
 
-      <navigator class="type">
+      <navigator class="type" url="../order-list/order-list?state=已完成">
         <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
-        <text class="type-name">已付款</text>
+        <text class="type-name">已完成</text>
       </navigator>
     </view>
   </view>
@@ -54,13 +54,13 @@
     <navigator class="list" hover-class="list-hover">
       <text>我的会员</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
-    </navigator>   
+    </navigator>
   </view>
 
   <view class="list-container">
-    <navigator class="list" hover-class="list-hover">
+    <navigator class="list" hover-class="list-hover" url="../feedback/feedback">
       <text>意见反馈</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
-    </navigator> 
+    </navigator>
   </view>
 </view>
