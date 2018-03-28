@@ -24,17 +24,17 @@
       <!-- address-editor end -->
       <view class="address-editor" wx:if="{{state === 'edit'}}">
         <view class="default">
-          <image src="./assets/icon-xuan-r.png" class="icon-selector"></image>
+          <image src="/assets/icon-xuan-r.png" class="icon-selector"></image>
           <text>设为默认</text>
         </view>
 
         <view class="button-group">
           <navigator class="edit" url="../edit-address/edit-address">
-            <image class="icon-button" mode="aspectFill" src="./assets/icon-bianji.png"></image>
+            <image class="icon-button" mode="aspectFill" src="/assets/icon-bianji.png"></image>
             <text>编辑</text>
           </navigator>
           <view class="delete">
-            <image class="icon-button" mode="aspectFill" src="./assets/icon-bianji.png"></image>
+            <image class="icon-button" mode="aspectFill" src="/assets/icon-bianji.png"></image>
             <text>编辑</text>
           </view>
         </view>

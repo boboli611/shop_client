@@ -10,7 +10,8 @@
     "pages/edit-address/edit-address",
     "pages/sku-item/sku-item",
     "pages/order-list/order-list",
-    "pages/feedback/feedback"
+    "pages/feedback/feedback",
+    "pages/cart/cart"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -36,7 +37,7 @@
         "selectedIconPath": "assets/tabbar/icon-fenlei-r.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/cart/cart",
         "text": "购物袋",
         "iconPath": "assets/tabbar/icon-gouwd-g.png",
         "selectedIconPath": "assets/tabbar/icon-gouwd-r.png"

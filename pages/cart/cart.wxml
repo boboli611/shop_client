@@ -1,0 +1,57 @@
+<view class="page-container">
+  <view class="header">
+    <text>Lipez</text>
+    <view class="btn-group">
+      <button wx:if="{{ state === 'normal' }}" bindtap="switchPageState" class="btn btn-red">管理</button>
+      <button wx:if="{{ state === 'edit' }}" class="btn">删除</button>
+      <button wx:if="{{ state === 'edit' }}" bindtap="switchPageState" class="btn btn-red">完成</button>
+    </view>
+  </view>
+
+  <view class="sku-list">
+
+    <view class="sku-container">
+      <view class="sku-selector">
+        <image src="/assets/icon-xuan-g.png" class="select-icon"></image>
+      </view>
+      <view class="sku-content">
+        <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+        <view class="sku-info-container">
+          <view class="sku-info-row sku-info-row-space">
+            <view class="sku-name">INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</view>
+            <image src="/assets/icon-bianji.png" class="icon-delete"></image>
+          </view>
+
+          <view class="sku-info-row">
+            <text class="sku-detial gray">颜色</text>
+            <text class="sku-detial black">中蓝</text>
+            <text class="sku-detial gray">|</text>
+            <text class="sku-detial gray">尺码</text>
+            <text class="sku-detial black">M</text>
+          </view>
+
+          <view class="sku-price-and-number">
+            <text class="sku-price">¥2333333</text>
+            <text class="sku-number">x1</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+
+
+
+
+  <view class="footer">
+    <view class="select-all">
+      <text>全选</text>
+    </view>
+    <view class="sum-price" wx:if="{{ state === 'normal' }}">
+      <text class="sum-price-tip">合计：</text>
+      <text>¥123456</text>
+    </view>
+    <button class="sum-pay">结算(3)</button>
+  </view>
+</view>
