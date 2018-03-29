@@ -11,7 +11,8 @@
     "pages/sku-item/sku-item",
     "pages/order-list/order-list",
     "pages/feedback/feedback",
-    "pages/cart/cart"
+    "pages/cart/cart",
+    "pages/order-confirm/order-confirm"
   ],
   "window": {
     "backgroundTextStyle": "dark",

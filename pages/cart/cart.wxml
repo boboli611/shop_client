@@ -52,6 +52,6 @@
       <text class="sum-price-tip">合计：</text>
       <text>¥123456</text>
     </view>
-    <button class="sum-pay">结算(3)</button>
+    <button class="sum-pay" bindtap="pay">结算(3)</button>
   </view>
 </view>

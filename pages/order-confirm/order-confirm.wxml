@@ -1,0 +1,68 @@
+<view class="page-container">
+  <view class="address-container">
+    <view class="normal">
+      <view class="user-info">
+        <text>收货人: 小王</text>
+        <text>13738000000</text>
+      </view>
+      <view class="address-detail">
+        <image src="/assets/icon-dingwei.png" class="address-icon"></image>
+        <text class="address-detail-text">浙江省杭州市萧山区XX街道闻堰镇万达路28号XX小区刚刚好的XXX室</text>
+        <image src="/assets/icon-arrow-r.png" class="icon-arrow"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="sku-list">
+
+    <view class="sku-container">
+      <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      <view class="sku-info">
+        <view class="sku-info-row sku-name">
+          <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+        </view>
+        <view class="sku-info-row">
+          <text class="sku-detial gray">颜色</text>
+          <text class="sku-detial black">中蓝</text>
+          <text class="sku-detial gray"> | </text>
+          <text class="sku-detial gray">尺码</text>
+          <text class="sku-detial black">M</text>
+        </view>
+        <view class="sku-price-and-number">
+          <text class="sku-price">¥399</text>
+          <text class="sku-number">x1</text>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="other-list">
+
+    <view class="other-row">
+      <text>配送方式</text>
+      <picker class="other-input" mode="selector" range="{{['包邮', '包你妹']}}">
+        <view style="display:flex;align-items: center;justify-content: flex-end;">
+          <text>包你妹的邮</text>
+          <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class="other-row">
+      <text>买家留言</text>
+      <input class="other-input" placeholder="在这里留言"></input>
+    </view>
+
+    <view class="other-row">
+      <text class="other-input">共1件商品 小计: ¥399</text>
+    </view>
+
+  </view>
+
+
+  <view class="footer">
+    <text style="flex: 1;">合计: ¥ 3000</text>
+    <button class="pay-btn">结算</button>
+  </view>
+</view>
