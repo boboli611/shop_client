@@ -1,14 +1,20 @@
 .page-container{
-  min-height: 100vh;
   padding-bottom: 100rpx;
+}
+.order-state{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
 }
 .address-container{
   width: 100%;
   box-sizing: border-box;
   padding: 30rpx;
   background: #fff;
-  border-top: 1rpx solid #e5e5e5;
-  border-bottom: 4rpx dashed rgba(187,38,56, 0.4);
+  border-bottom: 1rpx solid #e5e5e5;
 }
 .user-info{
   width: 100%;
@@ -33,10 +39,7 @@
   font-size: 26rpx;
   color: #666;
 }
-.icon-arrow{
-  width: 32rpx;
-  height: 50rpx;
-}
+
 /* sku */
 .sku-list{
   width: 100%;
@@ -115,37 +118,83 @@
   background: #fff;
   border-bottom: 1rpx solid #e5e5e5;
 }
-.other-row:last-child{
-  border-bottom: 0;
-}
 .other-input{
   height: 90rpx;
   line-height: 90rpx;
   flex: 1;
   text-align: right;
 }
-
+/* 客服 */
+.contact-service{
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #333;
+  background: #fafafa;
+}
+.icon-service{
+  width: 30rpx;
+  height: 30rpx;
+}
+/* 订单信息 */
+.order-detail-list{
+  width: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+}
+.order-detail{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  letter-spacing: 0;
+  font-size: 26rpx;
+}
+.title{
+  width: 160rpx;
+  text-align: left;
+  color: #999;
+}
+.value{
+  flex: 1;
+  color: #333333;
+}
+/* 操作台 */
 .footer{
   width: 100%;
   height: 100rpx;
-  line-height: 100rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  background: #fff;
   display: flex;
   flex-direction: row;
-  text-align: right;
-  font-size: 40rpx;
-  color: #333;
-  background-color: #fff;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  box-shadow: 0 -2rpx 6rpx 0 rgba(0,0,0,0.11);
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  padding-right: 30rpx;
+  box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.11);
 }
-.pay-btn{
-  width: 32vw;
-  height: 100rpx;
-  color: #fff;
-  background: #BF4251;
+.btn{
+  padding: 0 20rpx;
+  height: 60rpx;
+  line-height: 60rpx;
   text-align: center;
+  color: #979797;
+  border: 1px solid #979797;
+  border-radius: 2rpx;
   margin-left: 30rpx;
+  margin-right: 0;
+}
+.btn-red{
+  color: #BB2638;
+  border-color: #BB2638;
 }

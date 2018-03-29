@@ -12,7 +12,8 @@
     "pages/order-list/order-list",
     "pages/feedback/feedback",
     "pages/cart/cart",
-    "pages/order-confirm/order-confirm"
+    "pages/order-confirm/order-confirm",
+    "pages/order-details/order-details"
   ],
   "window": {
     "backgroundTextStyle": "dark",
