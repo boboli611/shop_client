@@ -6,16 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bannerImage: '',
-    categories: [],
-    skuLists: []
+    banner: [],
+    item: [],
+    list: [],
+    recommend: [],
+    ticket: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -29,21 +31,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
@@ -52,12 +54,15 @@ Page({
   onPullDownRefresh: function () {
     service
       .indexService()
-      .then((data)=>{
-        // console.log(data);
+      .then((res)=>{
+        let { data } = res;
+        console.log(data);
         this.setData({
-          bannerImage: data.banner,
-          categories: data.categories,
-          skuLists: data.skuList
+          banner: data.banner,
+          item: data.item,
+          list: data.list,
+          recommend: data.recommend,
+          ticket: data.ticket
         })
         wx.stopPullDownRefresh();
       })
@@ -67,13 +72,23 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
+  },
+  goToCatList(){
+    wx.switchTab({
+      url: '../category/category'
+    })
+  },
+  goToCat(){
+    wx.navigateTo({
+      url: '../cat-sku-list/cat-sku-list'
+    })
   }
 })

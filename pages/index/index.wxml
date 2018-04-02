@@ -2,7 +2,13 @@
   <!-- 顶部banner -->
   <view class="banner" >
     <!-- banner图片 -->
-    <image mode="scaleToFill" class="banner-img" src="{{bannerImage}}"></image>
+    <swiper class="banner-img" autoplay indicator-dots indicator-color="rgba(255, 255, 255, 0.7)" indicator-active-color="rgba(255,255,255, 1)">
+      <block wx:for="{{banner}}" wx:key="index" wx:for-item="bannerImage" wx:for-index="index" >
+        <swiper-item>
+          <image mode="aspectFill" class="banner-img" src="{{bannerImage}}" />
+        </swiper-item>
+      </block>
+    </swiper>
     <!-- 搜索框 -->
     <navigator class="banner-search-container" url="../search/search" hover-class="none">
       <view class="banner-search-content">
@@ -15,16 +21,16 @@
   <scroll-view class="cat-container" scroll-x>
     <view class="cat-content">
       <!-- 单个分类 -->
-      <view wx:for="{{categories}}" wx:for-item="category" wx:key="{{category.name}}" class="category">
+      <view wx:for="{{item}}" wx:for-item="category" wx:key="{{category.title}}" class="category" bindtap="goToCat">
         <view class="category-left">
-          <text>{{category.name}}</text>
+          <text>{{category.title}}</text>
         </view>
         <view class="category-right">
-          <image class="category-right" mode="scaleToFill" src="{{category.img}}"></image>
+          <image class="category-right" mode="scaleToFill" src="{{category.icon}}"></image>
         </view>
       </view>
       <!-- 查看全部 -->
-      <view class="category">
+      <view class="category" bindtap="goToCatList">
         <view class="category-left category-all-left">
           <text>查看 全部</text>
         </view>
@@ -37,31 +43,27 @@
 
   <!-- 优惠券 -->
   <view class="preference-container">
-    <view class="preference" style="border-right: 1rpx solid #ccc">
-      <view class="preference-price">    
-        <text >50</text>
+    <view class="preference" wx:for="{{ticket}}" wx:for-index="index" wx:for-item="tk" wx:key="index">
+      <view class="preference-price">
+        <text>{{tk.money}}</text>
       </view>
       <view class="preference-details">
         <view class="preference-details">
-          <text class="preference-description">满499可用</text>
+          <text class="preference-description">{{tk.description}}</text>
           <button class="preference-button">领取</button>
         </view>
       </view>
     </view>
-    <view class="preference">
-      <view class="preference-price">    
-        <text >50</text>
-      </view>
-      <view class="preference-details">
-        <text class="preference-description">满499可用</text>
-        <button class="preference-button">领取</button>
-      </view>
-    </view>
   </view>
   <!-- sku列表 -->
-  <view class="sku-list" wx:for="{{skuLists}}" wx:key="index" wx:for-index="index"  wx:for-item="skuList">
-    <text class="sku-list-title">  {{skuList.title}}  </text>
-    <sku-list skuList="{{skuList.skus}}"></sku-list> 
+  <view class="sku-list">
+    <text class="sku-list-title">  新品推荐  </text>
+    <sku-list skuList="{{list}}"></sku-list>
+  </view>
+
+  <view class="sku-list">
+    <text class="sku-list-title">  热销榜  </text>
+    <sku-list skuList="{{recommend}}"></sku-list>
   </view>
   <!-- 占位 -->
   <view style="background: #fff;margin-top: 20px;"></view>

@@ -65,7 +65,7 @@
   flex: 0 0 210rpx;
   height: 120rpx;
   border: 1rpx solid #e5e5e5;
-  margin: 0 10rpx; 
+  margin: 0 10rpx;
   box-sizing: border-box;
   padding: 10rpx;
   display: flex;
@@ -102,15 +102,16 @@
   margin-top: 20rpx;
   background: #fff;
   width: 100%;
-  height: 180rpx;
   box-sizing: border-box;
   padding: 35rpx 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .preference{
   width: 50vw;
-  height: 100%;
+  height: 180rpx;
+  /* height: 100%; */
   box-sizing: border-box;
   padding: 0 50rpx;
   display: flex;
@@ -118,6 +119,9 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+.preference:nth-child(odd){
+  border-right: 1rpx solid #e5e5e5;
 }
 .preference-price{
   width: 110rpx;
