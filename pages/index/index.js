@@ -86,9 +86,10 @@ Page({
       url: '../category/category'
     })
   },
-  goToCat(){
+  goToCat(event){
+    let { title, id } = event.currentTarget.dataset;
     wx.navigateTo({
-      url: '../cat-sku-list/cat-sku-list'
+      url: `../cat-sku-list/cat-sku-list?title=${title}&id=${id}`
     })
   }
 })

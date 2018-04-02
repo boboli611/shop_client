@@ -10,55 +10,18 @@
 
 
   <view class="cat-container">
-    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
-      <view> 
-        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+    <navigator url="/pages/cat-sku-list/cat-sku-list?title={{cat.title}}&id={{cat.id}}" class="category" wx:for="{{list}}" wx:for-item="cat" wx:key="cat.title">
+      <view>
+        <image  class="cat-img" src="{{cat.icon}}"></image>
       </view>
 
       <view class="cat-name">
-        <text>衣服</text>
-      </view>
-
-      <view class="cat-line"></view>
-    </navigator>
-    
-
-    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
-      <view> 
-        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
-      </view>
-
-      <view class="cat-name">
-        <text>衣服</text>
-      </view>
-
-      <view class="cat-line"></view>
-    </navigator>
-
-    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
-      <view> 
-        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
-      </view>
-
-      <view class="cat-name">
-        <text>衣服</text>
-      </view>
-
-      <view class="cat-line"></view>
-    </navigator>
-
-    <navigator url="/pages/cat-sku-list/cat-sku-list?title=衣服&id=2" class="category">
-      <view> 
-        <image  class="cat-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
-      </view>
-
-      <view class="cat-name">
-        <text>衣服</text>
+        <text>{{cat.title}}</text>
       </view>
 
       <view class="cat-line"></view>
     </navigator>
   </view>
 
-  
+
 </view>

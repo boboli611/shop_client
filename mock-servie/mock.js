@@ -1,5 +1,6 @@
 const mockSearchSerive = require('./search.js');
 const mockIndexService = require('./index.js');
+const mockCategoryService = require('./category.js');
 
 const mockServiceFactory = (data) => {
   return new Promise((res)=>{
@@ -15,8 +16,12 @@ const index = () => {
 const search = () => {
   return mockServiceFactory( mockSearchSerive() );
 }
+const category = () => {
+  return mockServiceFactory( mockCategoryService() );
+}
 
 module.exports = {
   index,
-  search
+  search,
+  category
 }

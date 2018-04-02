@@ -10,10 +10,14 @@ const apiFactory = ( apiName, ...argvs ) => {
 const indexService = () => {
   return apiFactory( 'index' );
 }
+const categoryService = () => {
+  return apiFactory( 'category' );
+}
 
 const searchService = ( keywords ) => apiFactory('search', keywords);
 
 module.exports = {
   indexService,
+  categoryService,
   searchService
 }
