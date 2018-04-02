@@ -1,5 +1,11 @@
 <view class="page-container" >
-  <view class="sku-list-container">
+  <view class="sku-list-container" wx:if="{{ skuList.length > 0 }}">
     <sku-list skuList="{{skuList}}"></sku-list>
   </view>
+  <view class="loading-next-page" wx:if="{{loadingNext != 0 }}">{{
+    loadingNext === 1? '加载中...' :
+    loadingNext === -1 && currentPage > 1? '我是有底线的' :
+    loadingNext === -1 && currentPage === 1? '没有搜索到商品' :
+    ''
+  }}</view>
 </view>

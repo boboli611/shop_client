@@ -1,5 +1,6 @@
 .page-container{
   border-top: 1px solid #e5e5e5;
+  padding-bottom: 120rpx;
 }
 .swiper{
   width: 100vw;
@@ -46,7 +47,6 @@
   box-sizing: border-box;
   background: #fff;
   padding-left: 30rpx;
-  margin-bottom: 120rpx;
 }
 .list{
   width: 100%;
@@ -69,7 +69,86 @@
   width: 32rpx;
   height: 50rpx;
 }
-
+/* 富文本详情 */
+.sku-desc{
+  width: 100%;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.sku-desc-title{
+  display: block;
+  width: 100%;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #333;
+  font-size: 26rpx;
+}
+.sku-desc-title::before, .sku-desc-title::after{
+  content: '———';
+  color: #999;
+  font-weight: 300;
+}
+.rich-container{
+  width: 100%;
+}
+/* 相关推荐 */
+.recommend-container{
+  width: 100%;
+  margin-top: 20rpx;
+  background: #fff;
+}
+.recommend-list{
+  border-top: 1rpx solid #e5e5e5;
+  width: 100%;
+  height: 460rpx;
+  /* box-sizing: border-box; */
+  /* padding: 30rpx 0; */
+  overflow-x: scroll;
+  /* display: flex; */
+  /* flex-direction: row; */
+}
+.recommend-wrap{
+  width: auto;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30rpx;
+  white-space: nowrap;
+  /* display: flex;
+  flex-direction: row; */
+}
+.recommend-sku{
+  width: 280rpx;
+  height: 100%;
+  margin-right: 30rpx;
+  overflow: hidden;
+  display: inline-block;
+  /* flex: none; */
+  /* display: inline-block; */
+}
+.recommend-sku-img{
+  width: 280rpx;
+  height: 280rpx;
+  margin-bottom: 20rpx;
+}
+.recommend-sku-title{
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  width: 100%;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+.recommend-sku-price{
+  display: block;
+  font-size: 34rpx;
+  color: #A38064;
+  text-align: left;
+}
+/* 底部 */
 .operation{
   width: 100%;
   height: 100rpx;

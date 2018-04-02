@@ -7,6 +7,9 @@ class Store{
   }
   // 添加新的数据
   addData(key, value){
+    if( this.data.hasOwnProperty(key) ){
+      return;
+    }
     this.shadow[key] = {
       value: value,
       watchers: new Set()

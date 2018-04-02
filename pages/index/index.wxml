@@ -21,23 +21,29 @@
   <scroll-view class="cat-container" scroll-x>
     <view class="cat-content">
       <!-- 单个分类 -->
-      <view wx:for="{{item}}" wx:for-item="category" wx:key="{{category.title}}" class="category" bindtap="goToCat" data-id="{{category.id}}" data-title="{{category.title}}">
+      <navigator
+        wx:for="{{item}}"
+        wx:for-item="category"
+        wx:key="{{category.title}}"
+        class="category"
+        url="/pages/cat-sku-list/cat-sku-list?title={{category.title}}&id={{category.id}}"
+      >
         <view class="category-left">
           <text>{{category.title}}</text>
         </view>
         <view class="category-right">
           <image class="category-right" mode="scaleToFill" src="{{category.icon}}"></image>
         </view>
-      </view>
+      </navigator>
       <!-- 查看全部 -->
-      <view class="category" bindtap="goToCatList">
+      <navigator class="category" url="/pages/category/category" open-type="switchTab">
         <view class="category-left category-all-left">
           <text>查看 全部</text>
         </view>
         <view class="category-right">
           <image class="category-right" mode="scaleToFill" src="./assets/icon-quanbu.png"></image>
         </view>
-      </view>
+      </navigator>
     </view>
   </scroll-view>
 

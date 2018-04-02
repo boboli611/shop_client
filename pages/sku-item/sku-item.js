@@ -1,3 +1,4 @@
+const service = require('../../service/service.js');
 const store = require('../../store/store.js');
 // pages/sku-item/sku-item.js
 Page({
@@ -8,14 +9,38 @@ Page({
   data: {
     addCartAnimation: false,
     detailsVisible: false,
-    skuInfoVisible: false
+    skuInfoVisible: false,
+    // 商品信息
+    id: -1,
+    cover: [],
+    title: '',
+    desc: '',
+    recommend: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log( options.id )
+    this.setData({
+      title: options.title,
+      id: options.id
+    })
+    service
+      .skuItemService(options.id)
+      .then((res)=>{
+        console.log(res)
+        let { info, recommend } = res.data;
+        this.setData({
+          cover: info.cover,
+          desc: info.desc,
+          recommend: recommend.concat(recommend)
+        })
+      })
+      .catch((err)=>{
+        console.log('catch', err)
+      })
   },
 
   /**

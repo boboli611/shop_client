@@ -1,8 +1,8 @@
 <view class="page-container">
   <swiper class="swiper" autoplay indicator-dots indicator-color="rgba(255, 255, 255, 0.7)" indicator-active-color="rgba(255,255,255, 1)">
-    <block wx:for="{{[1, 2, 3, 4, 5]}}" >
+    <block wx:for="{{cover}}" wx:key="{{banner}}" wx:for-item="banner">
       <swiper-item>
-        <image src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800" class="slide-image" mode="aspectFill" />
+        <image src="{{banner}}" class="slide-image" mode="aspectFill" />
       </swiper-item>
     </block>
   </swiper>
@@ -26,6 +26,25 @@
     </view>
   </view>
 
+  <view class="sku-desc">
+    <text class="sku-desc-title"> 图片详情 </text>
+    <rich-text nodes="{{desc}}" class="rich-container"></rich-text>
+  </view>
+
+  <view class="recommend-container">
+    <text class="sku-desc-title"> 相关推荐 </text>
+    <view class="recommend-list">
+      <view class="recommend-wrap">
+        <navigator class="recommend-sku" wx:for="{{recommend}}" wx:for-item="recommendSku" url="/pages/sku-item/sku-item?id={{recommendSku.id}}&title={{recommendSku.title}}">
+          <image src="{{recommendSku.cover || ''}}" class="recommend-sku-img"></image>
+          <text class="recommend-sku-title">{{ recommendSku.title }}</text>
+          <text class="recommend-sku-price">¥{{ recommendSku.price }}</text>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部 -->
   <view class="operation">
     <button class="service">
       <image class="icon" mode="aspectFill" src="/assets/icon-kefu.png"></image>
@@ -41,7 +60,7 @@
     <navigator class="buy" hover-class="buy-hover">购买</navigator>
   </view>
 
-  <image class="animation" wx:if="{{addCartAnimation}}" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+  <image class="animation" wx:if="{{addCartAnimation}}" src="{{cover[0]}}"></image>
 
   <!-- 规格尺寸 -->
   <cover-card wx:if="{{detailsVisible}}" bind:close="switchDetails">

@@ -80,16 +80,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  goToCatList(){
-    wx.switchTab({
-      url: '../category/category'
-    })
-  },
-  goToCat(event){
-    let { title, id } = event.currentTarget.dataset;
-    wx.navigateTo({
-      url: `../cat-sku-list/cat-sku-list?title=${title}&id=${id}`
-    })
   }
 })

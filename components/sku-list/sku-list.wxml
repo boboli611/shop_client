@@ -1,6 +1,8 @@
 <view class="sku-list-content">
   <!-- 单个sku -->
-  <navigator class="sku" wx:for="{{skuList}}" wx:key="skuIndex" wx:for-index="skuIndex" wx:for-item="sku" url="../../pages/sku-item/sku-item">
+  <navigator class="sku" wx:for="{{skuList}}" wx:key="skuIndex" wx:for-index="skuIndex" wx:for-item="sku"
+    url="../../pages/sku-item/sku-item?id={{sku.id}}&title={{sku.title}}"
+  >
     <image src="{{sku.cover}}" class="sku-image"></image>
     <text class="sku-name">{{sku.title}}</text>
     <view class="sku-info">
