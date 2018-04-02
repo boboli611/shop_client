@@ -11,7 +11,8 @@ Page({
     keyword: '',
     pageState: 'wait', // wait: 等待输入（显示推荐、历史记录）, input:正在输入, result: 搜索结果
     searchHistory: [],
-    searchResult: []
+    searchResult: [],
+    currentPage: 1
   },
 
   /**
@@ -56,6 +57,22 @@ Page({
   onShareAppMessage: function () {
 
   },
+  onReachBottom(){
+    service
+      .searchService(this.data.keyword, this.data.currentPage+1)
+      .then((res)=>{
+        let r = res.data.search? this.data.searchResult.concat(res.data.list) : this.data.searchResult;
+        if( r.length === this.data.searchResult.length ){
+          return;
+        }
+        this.setData({
+          searchResult: r,
+          pageState: 'result',
+          currentPage: this.data.currentPage+1
+        })
+
+      })
+  },
   // 自定义方法
   // 点击搜索框确认按钮
   confirmSearchInput( event ){
@@ -64,13 +81,14 @@ Page({
       return;
     }
     // searchHistory.set(value);
+    this.data.keyword = value;
     this.searchSku( value );
   },
   // 搜索sku
   searchSku( keyword ){
     service
-      .searchService(keyword)
-      .then((data)=>{
+      .searchService(keyword, this.data.currentPage+1)
+      .then((res)=>{
         let searchHistoryList = store.getData('searchHistory');
         if ( searchHistoryList.indexOf(keyword) < 0) {
           searchHistoryList.unshift(keyword);
@@ -79,8 +97,9 @@ Page({
 
         setTimeout(()=>{
           this.setData({
-            searchResult: data,
+            searchResult: res.data.search? res.data.list : [],
             pageState: 'result',
+            currentPage: this.data.currentPage+1
           })
         })
       })

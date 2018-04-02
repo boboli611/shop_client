@@ -1,8 +1,8 @@
 <view class="page-container" >
   <!-- 搜索框 -->
-  <view class="search-input-container">
+  <view class="search-input-container" style="border-bottom: {{ pageState === 'result'? 1 : 0 }}rpx solid #e5e5e5;">
     <input class="search-input" confirm-type="search" focus="true" bindconfirm="confirmSearchInput" bindfocus="onInputFocus" value="{{keyword}}"></input>
-    <navigator open-type="navigateBack" hover-class="none">  
+    <navigator open-type="navigateBack" hover-class="none">
       <text class="search-cancel">取消</text>
     </navigator>
   </view>
@@ -10,7 +10,7 @@
   <view class="recommend-container" wx:if="{{searchHistory.length > 0 && pageState === 'wait'}}">
     <view class="recommend-header">
       <text>历史记录</text>
-      <image class="clear-search-history" bindtap="clearSearchHistory" src="./assets/icon-d-s.png"></image> 
+      <image class="clear-search-history" bindtap="clearSearchHistory" src="./assets/icon-d-s.png"></image>
     </view>
     <view class="recommend-keywords-list">
       <!-- 单条历史记录 -->
@@ -30,7 +30,7 @@
 
   <!-- 搜索结果 -->
   <view wx:if="{{pageState === 'result'}}" class="search-result-container">
-    <sku-list wx:if="{{searchResult.skuList.length > 0}}" skuList="{{searchResult.skuList}}"></sku-list>
+    <sku-list wx:if="{{searchResult.length > 0}}" skuList="{{searchResult}}"></sku-list>
     <view class="no-search-result-tip" wx:else>没有搜索到商品</view>
   </view>
 </view>

@@ -1,6 +1,7 @@
 .page-container{
   background: #fff;
   border-top: 1rpx solid #f0f0f0;
+  padding-top: 120rpx;
 }
 .search-input-container{
   width: 100%;
@@ -11,6 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  background: #fff;
 }
 .search-input{
   flex: 1;
@@ -72,7 +78,7 @@
 }
 
 .search-result-container{
-  border-top: 1rpx solid #f0f0f0;
+  /* border-top: 1rpx solid #f0f0f0; */
   padding-top: 20rpx;
 }
 .no-search-result-tip{
