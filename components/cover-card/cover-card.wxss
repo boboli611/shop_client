@@ -9,15 +9,17 @@
 }
 .content{
   width: 100%;
+  max-height: 75vh;
   position: absolute;
   left: 0;
   bottom: 0;
-  animation: upper .4s ease-out ;
+  animation: up .4s ease-out ;
   background: #fff;
   border-top-left-radius: 4rpx;
   border-top-right-radius: 4rpx;
+  overflow: scroll;
 }
-@keyframes upper {
+@keyframes up {
   from{
     transform: translateY(100%);
   }

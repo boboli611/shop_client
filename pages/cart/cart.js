@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    state: 'normal', //'normal': 正常状态, 'edit': 编辑
+    state: 'normal', //'normal': 正常状态, 'edit': 编辑,
+    editMap: {}
   },
 
   /**
@@ -66,6 +67,28 @@ Page({
   switchPageState(){
     this.setData({
       state: this.data.state === 'normal'? 'edit' : 'normal'
+    })
+  },
+  edit( event ){
+    let index = event.currentTarget.dataset.skuIndex;
+    let editMap = this.data.editMap;
+    if( editMap[index] ){
+      return;
+    }
+    editMap[index] = true;
+    this.setData({
+      editMap
+    })
+  },
+  completeEdit( event ){
+    let index = event.currentTarget.dataset.skuIndex;
+    let editMap = this.data.editMap;
+    if( !editMap[index] ){
+      return;
+    }
+    editMap[index] = false;
+    this.setData({
+      editMap
     })
   },
   pay(){

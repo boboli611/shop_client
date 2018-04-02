@@ -1,0 +1,12 @@
+<view class="page-container">
+
+  <view class="sku-container">
+    <image class="sku-image" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+    <view class="sku-content">
+      <view class="sku-name">
+        <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤IN款牛仔裤INS款牛仔裤I发</text>
+      </view>
+    </view>
+  </view>
+
+</view>

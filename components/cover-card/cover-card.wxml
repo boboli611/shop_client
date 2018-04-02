@@ -1,5 +1,5 @@
 <view class="container" bindtap="tapBg" id="cover-card-container">
-  <view class="content">
-    <view wx:for="{{testData}}">test</view>
+  <view class="content" catchtap>
+    <slot></slot>
   </view>
 </view>

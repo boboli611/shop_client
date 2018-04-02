@@ -20,7 +20,7 @@
       <text>规格尺寸</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
     </view>
-    <view class="list" bindtap="switchDetails">
+    <view class="list" bindtap="switchSkuInfo">
       <text>商品信息</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
     </view>
@@ -43,5 +43,63 @@
 
   <image class="animation" wx:if="{{addCartAnimation}}" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
 
-  <cover-card wx:if="{{detailsVisible}}" bind:close="switchDetails"></cover-card>
+  <!-- 规格尺寸 -->
+  <cover-card wx:if="{{detailsVisible}}" bind:close="switchDetails">
+    <view class="sku-size">
+      <view class="sku-size-header">
+        <view class="sku-size-header-content">
+          <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+          <view class="sku-size-info">
+            <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+            <text class="sku-size-price">¥399</text>
+          </view>
+        </view>
+      </view>
+      <view class="sku-size-properties">
+        <view wx:for="{{[1, 2]}}">
+          <view class="sku-size-properties-title">颜色</view>
+          <view>
+            <text class="sku-size-properties-value">浅蓝</text>
+            <text class="sku-size-properties-value">深蓝</text>
+            <text class="sku-size-properties-value">1123</text>
+            <text class="sku-size-properties-value">4456</text>
+            <text class="sku-size-properties-value">4456</text>
+          </view>
+        </view>
+      </view>
+      <view class="sku-size-number">
+        <text>数量</text>
+        <view class="edit-number-container">
+          <text class="edit-number-button">-</text>
+          <text class="edit-number">1</text>
+          <text class="edit-number-button">+</text>
+        </view>
+      </view>
+
+      <view class="sku-size-btn-group">
+        <button class="sku-size-btn" catchtap="switchDetails" hover-class="sku-size-btn-hover">取消</button>
+        <button class="sku-size-btn sku-size-btn-confirm" hover-class="sku-size-btn-confirm-hover">确认</button>
+      </view>
+    </view>
+  </cover-card>
+
+  <!-- 商品信息 -->
+  <cover-card wx:if="{{skuInfoVisible}}" bind:close="switchSkuInfo">
+    <view class="sku-info-cover">
+      <view class="sku-info-cover-title">
+        <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+      </view>
+      <view class="sku-info-cover-list">
+        <view class="sku-info-cover-row">
+          <text space="emsp" class="label">成分含量</text>
+          <view class="sku-info-cover-content">棉98.8%、聚氨酯弹性纤维、聚氨酯弹性纤维、聚氨酯弹性纤维(氨纶)1.2%</view>
+        </view>
+        <view class="sku-info-cover-row">
+          <text space="emsp" class="label">成  量</text>
+          <view class="sku-info-cover-content">棉98.8%、聚氨酯弹性纤维、聚氨酯弹性纤维、聚氨酯弹性纤维(氨纶)1.2%</view>
+        </view>
+      </view>
+      <button class="sku-info-cover-confirm" catchtap="switchSkuInfo">确认</button>
+    </view>
+  </cover-card>
 </view>

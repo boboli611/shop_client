@@ -1,0 +1,39 @@
+.sku-container{
+  width: 100%;
+  height: 240rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 30rpx 20rpx;
+  border-top: 1rpx solid #e5e5e5;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+}
+.sku-image{
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 20rpx;
+}
+.sku-content{
+  flex: 1;
+}
+.sku-name{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.sku-info{
+  color: #333;
+  font-size: 26rpx;
+}
+.gray{
+  color: #999;
+}
+.info{
+  margin-right: 20rpx;
+}

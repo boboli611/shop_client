@@ -10,7 +10,7 @@
 
   <view class="sku-list">
 
-    <view class="sku-container">
+    <view class="sku-container" wx:for="{{[1, 2, 3, 4]}}" wx:key="index" wx:for-index="index" wx:for-item="sku">
       <view class="sku-selector">
         <image src="/assets/icon-xuan-g.png" class="select-icon"></image>
       </view>
@@ -18,24 +18,38 @@
         <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
         <view class="sku-info-container">
           <view class="sku-info-row sku-info-row-space">
-            <view class="sku-name">INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</view>
-            <image src="/assets/icon-bianji.png" class="icon-delete"></image>
+            <view class="sku-name">
+              <text wx:if="{{ !editMap[index] }}">INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+              <view wx:else class="edit-number-container">
+                <text class="edit-number-button">-</text>
+                <text class="edit-number">12</text>
+                <text class="edit-number-button">+</text>
+              </view>
+            </view>
+            <image bindtap="edit" data-sku-index="{{index}}" src="/assets/icon-bianji.png" class="icon-edit"></image>
           </view>
 
           <view class="sku-info-row">
-            <text class="sku-detial gray">颜色</text>
-            <text class="sku-detial black">中蓝</text>
-            <text class="sku-detial gray">|</text>
-            <text class="sku-detial gray">尺码</text>
-            <text class="sku-detial black">M</text>
+            <view wx:if="{{ !editMap[index] }}">
+              <text class="sku-detial gray">颜色</text>
+              <text class="sku-detial black">中蓝</text>
+              <text class="sku-detial gray">|</text>
+              <text class="sku-detial gray">尺码</text>
+              <text class="sku-detial black">M</text>
+            </view>
+            <view class="edit-properties" wx:else>
+              <text>中蓝；M</text>
+              <image src="/assets/icon-arrow-r.png" class="icon-arrow-down"></image>
+            </view>
           </view>
 
           <view class="sku-price-and-number">
-            <text class="sku-price">¥2333333</text>
+            <text class="sku-price">¥2333333{{editList.indexOf(index)}}</text>
             <text class="sku-number">x1</text>
           </view>
         </view>
       </view>
+      <button wx:if="{{ editMap[index] }}" data-sku-index="{{index}}" bindtap="completeEdit" class="sku-edit-complete">完成</button>
     </view>
 
   </view>

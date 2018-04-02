@@ -13,7 +13,8 @@
     "pages/feedback/feedback",
     "pages/cart/cart",
     "pages/order-confirm/order-confirm",
-    "pages/order-details/order-details"
+    "pages/order-details/order-details",
+    "pages/pay-back/pay-back"
   ],
   "window": {
     "backgroundTextStyle": "dark",

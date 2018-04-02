@@ -54,6 +54,7 @@
   bottom: 0;
   display: flex;
   flex-direction: row;
+  border-top: 1rpx solid #e5e5e5;
 }
 .select-all{
   flex: 1;
@@ -98,6 +99,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  position: relative;
 }
 .sku-selector{
   width: 32rpx;
@@ -119,6 +121,7 @@
   display: flex;
   flex-direction: row;
   border-bottom: 1rpx solid #e5e5e5;
+  overflow: hidden;
 }
 .sku-img{
   width: 200rpx;
@@ -147,7 +150,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.icon-delete{
+.icon-edit{
   width: 32rpx;
   height: 32rpx;
 }
@@ -177,4 +180,71 @@
 .sku-number{
   font-size: 30rpx;
   color: #333;
+}
+/* 编辑状态 */
+.edit-number-container{
+  width: 206rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8rpx;
+}
+.edit-number-button{
+  width: 56rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #666;
+  background: #f0f0f0;
+  border-radius: 4rpx;
+}
+.edit-number{
+  font-size: 30rpx;
+  color: #333;
+}
+.edit-properties{
+  width: 206rpx;
+  height: 56rpx;
+  background: #f0f0f0;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  color: #333;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 0 10rpx 0 20rpx;
+  border-radius: 4rpx;
+}
+.icon-arrow-down{
+  width: 20rpx;
+  height: 20rpx;
+  transform: rotateZ(90deg);
+}
+
+.sku-edit-complete{
+  width: 120rpx;
+  height: 100%;
+  background: #BF4251;
+  color: #fff;
+  font-size: 26rpx;
+  text-align: center;
+  animation: edit-button-show .2s ease-out;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+@keyframes edit-button-show {
+  from{ transform: translateX(100%) }
+  to{ transform: translateX(0%) }
 }
