@@ -1,5 +1,5 @@
 .page-container{
-  padding: 80rpx 0 100rpx 0;
+  padding: 0rpx 0 100rpx 0;
 }
 
 .header{
@@ -16,10 +16,10 @@
   justify-content: space-between;
   background: #fff;
   align-items: center;
-  position: fixed;
+  /* position: fixed;
   top: 0;
   left: 0;
-  z-index: 10;
+  z-index: 10; */
 }
 .edit-button{
   width: 120rpx;
@@ -91,6 +91,9 @@
   font-size: 26rpx;
   line-height: 32rpx;
   display: flex;
+  background: #fff;
+  margin-left: 0;
+  padding-left: 0;
 }
 .icon-selector{
   width: 32rpx;

@@ -9,6 +9,8 @@ class Watcher{
   }
   createWatchers(){
     let { data, watch } = this.pageInstance;
+    watch = watch || {};
+    
     for( let key in watch ){
       if( data.hasOwnProperty(key) ){
         watch[key] = watch[key].bind(this.pageInstance);

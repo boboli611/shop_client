@@ -1,4 +1,4 @@
-const mock = require('../mock-servie/mock.js');
+const mock = require('../mock-service/mock.js');
 const isMock = true;
 
 const apiFactory = ( apiName, ...argvs ) => {
@@ -22,9 +22,19 @@ const skuItemService = ( id ) =>  apiFactory( 'skuItem', id );
 
 const searchService = ( keyword, currentPage ) => apiFactory('search', keyword, currentPage);
 
+const addressService = () => {
+  return {
+    get: () => apiFactory('getAddress'),
+    add: (addressObj) => apiFactory('addAddress', addressObj),
+    update: (addressObj) => apiFactory('updateAddress', addressObj),
+    delete: (addressId) => apiFactory('deleteAddress', addressId),
+  }
+}
+
 module.exports = {
   indexService,
   categoryService,
   searchService,
-  skuItemService
+  skuItemService,
+  addressService
 }

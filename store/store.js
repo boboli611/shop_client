@@ -102,13 +102,13 @@ class Store{
   }
 }
 
-// 实例
+/* -----------------------------------    实例   -------------------------------------------------------*/
 const searchHistory = require('./search-history.js');
 const storage = require('../utils/storage.js');
-
+const service = require('../service/service.js');
 
 let store = new Store();
-/* -----------------------------------    搜索历史 -------------------------------------------------------*/
+/* -----------------------------------    搜索历史   -------------------------------------------------------*/
 // 搜索历史(将内存与本地持久化的数据进行同步)
 store.addData('searchHistory', searchHistory.getSync());
 store.addWatcher('searchHistory', (newValue)=>{
@@ -122,7 +122,7 @@ store.addWatcher('searchHistory', (newValue)=>{
     searchHistory.set(newSearchHistoryUnique);
   }
 })
-/* -----------------------------------    购物车 -------------------------------------------------------*/
+/* -----------------------------------    购物车  -------------------------------------------------------*/
 const CART_KEY = 'LIPEZ_CART';
 let cartData = {}
 try{
@@ -227,5 +227,19 @@ store.registerEvent('clearCart', ()=>{
     store.setData('cart', {});
   }
 })
+/* -----------------------------------   地址  -------------------------------------------------------*/
+
+store.addData('addressList', []);
+store.registerEvent('addAddress', (addressObj)=>{
+
+});
+store.registerEvent('updateAddress', (addressObj)=>{
+  console.log('updateAddress', addressObj)
+  let promise = service
+    .addressService()
+    .update(addressObj)
+    console.log(promise)
+    return promise;
+});
 
 module.exports = store;

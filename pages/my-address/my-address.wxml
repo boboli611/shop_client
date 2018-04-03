@@ -9,33 +9,34 @@
   </view>
 
   <view class="address-list">
-  
-    <view class="address-container" wx:for="{{ [1, 2, 3, 4, 5, 6] }}">
+
+    <view class="address-container" wx:for="{{ addressList }}" wx:for-item="address" wx:key="{{address.id}}">
       <view class="address-content">
         <view class="address-header">
-          <text>收货人: 小王</text>
-          <text>13737888888</text>
+          <text>收货人: {{address.name}}</text>
+          <text>{{address.mobile}}</text>
         </view>
         <view class="address-detail">
           <image src="/assets/icon-dingwei.png" class="address-icon" mode="aspectFit"></image>
-          <text>浙江省杭州市浙江省杭州市8号9路浙江省杭州市878浙江省杭州市</text>
+          <text>{{address.province}} {{address.city}} {{address.county}} {{address.address}}</text>
         </view>
       </view>
       <!-- address-editor end -->
       <view class="address-editor" wx:if="{{state === 'edit'}}">
-        <view class="default">
-          <image src="/assets/icon-xuan-r.png" class="icon-selector"></image>
+        <button class="default">
+          <image wx:if="{{address.status === 1}}" src="/assets/icon-xuan-r.png" class="icon-selector"></image>
+          <image wx:else src="/assets/icon-xuan-g.png" class="icon-selector"></image>
           <text>设为默认</text>
-        </view>
+        </button>
 
         <view class="button-group">
-          <navigator class="edit" url="../edit-address/edit-address">
+          <navigator class="edit" url="../edit-address/edit-address?addressId={{ address.id }}">
             <image class="icon-button" mode="aspectFill" src="/assets/icon-bianji.png"></image>
             <text>编辑</text>
           </navigator>
           <view class="delete">
-            <image class="icon-button" mode="aspectFill" src="/assets/icon-bianji.png"></image>
-            <text>编辑</text>
+            <image class="icon-button" mode="aspectFill" src="/assets/icon-d-b.png"></image>
+            <text>删除</text>
           </view>
         </view>
       </view>

@@ -20,12 +20,17 @@
   border-bottom: 0;
 }
 
-
+label{
+  margin-right: 20rpx;
+}
 
 .input{
   flex: 1;
   height: 90rpx;
   text-align: right;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 .save{
   width: calc(100vw - 60rpx);

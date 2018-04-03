@@ -1,26 +1,31 @@
 <view class="page-container">
 
-  <form>
+  <form bindsubmit="formSubmit">
     <view class="input-container">
       <label>收货人</label>
-      <input class="input" placeholder="请输入"></input>
+      <input class="input" placeholder="请输入" value="{{name}}" name="name" ></input>
     </view>
 
     <view class="input-container">
       <label>联系电话</label>
-      <input class="input" placeholder="请输入"></input>
+      <input class="input" placeholder="请输入" value="{{mobile}}" name="mobile" type="number" ></input>
     </view>
 
     <view class="input-container">
       <label>所在地区</label>
-      <input class="input" placeholder="请输入"></input>
+      <!-- <input class="input" placeholder="请输入"></input> -->
+      <picker class="input" name="region" mode="region" bindchange="bindRegionChange" value="{{region}}" >
+        <view class="input">
+          {{province}} {{city}} {{county}}
+        </view>
+      </picker>
     </view>
 
     <view class="input-container">
       <label>详细地址</label>
-      <input class="input" placeholder="请输入"></input>
+      <input class="input" placeholder="请输入" value="{{address}}" name="address" ></input>
     </view>
 
-    <view class="save">保存</view>
+    <button form-type="submit" class="save">保存</button>
   </form>
 </view>
