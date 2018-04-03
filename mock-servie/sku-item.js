@@ -3,6 +3,20 @@ const data = {
 　　"msg":"",
 　　"data":{
 　　　　"info":{
+　　　　　　"info": [
+　　　　　　  {
+　　　　　　    "name": "品牌品牌",
+　　　　　　    "value": "lipez"
+　　　　　　  },
+            {
+　　　　　　    "name": "品  牌",
+　　　　　　    "value": "lipez"
+　　　　　　  },
+            {
+              "name": "品牌",
+　　　　　　    "value": "lipez"
+            }
+　　　　　　],
 　　　　　　"id":53,
 　　　　　　"title":"A牛皮鞋",
 　　　　　　"desc":"<p><img src='https://lipz-shop.oss-cn-hangzhou.aliyuncs.com/upload/image/20180304/9875290e750e2719468b614522572915.jpg'></p>",
@@ -20,76 +34,43 @@ const data = {
 　　　　　　"carriage":0,
 　　　　　　"updated_at":"2018-03-18 22:25:42",
 　　　　　　"created_at":"2018-03-04 21:33:57",
-　　　　　　"storage":{
-　　　　　　　　"a":{
-　　　　　　　　　　"11":{
-　　　　　　　　　　　　"id":91,
-　　　　　　　　　　　　"product_id":53,
-　　　　　　　　　　　　"style":"a",
-　　　　　　　　　　　　"size":"11",
-　　　　　　　　　　　　"num":0,
-　　　　　　　　　　　　"sell":1,
-　　　　　　　　　　　　"price":0.01,
-　　　　　　　　　　　　"status":1,
-　　　　　　　　　　　　"updated_at":"2018-03-18 22:25:42",
-　　　　　　　　　　　　"created_at":"2018-03-04 21:33:57"
-　　　　　　　　　　},
-　　　　　　　　　　"12":{
-　　　　　　　　　　　　"id":95,
-　　　　　　　　　　　　"product_id":53,
-　　　　　　　　　　　　"style":"a",
-　　　　　　　　　　　　"size":"12",
-　　　　　　　　　　　　"num":1,
-　　　　　　　　　　　　"sell":0,
-　　　　　　　　　　　　"price":0.01,
-　　　　　　　　　　　　"status":1,
-　　　　　　　　　　　　"updated_at":"2018-03-18 22:25:42",
-　　　　　　　　　　　　"created_at":"2018-03-04 21:33:57"
-　　　　　　　　　　}
+　　　　　　"storage": [
+　　　　　　　　{
+　　　　　　　　  style: '浅蓝',
+　　　　　　　　  size: 'M',
+　　　　　　　　  num: 0
 　　　　　　　　},
-　　　　　　　　"b":{
-　　　　　　　　　　"11":{
-　　　　　　　　　　　　"id":92,
-　　　　　　　　　　　　"product_id":53,
-　　　　　　　　　　　　"style":"b",
-　　　　　　　　　　　　"size":"11",
-　　　　　　　　　　　　"num":1,
-　　　　　　　　　　　　"sell":0,
-　　　　　　　　　　　　"price":0.01,
-　　　　　　　　　　　　"status":1,
-　　　　　　　　　　　　"updated_at":"2018-03-18 22:25:42",
-　　　　　　　　　　　　"created_at":"2018-03-04 21:33:57"
-　　　　　　　　　　}
+　　　　　　　　{
+　　　　　　　　  style: '浅蓝1',
+　　　　　　　　  size: 'S',
+　　　　　　　　  num: 2
 　　　　　　　　},
-　　　　　　　　"c":{
-　　　　　　　　　　"11":{
-　　　　　　　　　　　　"id":93,
-　　　　　　　　　　　　"product_id":53,
-　　　　　　　　　　　　"style":"c",
-　　　　　　　　　　　　"size":"11",
-　　　　　　　　　　　　"num":1,
-　　　　　　　　　　　　"sell":0,
-　　　　　　　　　　　　"price":0.01,
-　　　　　　　　　　　　"status":1,
-　　　　　　　　　　　　"updated_at":"2018-03-18 22:25:42",
-　　　　　　　　　　　　"created_at":"2018-03-04 21:33:57"
-　　　　　　　　　　}
+　　　　　　　　{
+　　　　　　　　  style: '浅蓝2',
+　　　　　　　　  size: 'M',
+　　　　　　　　  num: 12
 　　　　　　　　},
-　　　　　　　　"d":{
-　　　　　　　　　　"11":{
-　　　　　　　　　　　　"id":94,
-　　　　　　　　　　　　"product_id":53,
-　　　　　　　　　　　　"style":"d",
-　　　　　　　　　　　　"size":"11",
-　　　　　　　　　　　　"num":1,
-　　　　　　　　　　　　"sell":0,
-　　　　　　　　　　　　"price":0.01,
-　　　　　　　　　　　　"status":1,
-　　　　　　　　　　　　"updated_at":"2018-03-18 22:25:42",
-　　　　　　　　　　　　"created_at":"2018-03-04 21:33:57"
-　　　　　　　　　　}
+　　　　　　　　{
+　　　　　　　　  style: '浅蓝1',
+　　　　　　　　  size: 'L',
+　　　　　　　　  num: 4
+　　　　　　　　},
+　　　　　　　　{
+　　　　　　　　  style: '浅4蓝',
+　　　　　　　　  size: 'L',
+　　　　　　　　  num: 12
+　　　　　　　　},
+　　　　　　　　{
+　　　　　　　　  style: '浅5蓝',
+　　　　　　　　  size: 'M',
+　　　　　　　　  num: 12
+　　　　　　　　},
+　　　　　　　　{
+　　　　　　　　  style: '浅蓝',
+　　　　　　　　  size: 'S',
+　　　　　　　　  num: 12
 　　　　　　　　}
-　　　　　　}
+　　　　　　]
 　　　　},
 　　　　"recommend":[
 　　　　　　{

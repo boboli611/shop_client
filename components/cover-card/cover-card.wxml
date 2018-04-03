@@ -1,5 +1,5 @@
 <view class="container" bindtap="tapBg" id="cover-card-container">
-  <view class="content" catchtap>
+  <view class="content" catchtap="catchtapContent">
     <slot></slot>
   </view>
 </view>

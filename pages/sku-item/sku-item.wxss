@@ -305,6 +305,14 @@
   border-radius: 2rpx;
   display: inline-block;
 }
+.sku-size-properties-value-selected{
+  background: #C0A588;
+  color: #fff;
+}
+.sku-size-properties-value-disabled{
+  background: #f0f0f0;
+  color: #999;
+}
 .sku-size-number{
   width: 100%;
   box-sizing: border-box;

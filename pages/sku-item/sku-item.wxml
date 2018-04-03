@@ -8,9 +8,9 @@
   </swiper>
 
   <view class="sku-info">
-    <view class="title"><text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text></view>
+    <view class="title"><text>{{title}}</text></view>
     <view class="sku-detail">
-      <text class="sku-price">¥ 399</text>
+      <text class="sku-price">¥ {{price}}</text>
       <text class="sku-payednumber">已售1234567件</text>
     </view>
   </view>
@@ -35,7 +35,7 @@
     <text class="sku-desc-title"> 相关推荐 </text>
     <view class="recommend-list">
       <view class="recommend-wrap">
-        <navigator class="recommend-sku" wx:for="{{recommend}}" wx:for-item="recommendSku" url="/pages/sku-item/sku-item?id={{recommendSku.id}}&title={{recommendSku.title}}">
+        <navigator class="recommend-sku" wx:for="{{recommend}}" wx:for-item="recommendSku" wx:key="{{recommendSku.title}}" url="/pages/sku-item/sku-item?id={{recommendSku.id}}&title={{recommendSku.title}}">
           <image src="{{recommendSku.cover || ''}}" class="recommend-sku-img"></image>
           <text class="recommend-sku-title">{{ recommendSku.title }}</text>
           <text class="recommend-sku-price">¥{{ recommendSku.price }}</text>
@@ -67,37 +67,39 @@
     <view class="sku-size">
       <view class="sku-size-header">
         <view class="sku-size-header-content">
-          <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+          <image class="sku-img" src="{{cover[0]}}"></image>
           <view class="sku-size-info">
-            <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
-            <text class="sku-size-price">¥399</text>
+            <text>{{title}}</text>
+            <text class="sku-size-price">¥{{price}}</text>
           </view>
         </view>
       </view>
       <view class="sku-size-properties">
-        <view wx:for="{{[1, 2]}}">
+        <view>
           <view class="sku-size-properties-title">颜色</view>
           <view>
-            <text class="sku-size-properties-value">浅蓝</text>
-            <text class="sku-size-properties-value">深蓝</text>
-            <text class="sku-size-properties-value">1123</text>
-            <text class="sku-size-properties-value">4456</text>
-            <text class="sku-size-properties-value">4456</text>
+            <text class="sku-size-properties-value {{selectedProperties.num > item.stock? 'sku-size-properties-value-disabled' : selectedProperties.style === s? 'sku-size-properties-value-selected' : ''}}" bindtap="setStyle"  data-style="{{s}}" wx:for="{{style}}" wx:for-item="item" wx:for-index="s" wx:key="s">{{s}}</text>
+          </view>
+        </view>
+        <view>
+          <view class="sku-size-properties-title">尺寸</view>
+          <view>
+            <text class="sku-size-properties-value {{selectedProperties.num > item.stock? 'sku-size-properties-value-disabled' : selectedProperties.size === s? 'sku-size-properties-value-selected' : ''}}" bindtap="setSize"  data-size="{{s}}" wx:for="{{size}}" wx:for-item="item" wx:for-index="s" wx:key="s">{{s}}</text>
           </view>
         </view>
       </view>
       <view class="sku-size-number">
         <text>数量</text>
         <view class="edit-number-container">
-          <text class="edit-number-button">-</text>
-          <text class="edit-number">1</text>
-          <text class="edit-number-button">+</text>
+          <text class="edit-number-button" bindtap="minusNum">-</text>
+          <text class="edit-number">{{selectedProperties.num}}</text>
+          <text class="edit-number-button" bindtap="addNum">+</text>
         </view>
       </view>
 
       <view class="sku-size-btn-group">
         <button class="sku-size-btn" catchtap="switchDetails" hover-class="sku-size-btn-hover">取消</button>
-        <button class="sku-size-btn sku-size-btn-confirm" hover-class="sku-size-btn-confirm-hover">确认</button>
+        <button class="sku-size-btn sku-size-btn-confirm" catchtap="switchDetails" hover-class="sku-size-btn-confirm-hover">确认</button>
       </view>
     </view>
   </cover-card>
@@ -106,16 +108,12 @@
   <cover-card wx:if="{{skuInfoVisible}}" bind:close="switchSkuInfo">
     <view class="sku-info-cover">
       <view class="sku-info-cover-title">
-        <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+        <text>{{title}}</text>
       </view>
       <view class="sku-info-cover-list">
-        <view class="sku-info-cover-row">
-          <text space="emsp" class="label">成分含量</text>
-          <view class="sku-info-cover-content">棉98.8%、聚氨酯弹性纤维、聚氨酯弹性纤维、聚氨酯弹性纤维(氨纶)1.2%</view>
-        </view>
-        <view class="sku-info-cover-row">
-          <text space="emsp" class="label">成  量</text>
-          <view class="sku-info-cover-content">棉98.8%、聚氨酯弹性纤维、聚氨酯弹性纤维、聚氨酯弹性纤维(氨纶)1.2%</view>
+        <view class="sku-info-cover-row" wx:for="{{skuInfo}}" wx:for-item="info" wx:key="{{info.name}}">
+          <text space="emsp" class="label">{{info.name}}</text>
+          <view class="sku-info-cover-content">{{info.value}}</view>
         </view>
       </view>
       <button class="sku-info-cover-confirm" catchtap="switchSkuInfo">确认</button>

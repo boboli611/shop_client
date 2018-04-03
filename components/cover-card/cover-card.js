@@ -22,6 +22,9 @@ Component({
   methods: {
     tapBg(event){
        this.triggerEvent('close');
+    },
+    catchtapContent(){
+      
     }
   }
 })
