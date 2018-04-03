@@ -16,7 +16,7 @@
       <label>联系方式</label>
       <input type="text" class="input"/>
     </view>
-    <navigator url="/pages/upload-delivery/upload-delivery" class="save">确认</navigator>
+    <navigator url="/pages/payback-details/payback-details" class="save">确认</navigator>
 
   </form>
 </view>

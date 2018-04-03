@@ -18,7 +18,7 @@
     </navigator>
   </view>
   <!-- 分类 -->
-  <scroll-view class="cat-container" scroll-x>
+  <scroll-view class="cat-container" scroll-x wx:if="{{item.length > 0}}">
     <view class="cat-content">
       <!-- 单个分类 -->
       <navigator
@@ -38,7 +38,7 @@
       <!-- 查看全部 -->
       <navigator class="category" url="/pages/category/category" open-type="switchTab">
         <view class="category-left category-all-left">
-          <text>查看 全部</text>
+          <text>查看\n全部</text>
         </view>
         <view class="category-right">
           <image class="category-right" mode="scaleToFill" src="./assets/icon-quanbu.png"></image>
@@ -48,7 +48,7 @@
   </scroll-view>
 
   <!-- 优惠券 -->
-  <view class="preference-container">
+  <view class="preference-container" wx:if="{{ticket.length > 0}}">
     <view class="preference" wx:for="{{ticket}}" wx:for-index="index" wx:for-item="tk" wx:key="index">
       <view class="preference-price">
         <text>{{tk.money}}</text>
@@ -62,12 +62,12 @@
     </view>
   </view>
   <!-- sku列表 -->
-  <view class="sku-list">
+  <view class="sku-list" wx:if="{{list.length > 0}}">
     <text class="sku-list-title">  新品推荐  </text>
     <sku-list skuList="{{list}}"></sku-list>
   </view>
 
-  <view class="sku-list">
+  <view class="sku-list" wx:if="{{recommend.length > 0}}">
     <text class="sku-list-title">  热销榜  </text>
     <sku-list skuList="{{recommend}}"></sku-list>
   </view>

@@ -208,6 +208,7 @@
   border-radius: 2rpx;
   margin-left: 30rpx;
   margin-right: 0;
+  background: transparent;
 }
 .btn-red{
   color: #BB2638;

@@ -18,7 +18,7 @@
         <image src="/assets/icon-xuan-r.png" class="select-icon" wx:else></image>
       </view>
       <view class="sku-content">
-        <image class="sku-img" src="{{baseSku.cover}}"></image>
+        <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
         <view class="sku-info-container">
           <view class="sku-info-row sku-info-row-space">
             <view class="sku-name">
@@ -49,7 +49,7 @@
           </view>
 
           <view class="sku-price-and-number">
-            <text class="sku-price">¥{{baseSku.price}}</text>
+            <text class="sku-price">¥ 999</text>
             <text class="sku-number">x{{baseSku.selectedProperties.num}}</text>
           </view>
         </view>

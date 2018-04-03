@@ -1,0 +1,54 @@
+<view class="page-container">
+  <view class="state-container">
+    <image src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800" class="sku-img"></image>
+    <view class="state-content">
+      <view class="state-title">运输中</view>
+      <view class="state-desc">XX快递: 5586599000000004</view>
+      <view class="state-desc">官方电话: 955555</view>
+    </view>
+  </view>
+
+  <view class="progress-container">
+    <image class="address-icon" src="/assets/icon-dingwei.png"></image>
+    <view class="progress-content">
+      <view class="address">浙江省杭州市萧山区XX街道闻堰镇万达路28号XX小区刚刚好的XXX室</view>
+
+      <view class="progress-state-list">
+
+        <view class="progress-state-left">
+          <view class="progress-state-row">03.10</view>
+          <view class="progress-state-row">03.10</view>
+          <view class="progress-state-row">03.10</view>
+          <view class="progress-state-row">03.10</view>
+        </view>
+        <view class="progress-state-right">
+          <view class="progress-state-row progress-state-row-right border-left">
+            <image src="/assets/icon-jindu-g.png" class="progress-state-icon"></image>
+            <view class="progress-state-row-content">
+              <view>已收获</view>
+            </view>
+          </view>
+          <view class="progress-state-row progress-state-row-right border-left">
+            <image src="/assets/icon-jindu-g.png" class="progress-state-icon"></image>
+            <view class="progress-state-row-content">
+              <view style="display: block;">运输中\n</view>
+              <text style="font-size: 26rpx;display: block;margin: 20rpx 0; ">浙江省杭州市萧山区XX街道闻堰镇万达路28号XX小区刚刚好的XXX室</text>
+            </view>
+          </view>
+          <view class="progress-state-row progress-state-row-right border-left">
+            <image src="/assets/icon-jindu-g.png" class="progress-state-icon"></image>
+            <view class="progress-state-row-content">
+              <view>已蓝剑</view>
+            </view>
+          </view>
+          <view class="progress-state-row progress-state-row-right">
+            <image src="/assets/icon-jindu-g.png" class="progress-state-icon"></image>
+            <view class="progress-state-row-content">
+              <view>已发货</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

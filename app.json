@@ -17,7 +17,8 @@
     "pages/pay-back/pay-back",
     "pages/apply-payback/apply-payback",
     "pages/payback-state/payback-state",
-    "pages/upload-delivery/upload-delivery"
+    "pages/upload-delivery/upload-delivery",
+    "pages/payback-details/payback-details"
   ],
   "window": {
     "backgroundTextStyle": "dark",

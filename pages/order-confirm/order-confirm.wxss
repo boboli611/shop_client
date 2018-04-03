@@ -144,6 +144,7 @@
 .pay-btn{
   width: 32vw;
   height: 100rpx;
+  line-height: 100rpx;
   color: #fff;
   background: #BF4251;
   text-align: center;

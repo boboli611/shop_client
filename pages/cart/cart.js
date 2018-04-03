@@ -78,7 +78,8 @@ Page({
       this.changeData({
         skuCount
       });
-      let isSelectedAll = Object.keys(this.data.cart).length === selectedSkuLength;
+      let len = Object.keys(this.data.cart).length;
+      let isSelectedAll = len === 0? false : len === selectedSkuLength;
       if( this.data.isSelectedAll !== isSelectedAll ){
         // 计算全选状态
         this.changeData({

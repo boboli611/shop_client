@@ -71,9 +71,10 @@
 }
 /* 富文本详情 */
 .sku-desc{
-  width: 100%;
+  width: 100vw;
   background: #fff;
   margin-top: 20rpx;
+  overflow: hidden;
 }
 .sku-desc-title{
   display: block;
@@ -90,7 +91,8 @@
   font-weight: 300;
 }
 .rich-container{
-  width: 100%;
+  width: 100vw;
+  overflow: hidden;
 }
 /* 相关推荐 */
 .recommend-container{

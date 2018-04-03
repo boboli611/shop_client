@@ -50,7 +50,7 @@
 
     <view class="other-row">
       <text>买家留言</text>
-      <text>在这里留言</text>
+      <text class="other-input">在这里留言</text>
     </view>
 
     <view class="other-row" style="color: #BB2638;">
