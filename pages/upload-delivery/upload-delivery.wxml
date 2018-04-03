@@ -1,0 +1,22 @@
+<view class="page-container">
+  <form >
+    <view class="input-container">
+      <label>选择快递方式</label>
+      <picker class="input">
+        <view class="input"></view>
+      </picker>
+    </view>
+
+    <view class="input-container">
+      <label>快递单号</label>
+      <input type="text" class="input"/>
+    </view>
+
+    <view class="input-container">
+      <label>联系方式</label>
+      <input type="text" class="input"/>
+    </view>
+    <navigator url="/pages/upload-delivery/upload-delivery" class="save">确认</navigator>
+
+  </form>
+</view>

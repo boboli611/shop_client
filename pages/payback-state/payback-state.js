@@ -1,11 +1,11 @@
-// pages/order-details/order-details.js
+// pages/payback-state/payback-state.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    random: Math.random()
+    random: 0
   },
 
   /**

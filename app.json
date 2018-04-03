@@ -14,7 +14,10 @@
     "pages/cart/cart",
     "pages/order-confirm/order-confirm",
     "pages/order-details/order-details",
-    "pages/pay-back/pay-back"
+    "pages/pay-back/pay-back",
+    "pages/apply-payback/apply-payback",
+    "pages/payback-state/payback-state",
+    "pages/upload-delivery/upload-delivery"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -1,0 +1,41 @@
+<view class="page-container">
+  <view class="sku-container">
+    <image src="http://lipz.oss-cn-hangzhou.aliyuncs.com/upload/image/20171224/76d9d2e97589cbee0892022d12c384df.png" class="sku-img"></image>
+    <view class="sku-content">
+      <view class="sku-name">INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</view>
+      <view class="sku-info-row">
+        <text class="sku-detail gray">颜色</text>
+        <text class="sku-detail black">中蓝</text>
+        <text class="sku-detail gray">|</text>
+        <text class="sku-detail gray">尺寸</text>
+        <text class="sku-detail black">M</text>
+      </view>
+
+      <view class="sku-price-and-number">
+        <text class="sku-price">¥2999</text>
+        <text class="sku-number">x1</text>
+      </view>
+    </view>
+  </view>
+
+  <form class="form" bindsubmit="formSubmit">
+    <view class="input-container">
+      <label>退款原因</label>
+      <picker class="input">
+        <view class="input"></view>
+      </picker>
+    </view>
+
+    <view class="input-container">
+      <label>退款说明</label>
+      <input type="text" class="input"/>
+    </view>
+
+    <view class="input-container">
+      <label>退款金额</label>
+      <view class="input"> $ 399</view>
+    </view>
+
+    <button form-type="submit" class="save">提交</button>
+  </form>
+</view>

@@ -1,0 +1,50 @@
+<view class="page-container">
+  <view class="haeder-tip">
+    <text class="header-tip-line tip-title">待卖家处理</text>
+    <text class="header-tip-line">卖家在 <text class="black">3</text> 天内未处理，将自动同意退款</text>
+  </view>
+
+
+  <view class="sku-container">
+    <image src="http://lipz.oss-cn-hangzhou.aliyuncs.com/upload/image/20171224/76d9d2e97589cbee0892022d12c384df.png" class="sku-img"></image>
+    <view class="sku-content">
+      <view class="sku-name">INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</view>
+      <view class="sku-info-row">
+        <text class="sku-detail gray">颜色</text>
+        <text class="sku-detail black">中蓝</text>
+        <text class="sku-detail gray">|</text>
+        <text class="sku-detail gray">尺寸</text>
+        <text class="sku-detail black">M</text>
+      </view>
+
+      <view class="sku-price-and-number">
+        <text class="sku-price">¥2999</text>
+        <text class="sku-number">x1</text>
+      </view>
+    </view>
+  </view>
+
+  <view >
+    <view class="input-container">
+      <label>退款原因</label>
+      <view class="input">尺码不合适</view>
+    </view>
+
+    <view class="input-container">
+      <label>退款说明</label>
+      <view class="input">就要退</view>
+    </view>
+
+    <view class="input-container">
+      <label>退款金额</label>
+      <view class="input"> $ 399</view>
+    </view>
+
+    <button open-type="contact" class="contact-service">
+      <image src="/assets/icon-kefu.png" class="icon-service"></image>
+      <text>联系客服</text>
+    </button>
+    <button  wx:if="{{ false }}" class="save">取消退款</button>
+    <navigator url="/pages/upload-delivery/upload-delivery" wx:else class="save">上传单号</navigator>
+  </view>
+</view>

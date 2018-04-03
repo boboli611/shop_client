@@ -1,11 +1,11 @@
-// pages/order-details/order-details.js
+// pages/apply-payback/apply-payback.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    random: Math.random()
+
   },
 
   /**
@@ -19,9 +19,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      random: Math.random()
-    })
+
   },
 
   /**
@@ -64,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  formSubmit(){
+    wx.navigateTo({
+      url: '../'
+    })
   }
 })

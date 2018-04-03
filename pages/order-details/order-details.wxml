@@ -33,6 +33,8 @@
         <view class="sku-price-and-number">
           <text class="sku-price">¥399</text>
           <text class="sku-number">x1</text>
+          <navigator class="sku-after-sell" wx:if="{{random > 0.5}}" url="/pages/apply-payback/apply-payback">售后</navigator>
+          <navigator class="sku-after-sell sku-after-sell-red" wx:else url="/pages/payback-state/payback-state">退款中</navigator>
         </view>
       </view>
     </view>
