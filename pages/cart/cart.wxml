@@ -3,53 +3,58 @@
     <text>Lipez</text>
     <view class="btn-group">
       <button wx:if="{{ state === 'normal' }}" bindtap="switchPageState" class="btn btn-red">管理</button>
-      <button wx:if="{{ state === 'edit' }}" class="btn">删除</button>
-      <button wx:if="{{ state === 'edit' }}" bindtap="switchPageState" class="btn btn-red">完成</button>
+      <button wx:if="{{ state === 'manage' }}" class="btn" bindtap="deleteManageSelectSku">删除</button>
+      <button wx:if="{{ state === 'manage' }}" bindtap="switchPageState" class="btn btn-red">完成</button>
     </view>
   </view>
 
   <view class="sku-list">
 
-    <view class="sku-container" wx:for="{{[1, 2, 3, 4]}}" wx:key="index" wx:for-index="index" wx:for-item="sku">
+    <view class="sku-container" bindtap="switchSkuSelectedState" data-cartsku-key="{{key}}" wx:for="{{cart}}" wx:key="{{key}}" wx:for-index="key" wx:for-item="baseSku">
       <view class="sku-selector">
-        <image src="/assets/icon-xuan-g.png" class="select-icon"></image>
+        <image src="/assets/icon-xuan-g.png" class="select-icon"
+            wx:if="{{ (state === 'normal' && normalSelectMap[key])? false : (state === 'manage' && manageSelectMap[key])? false : true   }}"
+        ></image>
+        <image src="/assets/icon-xuan-r.png" class="select-icon" wx:else></image>
       </view>
       <view class="sku-content">
-        <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+        <image class="sku-img" src="{{baseSku.cover}}"></image>
         <view class="sku-info-container">
           <view class="sku-info-row sku-info-row-space">
             <view class="sku-name">
-              <text wx:if="{{ !editMap[index] }}">INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+              <text wx:if="{{ !editMap[key] }}">{{baseSku.title}}</text>
+              <!-- 编辑状态 -->
               <view wx:else class="edit-number-container">
-                <text class="edit-number-button">-</text>
-                <text class="edit-number">12</text>
+                <text class="edit-number-button" data-base-sku="{{baseSku}}" catchtap="minusNum" >-</text>
+                <text class="edit-number">{{baseSku.selectedProperties.num}}</text>
                 <text class="edit-number-button">+</text>
               </view>
             </view>
-            <image bindtap="edit" data-sku-index="{{index}}" src="/assets/icon-bianji.png" class="icon-edit"></image>
+            <!-- 编辑按钮 -->
+            <image catchtap="edit" data-sku-key="{{key}}" src="/assets/icon-bianji.png" class="icon-edit" hidden="{{ state === 'manage' }}"></image>
           </view>
 
           <view class="sku-info-row">
-            <view wx:if="{{ !editMap[index] }}">
+            <view wx:if="{{ !editMap[key] }}">
               <text class="sku-detial gray">颜色</text>
-              <text class="sku-detial black">中蓝</text>
+              <text class="sku-detial black">{{baseSku.selectedProperties.style}}</text>
               <text class="sku-detial gray">|</text>
               <text class="sku-detial gray">尺码</text>
-              <text class="sku-detial black">M</text>
+              <text class="sku-detial black">{{baseSku.selectedProperties.size}}</text>
             </view>
-            <view class="edit-properties" wx:else>
-              <text>中蓝；M</text>
+            <button class="edit-properties" wx:else catchtap="openSkuInfoEditModal" data-key="{{key}}">
+              <text>{{baseSku.selectedProperties.style}}；{{baseSku.selectedProperties.size}}</text>
               <image src="/assets/icon-arrow-r.png" class="icon-arrow-down"></image>
-            </view>
+            </button>
           </view>
 
           <view class="sku-price-and-number">
-            <text class="sku-price">¥2333333{{editList.indexOf(index)}}</text>
-            <text class="sku-number">x1</text>
+            <text class="sku-price">¥{{baseSku.price}}</text>
+            <text class="sku-number">x{{baseSku.selectedProperties.num}}</text>
           </view>
         </view>
       </view>
-      <button wx:if="{{ editMap[index] }}" data-sku-index="{{index}}" bindtap="completeEdit" class="sku-edit-complete">完成</button>
+      <button wx:if="{{ editMap[key] }}" data-sku-key="{{key}}" catchtap="completeEdit" class="sku-edit-complete">完成</button>
     </view>
 
   </view>
@@ -59,13 +64,64 @@
 
 
   <view class="footer">
-    <view class="select-all">
+    <button class="select-all" bindtap="selectAll">
+      <image style="margin-right: 10rpx;" src="/assets/icon-xuan-g.png" class="select-icon" hidden="{{ isSelectedAll  }}" ></image>
+      <image style="margin-right: 10rpx;" src="/assets/icon-xuan-r.png" class="select-icon" hidden="{{ !isSelectedAll }}"></image>
       <text>全选</text>
-    </view>
+    </button>
     <view class="sum-price" wx:if="{{ state === 'normal' }}">
       <text class="sum-price-tip">合计：</text>
       <text>¥123456</text>
     </view>
-    <button class="sum-pay" bindtap="pay">结算(3)</button>
+    <button class="sum-pay" bindtap="pay" hidden="{{ state === 'manage' }}">
+      <text >结算({{ skuCount }})</text>
+    </button>
+    <button class="sum-pay" bindtap="switchPageState" hidden="{{ state === 'normal' }}">
+      <text>完成</text>
+    </button>
   </view>
+
+  <!-- 规格尺寸 -->
+  <cover-card wx:if="{{editSkuInfoKey}}" bind:close="closeSkuInfoEditModal">
+    <view class="sku-size">
+      <view class="sku-size-header">
+        <view class="sku-size-header-content">
+          <image class="sku-img" src="{cover[0]}}"></image>
+          <view class="sku-size-info">
+            <text>{{cart[editSkuInfoKey].title}}</text>
+            <text class="sku-size-price">¥{price}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="sku-size-properties">
+        <view>
+          <view class="sku-size-properties-title">颜色</view>
+          <view>
+            <text class="sku-size-properties-value " >{s}}</text>
+            <!-- <text class="sku-size-properties-value {{selectedProperties.num > item.stock? 'sku-size-properties-value-disabled' : selectedProperties.style === s? 'sku-size-properties-value-selected' : ''}}" bindtap="setStyle"  data-style="{{s}}" wx:for="{{style}}" wx:for-item="item" wx:for-index="s" wx:key="s">{{s}}</text> -->
+          </view>
+        </view>
+        <view>
+          <view class="sku-size-properties-title">尺寸</view>
+          <view>
+            <!-- <text class="sku-size-properties-value {{selectedProperties.num > item.stock? 'sku-size-properties-value-disabled' : selectedProperties.size === s? 'sku-size-properties-value-selected' : ''}}" bindtap="setSize"  data-size="{{s}}" wx:for="{{size}}" wx:for-item="item" wx:for-index="s" wx:key="s">{{s}}</text> -->
+            <text class="sku-size-properties-value " >{s}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="sku-size-number">
+        <text>数量</text>
+        <view class="edit-number-container">
+          <text class="edit-number-button" bindtap="minusNum">-</text>
+          <text class="edit-number">{selectedProperties.num}}</text>
+          <text class="edit-number-button" bindtap="addNum">+</text>
+        </view>
+      </view> -->
+
+      <view class="sku-size-btn-group">
+        <button class="sku-size-btn" catchtap="switchDetails" hover-class="sku-size-btn-hover">取消</button>
+        <button class="sku-size-btn sku-size-btn-confirm" catchtap="confirmProperties" hover-class="sku-size-btn-confirm-hover">确认</button>
+      </view>
+    </view>
+  </cover-card>
 </view>

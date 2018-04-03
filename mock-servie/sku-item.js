@@ -41,6 +41,11 @@ const data = {
 　　　　　　　　  num: 0
 　　　　　　　　},
 　　　　　　　　{
+　　　　　　　　  style: '浅蓝',
+　　　　　　　　  size: 'XXL',
+　　　　　　　　  num: 0
+　　　　　　　　},
+　　　　　　　　{
 　　　　　　　　  style: '浅蓝1',
 　　　　　　　　  size: 'S',
 　　　　　　　　  num: 2

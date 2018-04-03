@@ -20,11 +20,11 @@ Page({
     size: [],
     recommend: [],
     skuInfo: [],
+    sell: 0,
     selectedProperties: {
       style: null,
       size: null,
       num: 1,
-      stock: 999
     }
   },
 
@@ -71,6 +71,7 @@ Page({
         })
 
         this.setData({
+          id: info.id,
           cover: info.cover,
           title: info.title,
           price: info.price,
@@ -78,8 +79,9 @@ Page({
           storage: info.storage,
           style,
           size,
+          sell: info.sell || 0,
           skuInfo: info.info,
-          recommend: recommend.concat(recommend)
+          recommend: recommend
         })
       })
       .catch((err)=>{
@@ -137,6 +139,18 @@ Page({
   },
   // 加入购物车
   addCart(){
+    if( !this.data.selectedProperties.size || !this.data.selectedProperties.style ){
+      if( !this.data.detailsVisible ){
+        this.switchDetails()
+      }
+      return;
+    }
+    let stock = this.getRealStock({ id: this.data.id, storage: this.data.storage, style: this.data.selectedProperties.style, size: this.data.selectedProperties.size });
+    if( stock <= 0 ){
+      wx.showToast({title: '库存不够了', icon: 'none'})
+      return;
+    }
+    // 动画
     this.setData({
       addCartAnimation: true
     });
@@ -145,8 +159,26 @@ Page({
         addCartAnimation: false
       })
     }, 1000);
+    store.dispatchEvent('addSkuToCart', {
+      id: this.data.id,
+      title: this.data.title,
+      selectedProperties: this.data.selectedProperties
+    })
   },
-  // 切换商品细节是否显示
+  // 尺寸框确认按钮
+  confirmProperties(){
+    if( !this.data.selectedProperties.style ){
+      wx.showToast({title: '请先选择颜色', icon: 'none', mask: true});
+      return;
+    }
+    if( !this.data.selectedProperties.size ){
+      wx.showToast({title: '请先选择尺寸', icon: 'none', mask: true});
+      return;
+    }
+    this.addCart()
+    this.switchDetails();
+  },
+  // 切换商品细节是否显示 颜色尺寸
   switchDetails(){
     this.setData({
       detailsVisible: !this.data.detailsVisible
@@ -158,26 +190,47 @@ Page({
       skuInfoVisible: !this.data.skuInfoVisible
     })
   },
-  setCurrentStock(style, size){
-
+  // 根据 样式和尺寸计算库存
+  getStockByStorageAndStyleAndSize(storage, style, size){
+    let st = storage.find( st => st.size === size && st.style === style );
+    return st? st.num : 0;
+  },
+  // 获取购物车中的数量
+  getCartSkuNumber(id, style, size){
+    let cartSku = store.dispatchEvent('getCartSku', { id, style, size });
+    return cartSku? cartSku.selectedProperties.num : 0;
+  },
+  // 获取真实库存( 根据样式和尺寸计算库存后，再减去购物车中的数量 )
+  getRealStock( { storage, id, style, size } ){
+    let stock = this.getStockByStorageAndStyleAndSize( storage, style, size ) - this.getCartSkuNumber(id, style, size);
+    return Math.max(0, stock);
   },
   setStyle(event){
+    let cartData = store.getData('cart');
     let style = event.currentTarget.dataset.style;
     if( this.data.selectedProperties.num > this.data.style[style].stock ){
+      if( this.data.style[style].stock > 0 ){
+        wx.showToast({title: `库存剩余${this.data.style[style].stock}。请减少数量`, icon: 'none'});
+      }
       return;
     }
+    // 如果已经选中 改为取消
+    style = style === this.data.selectedProperties.style? null : style;
+
     let selectedSize = this.data.selectedProperties.size;
     if( selectedSize ){
       // 计算所有样式和当前尺寸合并后的库存
       for(let s in this.data.style){
-        let index = this.data.storage.findIndex( st => st.size === selectedSize && st.style === s );
-        this.data.style[s].stock = index < 0? 0 : this.data.storage[ index ].num;
+        this.data.style[s].stock = this.getRealStock( { storage: this.data.storage, id: this.data.id, style: s, size: selectedSize } );
       }
     }
     // 计算所有尺寸和当前样式合并后的库存
     for(let s in this.data.size){
-      let index = this.data.storage.findIndex( st => st.style === style && st.size === s );
-      this.data.size[s].stock = index < 0? 0 : this.data.storage[ index ].num;
+      if( style ){
+        this.data.size[s].stock = this.getRealStock( { storage: this.data.storage, id: this.data.id, style: style, size: s } );
+      }else{
+        this.data.size[s].stock = this.data.size[s].maxNum;
+      }
     }
 
     let newSelectedProperties = this.data.selectedProperties;
@@ -191,20 +244,28 @@ Page({
   setSize(event){
     let size = event.currentTarget.dataset.size;
     if( this.data.selectedProperties.num > this.data.size[size].stock ){
+      if( this.data.size[size].stock > 0 ){
+        wx.showToast({title: `库存剩余${this.data.size[size].stock}。请减少数量`, icon: 'none'});
+      }
       return;
     }
+    // 如果已经选中 改为取消
+    size = size === this.data.selectedProperties.size? null : size;
+
     let selectedStyle = this.data.selectedProperties.style;
     if( selectedStyle ){
       // 计算所有尺寸和当前样式合并后的库存
       for(let s in this.data.size){
-        let index = this.data.storage.findIndex( st => st.style === selectedStyle && st.size === s );
-        this.data.size[s].stock = index < 0? 0 : this.data.storage[ index ].num;
+        this.data.size[s].stock = this.getRealStock( { storage: this.data.storage, id: this.data.id, style: selectedStyle, size: s } )
       }
     }
     // 计算所有样式和当前尺寸合并后的库存
     for(let s in this.data.style){
-      let index = this.data.storage.findIndex( st => st.size === size && st.style === s );
-      this.data.style[s].stock = index < 0? 0 : this.data.storage[ index ].num;
+      if( size ){
+        this.data.style[s].stock = this.getRealStock( { storage: this.data.storage, id: this.data.id, style: s, size: size } );
+      }else{
+        this.data.style[s].stock = this.data.style[s].maxNum;
+      }
     }
 
     let newSelectedProperties = this.data.selectedProperties;
@@ -216,14 +277,14 @@ Page({
     })
   },
   minusNum(){
-    if( !this.data.selectedProperties.style ){
-      wx.showToast({title: '请先选择颜色', icon: 'none', mask: true});
-      return;
-    }
-    if( !this.data.selectedProperties.size ){
-      wx.showToast({title: '请先选择尺寸', icon: 'none', mask: true});
-      return;
-    }
+    // if( !this.data.selectedProperties.style ){
+    //   wx.showToast({title: '请先选择颜色', icon: 'none', mask: true});
+    //   return;
+    // }
+    // if( !this.data.selectedProperties.size ){
+    //   wx.showToast({title: '请先选择尺寸', icon: 'none', mask: true});
+    //   return;
+    // }
     if( this.data.selectedProperties.num <= 1 ){
       return;
     }
@@ -248,7 +309,6 @@ Page({
       wx.showToast({title: '没有库存了', icon: 'none', mask: true});
       return;
     }
-    console.log(currentStyleNum, currentSizeNum, currentNum);
     this.data.selectedProperties.num++;
     this.setData({
       selectedProperties: this.data.selectedProperties

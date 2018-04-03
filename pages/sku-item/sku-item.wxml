@@ -11,7 +11,7 @@
     <view class="title"><text>{{title}}</text></view>
     <view class="sku-detail">
       <text class="sku-price">¥ {{price}}</text>
-      <text class="sku-payednumber">已售1234567件</text>
+      <text class="sku-payednumber">已售{{sell}}件</text>
     </view>
   </view>
 
@@ -46,15 +46,15 @@
 
   <!-- 底部 -->
   <view class="operation">
-    <button class="service">
+    <button class="service" open-type="contact">
       <image class="icon" mode="aspectFill" src="/assets/icon-kefu.png"></image>
       <text class="service-text">客服</text>
     </button>
 
-    <button class="service">
+    <navigator class="service" url="/pages/cart/cart" open-type="switchTab">
       <image class="icon" mode="aspectFill" src="/assets/icon-gwd.png"></image>
       <text class="service-text">购物袋</text>
-    </button>
+    </navigator>
 
     <button class="add-cart" hover-class="add-cart-hover" bindtap="addCart">加入购物袋</button>
     <navigator class="buy" hover-class="buy-hover">购买</navigator>
@@ -99,7 +99,7 @@
 
       <view class="sku-size-btn-group">
         <button class="sku-size-btn" catchtap="switchDetails" hover-class="sku-size-btn-hover">取消</button>
-        <button class="sku-size-btn sku-size-btn-confirm" catchtap="switchDetails" hover-class="sku-size-btn-confirm-hover">确认</button>
+        <button class="sku-size-btn sku-size-btn-confirm" catchtap="confirmProperties" hover-class="sku-size-btn-confirm-hover">确认</button>
       </view>
     </view>
   </cover-card>
