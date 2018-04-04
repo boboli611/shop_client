@@ -1,24 +1,18 @@
-// pages/order-list/order-list.js
+// pages/my-preference/my-preference.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    state: '全部',
-    headerLine: {
-      left: 0,
-      width: 0
-    },
+    state: '未使用',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      state: options.state
-    })
+
   },
 
   /**
@@ -27,16 +21,7 @@ Page({
   onReady: function () {
     this.updateHeaderLine();
   },
-  updateHeaderLine(){
-    wx.createSelectorQuery().select('.order-type-current').boundingClientRect((rect)=>{
-      this.setData({
-        headerLine: {
-          left: rect.left,
-          width: rect.width
-        }
-      })
-    }).exec()
-  },
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -77,6 +62,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  updateHeaderLine(){
+    wx.createSelectorQuery().select('.order-type-current').boundingClientRect((rect)=>{
+      this.setData({
+        headerLine: {
+          left: rect.left,
+          width: rect.width
+        }
+      })
+    }).exec()
   },
   switchOrderState(event){
     let stateName = event.currentTarget.dataset.stateName;

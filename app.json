@@ -18,7 +18,8 @@
     "pages/apply-payback/apply-payback",
     "pages/payback-state/payback-state",
     "pages/upload-delivery/upload-delivery",
-    "pages/payback-details/payback-details"
+    "pages/payback-details/payback-details",
+    "pages/my-preference/my-preference"
   ],
   "window": {
     "backgroundTextStyle": "dark",

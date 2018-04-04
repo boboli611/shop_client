@@ -46,7 +46,7 @@
       <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
     </navigator>
 
-    <navigator class="list" hover-class="list-hover">
+    <navigator class="list" hover-class="list-hover" url="../my-preference/my-preference">
       <text>我的优惠</text>
       <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(20rpx)"></image>
     </navigator>

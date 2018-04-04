@@ -1,0 +1,31 @@
+<view class="page-container">
+  <view class="header">
+    <text class="order-type {{ state === '未使用'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="未使用">未使用</text>
+    <text class="order-type {{ state === '已使用'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="已使用">已使用</text>
+    <text class="order-type {{ state === '已过期'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="已过期">已过期</text>
+
+    <view class="header-order-line" style="width: {{headerLine.width}}px; transform: translateX({{headerLine.left}}px)"></view>
+  </view>
+
+  <view class="preference-list">
+
+    <view class="preference-container {{ state !== '未使用'? 'preference-container-disabled' : '' }}" wx:for="{{[1, 2, 3, 4, 5, 6, 7, 8]}}" >
+      <view class="preference-detail">
+        <view class="preference-title {{ state !== '未使用'? 'preference-title-disabled' : '' }}">店铺优惠</view>
+        <view class="preference-desc {{ state !== '未使用'? 'preference-desc-disabled' : '' }}">满999立即减50</view>
+        <view class="preference-validity {{ state !== '未使用'? 'preference-validity-disabled' : '' }}">有效期：2018.03.25-04.25</view>
+      </view>
+
+      <view class="preference-price">
+        <view class="preference-price-text {{ state !== '未使用'? 'preference-price-disabled' : '' }}">
+          <text>50</text>
+          <text class="preference-price-unit"> 元</text>
+        </view>
+        <navigator url="/pages/index/index" open-type="switchTab" wx:if="{{state === '未使用'}}" hover-class="preference-use-btn-hover" class="preference-use-btn">使用</navigator>
+        <image wx:if="{{ state === '已使用' }}" class="preference-icon" src="/assets/icon-used.png"></image>
+        <image wx:if="{{ state === '已过期' }}" class="preference-icon" src="/assets/icon-unvalidation.png"></image>
+      </view>
+    </view>
+
+  </view>
+</view>
