@@ -112,7 +112,7 @@
   text-align: center;
   font-size: 24rpx;
   color: #353535;
-  border: 1px solid #ccc;
+  border: 1rpx solid #ccc;
   border-radius: 27rpx;
 }
 .sku-after-sell-red{
@@ -151,9 +151,13 @@
   color: #333;
   background: #fafafa;
 }
+.contact-service-hover{
+  background: #f0f0f0;
+}
 .icon-service{
-  width: 30rpx;
-  height: 30rpx;
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 6rpx;
 }
 /* 订单信息 */
 .order-detail-list{
@@ -205,10 +209,11 @@
   text-align: center;
   color: #979797;
   border: 1px solid #979797;
-  border-radius: 2rpx;
+  border-radius: 4rpx;
   margin-left: 30rpx;
   margin-right: 0;
   background: transparent;
+  font-size: 26rpx;
 }
 .btn-red{
   color: #BB2638;

@@ -60,7 +60,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
 }
 .list:last-child{
   border-bottom: 0;
@@ -86,9 +86,10 @@
   font-size: 26rpx;
 }
 .sku-desc-title::before, .sku-desc-title::after{
-  content: '———';
+  content: '——';
   color: #999;
   font-weight: 300;
+  margin: 0 30rpx;
 }
 .rich-container{
   width: 100vw;
@@ -287,7 +288,7 @@
 .sku-size-properties{
   width: 100%;
   box-sizing: border-box;
-  padding: 0rpx 30rpx 0rpx 30rpx;
+  padding: 0rpx 30rpx;
 }
 .sku-size-properties-title{
   color: #333;
@@ -296,7 +297,7 @@
   margin-top: 30rpx;
 }
 .sku-size-properties-value{
-  margin-top: 16rpx;
+  margin-top: 20rpx;
   margin-right: 30rpx;
   width: 120rpx;
   height: 56rpx;
@@ -314,7 +315,7 @@
 }
 .sku-size-properties-value-disabled{
   background: #f0f0f0;
-  color: #999;
+  color: #ccc;
 }
 .sku-size-number{
   width: 100%;
@@ -344,6 +345,9 @@
   background: #f0f0f0;
   border-radius: 4rpx;
 }
+.edit-number-button-disabled{
+  color: #ccc;
+}
 .edit-number{
   font-size: 30rpx;
   color: #333;
@@ -357,6 +361,8 @@
 .sku-size-btn{
   flex: 1;
   height: 100%;
+  line-height: 100rpx;
+  font-size: 30rpx;
   background: #f0f0f0;
   color: #666;
 }
@@ -405,12 +411,13 @@
   flex: 1;
 }
 .sku-info-cover-confirm{
-  margin-left: -30rpx;
+  /* margin-left: -30rpx; */
   width: 100vw;
   height: 100rpx;
   line-height: 100rpx;
   text-align: center;
   color: #fff;
   background: #BF4251;
-
+  transform: translateX(-30rpx);
+  font-size: 30rpx;
 }

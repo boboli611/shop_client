@@ -20,7 +20,6 @@
 }
 .sku-name{
   display: block;
-  margin-top: 20rpx;
   width: 100%;
   height: 40rpx;
   line-height: 40rpx;

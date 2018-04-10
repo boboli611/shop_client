@@ -123,8 +123,8 @@
   height: 60rpx;
   line-height: 60rpx;
   text-align: center;
-  border-radius: 2rpx;
-  border-width: 1px;
+  border-radius: 4rpx;
+  border-width: 1rpx;
   border-style: solid;
   margin-left: 20rpx;
   font-size: 26rpx;

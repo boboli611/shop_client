@@ -58,7 +58,7 @@
     </view>
 
   </view>
-  <button open-type="contact" class="contact-service">
+  <button open-type="contact" class="contact-service" hover-class="contact-service-hover">
     <image src="/assets/icon-kefu.png" class="icon-service"></image>
     <text>联系客服</text>
   </button>
@@ -88,6 +88,6 @@
 
   <view class="footer">
     <button class="btn">删除订单</button>
-    <button class="btn btn-red">再来一旦</button>
+    <button class="btn btn-red">再来一单</button>
   </view>
 </view>

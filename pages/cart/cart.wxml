@@ -2,9 +2,9 @@
   <view class="header">
     <text>Lipez</text>
     <view class="btn-group">
-      <button wx:if="{{ state === 'normal' }}" bindtap="switchPageState" class="btn btn-red">管理</button>
-      <button wx:if="{{ state === 'manage' }}" class="btn" bindtap="deleteManageSelectSku">删除</button>
-      <button wx:if="{{ state === 'manage' }}" bindtap="switchPageState" class="btn btn-red">完成</button>
+      <button wx:if="{{ state === 'normal' }}" hover-class="btn-red-hover" bindtap="switchPageState" class="btn btn-red">管理</button>
+      <button wx:if="{{ state === 'manage' }}" class="btn" hover-class="btn-hover" bindtap="deleteManageSelectSku">删除</button>
+      <button wx:if="{{ state === 'manage' }}" bindtap="switchPageState" hover-class="btn-red-hover"  class="btn btn-red">完成</button>
     </view>
   </view>
 
@@ -25,7 +25,7 @@
               <text wx:if="{{ !editMap[key] }}">{{baseSku.title}}</text>
               <!-- 编辑状态 -->
               <view wx:else class="edit-number-container">
-                <text class="edit-number-button" data-base-sku="{{baseSku}}" catchtap="minusNum" >-</text>
+                <text class="edit-number-button {{baseSku.selectedProperties.num <= 1? 'edit-number-button-disabled' : ''}}" data-base-sku="{{baseSku}}" catchtap="minusNum" >-</text>
                 <text class="edit-number">{{baseSku.selectedProperties.num}}</text>
                 <text class="edit-number-button">+</text>
               </view>
@@ -54,7 +54,7 @@
           </view>
         </view>
       </view>
-      <button wx:if="{{ editMap[key] }}" data-sku-key="{{key}}" catchtap="completeEdit" class="sku-edit-complete">完成</button>
+      <button wx:if="{{ editMap[key] }}" data-sku-key="{{key}}" catchtap="completeEdit" class="sku-edit-complete" hover-class="sku-edit-complete-hover">完成</button>
     </view>
 
   </view>
@@ -76,8 +76,8 @@
     <button class="sum-pay" bindtap="pay" hidden="{{ state === 'manage' }}">
       <text >结算({{ skuCount }})</text>
     </button>
-    <button class="sum-pay" bindtap="switchPageState" hidden="{{ state === 'normal' }}">
-      <text>完成</text>
+    <button class="sum-pay" style="color: rgba(255,255,255, 0.5);" bindtap="switchPageState" hidden="{{ state === 'normal' }}">
+      <text>结算</text>
     </button>
   </view>
 
@@ -86,10 +86,10 @@
     <view class="sku-size">
       <view class="sku-size-header">
         <view class="sku-size-header-content">
-          <image class="sku-img" src="{cover[0]}}"></image>
+          <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
           <view class="sku-size-info">
             <text>{{cart[editSkuInfoKey].title}}</text>
-            <text class="sku-size-price">¥{price}}</text>
+            <text class="sku-size-price">¥399</text>
           </view>
         </view>
       </view>
@@ -97,7 +97,9 @@
         <view>
           <view class="sku-size-properties-title">颜色</view>
           <view>
-            <text class="sku-size-properties-value " >{s}}</text>
+            <text class="sku-size-properties-value " >红</text>
+            <text class="sku-size-properties-value " >黄色</text>
+            <text class="sku-size-properties-value " >蓝色</text>
             <!-- <text class="sku-size-properties-value {{selectedProperties.num > item.stock? 'sku-size-properties-value-disabled' : selectedProperties.style === s? 'sku-size-properties-value-selected' : ''}}" bindtap="setStyle"  data-style="{{s}}" wx:for="{{style}}" wx:for-item="item" wx:for-index="s" wx:key="s">{{s}}</text> -->
           </view>
         </view>
@@ -105,7 +107,9 @@
           <view class="sku-size-properties-title">尺寸</view>
           <view>
             <!-- <text class="sku-size-properties-value {{selectedProperties.num > item.stock? 'sku-size-properties-value-disabled' : selectedProperties.size === s? 'sku-size-properties-value-selected' : ''}}" bindtap="setSize"  data-size="{{s}}" wx:for="{{size}}" wx:for-item="item" wx:for-index="s" wx:key="s">{{s}}</text> -->
-            <text class="sku-size-properties-value " >{s}}</text>
+            <text class="sku-size-properties-value " >M</text>
+            <text class="sku-size-properties-value " >L</text>
+            <text class="sku-size-properties-value " >XXL</text>
           </view>
         </view>
       </view>

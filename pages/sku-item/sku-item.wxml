@@ -27,12 +27,12 @@
   </view>
 
   <view class="sku-desc">
-    <text class="sku-desc-title"> 图片详情 </text>
+    <text class="sku-desc-title">图片详情</text>
     <rich-text nodes="{{desc}}" class="rich-container"></rich-text>
   </view>
 
   <view class="recommend-container">
-    <text class="sku-desc-title"> 相关推荐 </text>
+    <text class="sku-desc-title">相关推荐</text>
     <view class="recommend-list">
       <view class="recommend-wrap">
         <navigator class="recommend-sku" wx:for="{{recommend}}" wx:for-item="recommendSku" wx:key="{{recommendSku.title}}" url="/pages/sku-item/sku-item?id={{recommendSku.id}}&title={{recommendSku.title}}">
@@ -91,7 +91,7 @@
       <view class="sku-size-number">
         <text>数量</text>
         <view class="edit-number-container">
-          <text class="edit-number-button" bindtap="minusNum">-</text>
+          <text class="edit-number-button {{ selectedProperties.num <= 1? 'edit-number-button-disabled' : '' }}" bindtap="minusNum">-</text>
           <text class="edit-number">{{selectedProperties.num}}</text>
           <text class="edit-number-button" bindtap="addNum">+</text>
         </view>

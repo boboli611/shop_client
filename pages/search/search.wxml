@@ -2,7 +2,7 @@
   <!-- 搜索框 -->
   <view class="search-input-container" style="border-bottom: {{ pageState === 'result'? 1 : 0 }}rpx solid #e5e5e5;">
     <input class="search-input" confirm-type="search" focus="true" bindconfirm="confirmSearchInput" bindfocus="onInputFocus" value="{{keyword}}"></input>
-    <navigator open-type="navigateBack" hover-class="none">
+    <navigator catchtap="tapCancel">
       <text class="search-cancel">取消</text>
     </navigator>
   </view>

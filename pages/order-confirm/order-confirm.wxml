@@ -1,5 +1,5 @@
 <view class="page-container">
-  <view class="address-container">
+  <navigator class="address-container" url="../my-address/my-address">
     <view class="normal">
       <view class="user-info">
         <text>收货人: 小王</text>
@@ -11,7 +11,7 @@
         <image src="/assets/icon-arrow-r.png" class="icon-arrow"></image>
       </view>
     </view>
-  </view>
+  </navigator>
 
   <view class="sku-list">
 
@@ -43,7 +43,7 @@
       <text>配送方式</text>
       <picker class="other-input" mode="selector" range="{{['包邮', '包你妹']}}">
         <view style="display:flex;align-items: center;justify-content: flex-end;">
-          <text>包你妹的邮</text>
+          <text style="color:#333;">包你妹的邮</text>
           <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
         </view>
       </picker>

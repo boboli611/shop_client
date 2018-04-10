@@ -56,19 +56,19 @@
       <view class="preference-details">
         <view class="preference-details">
           <text class="preference-description">{{tk.description}}</text>
-          <button class="preference-button">领取</button>
+          <button class="preference-button" hover-class="preference-button-hover">领取</button>
         </view>
       </view>
     </view>
   </view>
   <!-- sku列表 -->
   <view class="sku-list" wx:if="{{list.length > 0}}">
-    <text class="sku-list-title">  新品推荐  </text>
+    <text class="sku-list-title">新品推荐</text>
     <sku-list skuList="{{list}}"></sku-list>
   </view>
 
   <view class="sku-list" wx:if="{{recommend.length > 0}}">
-    <text class="sku-list-title">  热销榜  </text>
+    <text class="sku-list-title">热销榜</text>
     <sku-list skuList="{{recommend}}"></sku-list>
   </view>
   <!-- 占位 -->

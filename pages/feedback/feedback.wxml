@@ -1,10 +1,10 @@
 <view class="page-container">
 
-  <textarea class="feedback"></textarea>
+  <textarea class="feedback" placeholder="请输入"></textarea>
 
   <view class="input-container">
     <label>联系电话</label>
-    <input placeholder="请输入" class="input"></input>
+    <input placeholder="请输入" class="input" placeholder-style="color: #ccc;"></input>
   </view>
 
   <view class="tip">

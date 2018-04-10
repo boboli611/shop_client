@@ -1,6 +1,7 @@
 const utils = require('../../utils/util.js');
 const service = require('../../service/service.js');
 const store = require('../../store/store.js');
+const Watcher = require('../../watcher/watcher.js');
 
 Page({
 
@@ -12,13 +13,30 @@ Page({
     pageState: 'wait', // wait: 等待输入（显示推荐、历史记录）, input:正在输入, result: 搜索结果
     searchHistory: [],
     searchResult: [],
-    currentPage: 1
+    currentPage: 1,
+    // 上一次搜索结果快照
+    searchResultSnap: {
+      result: [],
+      currentPage: 1
+    },
+  },
+  watch: {
+    pageState( newPageState ){
+      if (newPageState === 'result') {
+        this.data.searchResultSnap = {
+          result: this.data.searchResult,
+          currentPage: this.data.currentPage
+        };
+      }
+      
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.watcher = new Watcher(this);
     store.addWatcher('searchHistory', this);
   },
 
@@ -48,6 +66,7 @@ Page({
    */
   onUnload: function () {
     store.delWatcher('searchHistory', this);
+    this.watcher = null;
   },
 
 
@@ -86,6 +105,10 @@ Page({
   },
   // 搜索sku
   searchSku( keyword ){
+    this.data.lastSearchKeyword = keyword;
+    wx.showLoading({
+      title: '搜索中',
+    })
     service
       .searchService(keyword, this.data.currentPage+1)
       .then((res)=>{
@@ -101,7 +124,15 @@ Page({
             pageState: 'result',
             currentPage: this.data.currentPage+1
           })
+          wx.hideLoading();
         })
+      })
+      .catch((err)=>{
+        wx.showToast({
+          title: err,
+          icon: 'none'
+        });
+        wx.hideLoading();
       })
   },
   // 点击关键字搜索
@@ -116,6 +147,7 @@ Page({
   onInputFocus(){
     this.setData({
       searchResult: [],
+      currentPage: 1,
       pageState: 'wait'
     })
   },
@@ -125,5 +157,27 @@ Page({
     this.setData({
       searchHistory: []
     })
+  },
+  // 取消按钮
+  tapCancel(){
+    // if( this.data. )
+    console.log( this.data.searchResultSnap.result, this.data.pageState )
+    if ( this.data.pageState === 'result' ){
+      wx.navigateBack();
+      return;
+    }
+
+    if ( this.data.pageState === 'wait' && this.data.searchResultSnap.result.length === 0 ){
+      wx.navigateBack();
+      return;
+    }
+
+
+    this.setData({
+      searchResult: this.data.searchResultSnap.result,
+      pageState: 'result',
+      currentPage: this.data.searchResultSnap.currentPage
+    })
+      
   }
 })

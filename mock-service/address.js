@@ -11,7 +11,7 @@ const getAddressData = {
       "province": "广东省",
       "city": "广州市",
       "county": "天河区",
-      "address":"某小区4栋 3单元 201室",
+      "address":"某小区4栋 3单元 201室某小区4栋 3单元 201室某小区4栋 3单元 201室",
       "status":0,
       "updated_at":"2018-03-12 23:39:24",
       "created_at":"2018-01-28 23:21:00"

@@ -10,7 +10,7 @@
 
   <view class="address-list">
 
-    <view class="address-container" wx:for="{{ addressList }}" wx:for-item="address" wx:key="{{address.id}}">
+    <view class="address-container" wx:for="{{ addressList }}" wx:for-index="index" wx:for-item="address" wx:key="{{address.id}}">
       <view class="address-content">
         <view class="address-header">
           <text>收货人: {{address.name}}</text>
@@ -18,7 +18,10 @@
         </view>
         <view class="address-detail">
           <image src="/assets/icon-dingwei.png" class="address-icon" mode="aspectFit"></image>
-          <text>{{address.province}} {{address.city}} {{address.county}} {{address.address}}</text>
+          <view class="address-detail-text">
+            {{address.province}} {{address.city}} {{address.county}} {{address.address}} 
+            <text wx:if="{{ index === 0 }}" class="address-default-symbol">默认</text>
+          </view>
         </view>
       </view>
       <!-- address-editor end -->
@@ -31,11 +34,11 @@
 
         <view class="button-group">
           <navigator class="edit" url="../edit-address/edit-address?addressId={{ address.id }}">
-            <image class="icon-button" mode="aspectFill" src="/assets/icon-bianji.png"></image>
+            <image class="icon-button"  src="/assets/icon-bianji.png"></image>
             <text>编辑</text>
           </navigator>
           <view class="delete">
-            <image class="icon-button" mode="aspectFill" src="/assets/icon-d-b.png"></image>
+            <image class="icon-button" style="width: 30rpx;height:35rpx;"  src="/assets/icon-d-b.png"></image>
             <text>删除</text>
           </view>
         </view>
