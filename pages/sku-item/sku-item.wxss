@@ -412,7 +412,7 @@
 }
 .sku-info-cover-confirm{
   /* margin-left: -30rpx; */
-  width: 100vw;
+  width: 102vw;
   height: 100rpx;
   line-height: 100rpx;
   text-align: center;

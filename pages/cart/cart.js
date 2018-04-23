@@ -11,6 +11,7 @@ Page({
     editMap: {},
     // 本地购物车数据
     cart: {},
+    cartLength: 0,
     // 管理状态的选中状态
     manageSelectMap: {},
     // 管理普通状态下的商品选中状态
@@ -19,8 +20,10 @@ Page({
     skuCount: 0,
     // 总价
     sumPrice: 0,
-    // 是否全选
+    // 普通状态是否全选
     isSelectedAll: false,
+    // 管理状态是否全选
+    isManageSelectedAll: false,
     // 编辑详情的商品在购物车中的key
     editSkuInfoKey: null,
   },
@@ -45,7 +48,8 @@ Page({
           }
         }
       }
-      this.changeData({ normalSelectMap });
+      let cartLength = Object.keys(newCart).length;
+      this.changeData({ normalSelectMap, cartLength });
     },
     manageSelectMap( newManageSelectMap ){
       let selectedSkuLength = 0;
@@ -54,10 +58,10 @@ Page({
           selectedSkuLength++;
         }
       }
-      let isSelectedAll = Object.keys(this.data.cart).length === selectedSkuLength;
-      if( this.data.isSelectedAll !== isSelectedAll ){
+      let isManageSelectedAll = Object.keys(this.data.cart).length === selectedSkuLength;
+      if( this.data.isManageSelectedAll !== isManageSelectedAll ){
         this.changeData({
-          isSelectedAll
+          isManageSelectedAll
         })
       }
     },
@@ -70,8 +74,10 @@ Page({
         for(let key in newNormalSelectMap ){
           if( newNormalSelectMap[key] ){
             let sku = cart[key];
-            selectedSkuLength++;
-            skuCount += sku.selectedProperties.num;
+            if(sku){
+              selectedSkuLength++;
+              skuCount += sku.selectedProperties.num;
+            }
           }
         }
       }
@@ -152,9 +158,6 @@ Page({
     this.changeData({
       editSkuInfoKey: key
     });
-    setTimeout(()=>{
-      console.log(this.data.editSkuInfoKey)
-    }, 100)
   },
   // 关闭商品详情（尺寸，颜色）编辑界面
   closeSkuInfoEditModal(){
@@ -164,15 +167,27 @@ Page({
   },
   // 全选 | 全不选
   selectAll(){
-    let value = !this.data.isSelectedAll;
-    let mapKey = this.data.state === 'normal'? 'normalSelectMap' : 'manageSelectMap';
-    for( let key in this.data.cart ){
-      this.data[mapKey][key] = value;
+    let value;
+    if( this.data.state === 'normal' ){
+      value = !this.data.isSelectedAll;
+      for( let key in this.data.cart ){
+        this.data.normalSelectMap[key] = value;
+      }
+      this.changeData({
+        normalSelectMap: this.data.normalSelectMap,
+        isSelectedAll: value
+      })
+    }else{
+      value = !this.data.isManageSelectedAll;
+      for( let key in this.data.cart ){
+        this.data.manageSelectMap[key] = value;
+      }
+
+      this.changeData({
+        manageSelectMap: this.data.manageSelectMap,
+        isManageSelectedAll: value
+      })
     }
-    this.changeData({
-      [mapKey]: this.data[mapKey],
-      isSelectedAll: value
-    });
   },
   // 切换单个商品的选中状态
   switchSkuSelectedState(event){
@@ -193,7 +208,9 @@ Page({
   // 删除管理状态下 选中的商品
   deleteManageSelectSku(){
     for( let skuKey in this.data.manageSelectMap ){
-      store.dispatchEvent('deleteCartSkuByKey', skuKey);
+      if( this.data.manageSelectMap[skuKey] === true ){
+        store.dispatchEvent('deleteCartSkuByKey', skuKey);
+      }
     }
   },
   // 在管理状态和普通状态间切换

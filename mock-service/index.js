@@ -11,14 +11,6 @@ const data = {
 　　　　　　　　"money":50,
 　　　　　　　　"description":"满499使用"
 　　　　　　},
-　　　　　　{
-　　　　　　　　"money":50,
-　　　　　　　　"description":"满499使用"
-　　　　　　},
-　　　　　　{
-　　　　　　　　"money":50,
-　　　　　　　　"description":"满499使用"
-　　　　　　}
 　　　　],
 　　　　"item":[
 　　　　　　{

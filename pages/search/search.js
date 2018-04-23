@@ -28,7 +28,7 @@ Page({
           currentPage: this.data.currentPage
         };
       }
-      
+
     }
   },
 
@@ -77,6 +77,9 @@ Page({
 
   },
   onReachBottom(){
+    if(this.data.searchResult.length === 0){
+      return;
+    }
     service
       .searchService(this.data.keyword, this.data.currentPage+1)
       .then((res)=>{
@@ -153,10 +156,11 @@ Page({
   },
   // 清空搜索历史
   clearSearchHistory(){
-    searchHistory.clear();
-    this.setData({
-      searchHistory: []
-    })
+    // searchHistory.clear();
+    // this.setData({
+    //   searchHistory: []
+    // })
+    store.setData('searchHistory', []);
   },
   // 取消按钮
   tapCancel(){
@@ -178,6 +182,6 @@ Page({
       pageState: 'result',
       currentPage: this.data.searchResultSnap.currentPage
     })
-      
+
   }
 })

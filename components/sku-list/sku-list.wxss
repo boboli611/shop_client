@@ -12,7 +12,7 @@
   height: auto;
   box-sizing: border-box;
   overflow: hidden;
-  margin: 15rpx;
+  margin: 30rpx 15rpx;
 }
 .sku-image{
   width: calc(100vw/2 - 45rpx);

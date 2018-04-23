@@ -31,6 +31,10 @@
   <!-- 搜索结果 -->
   <view wx:if="{{pageState === 'result'}}" class="search-result-container">
     <sku-list wx:if="{{searchResult.length > 0}}" skuList="{{searchResult}}"></sku-list>
-    <view class="no-search-result-tip" wx:else>没有搜索到商品</view>
+    <view class="no-search-result-tip" wx:else>
+      <image src="/assets/icon-empty.png" class="icon-empty"></image>
+      <view class="empty-tip1">暂时还木有这个哦</view>
+      <view class="empty-tip2">看看其它的吧～</view>
+    </view>
   </view>
 </view>

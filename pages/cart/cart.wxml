@@ -8,9 +8,16 @@
     </view>
   </view>
 
-  <view class="sku-list">
-
-    <view class="sku-container" bindtap="switchSkuSelectedState" data-cartsku-key="{{key}}" wx:for="{{cart}}" wx:key="{{key}}" wx:for-index="key" wx:for-item="baseSku">
+  <view class="sku-list" wx:if="{{cartLength > 0}}">
+    <view
+      class="sku-container"
+      bindtap="switchSkuSelectedState"
+      data-cartsku-key="{{key}}"
+      wx:for="{{cart}}"
+      wx:key="{{key}}"
+      wx:for-index="key"
+      wx:for-item="baseSku"
+     >
       <view class="sku-selector">
         <image src="/assets/icon-xuan-g.png" class="select-icon"
             wx:if="{{ (state === 'normal' && normalSelectMap[key])? false : (state === 'manage' && manageSelectMap[key])? false : true   }}"
@@ -31,7 +38,9 @@
               </view>
             </view>
             <!-- 编辑按钮 -->
-            <image catchtap="edit" data-sku-key="{{key}}" src="/assets/icon-bianji.png" class="icon-edit" hidden="{{ state === 'manage' }}"></image>
+            <view class="icon-edit-container" catchtap="edit" data-sku-key="{{key}}" hidden="{{ state === 'manage' }}">
+              <image src="/assets/icon-bianji.png" class="icon-edit"></image>
+            </view>
           </view>
 
           <view class="sku-info-row">
@@ -56,17 +65,20 @@
       </view>
       <button wx:if="{{ editMap[key] }}" data-sku-key="{{key}}" catchtap="completeEdit" class="sku-edit-complete" hover-class="sku-edit-complete-hover">完成</button>
     </view>
-
   </view>
-
+  <view class="empty-container" wx:else>
+    <image src="/assets/icon-empty.png" class="icon-empty"></image>
+    <view class="empty-tip1">暂时还木有这个哦</view>
+    <view class="empty-tip2">看看其它的吧～</view>
+  </view>
 
 
 
 
   <view class="footer">
     <button class="select-all" bindtap="selectAll">
-      <image style="margin-right: 10rpx;" src="/assets/icon-xuan-g.png" class="select-icon" hidden="{{ isSelectedAll  }}" ></image>
-      <image style="margin-right: 10rpx;" src="/assets/icon-xuan-r.png" class="select-icon" hidden="{{ !isSelectedAll }}"></image>
+      <image style="margin-right: 10rpx;" src="/assets/icon-xuan-r.png" class="select-icon" wx:if="{{ (state === 'normal' && isSelectedAll ) || (state === 'manage' && isManageSelectedAll) }}" ></image>
+      <image style="margin-right: 10rpx;" src="/assets/icon-xuan-g.png" class="select-icon" wx:else></image>
       <text>全选</text>
     </button>
     <view class="sum-price" wx:if="{{ state === 'normal' }}">
@@ -123,7 +135,7 @@
       </view> -->
 
       <view class="sku-size-btn-group">
-        <button class="sku-size-btn" catchtap="switchDetails" hover-class="sku-size-btn-hover">取消</button>
+        <button class="sku-size-btn" catchtap="closeSkuInfoEditModal" hover-class="sku-size-btn-hover">取消</button>
         <button class="sku-size-btn sku-size-btn-confirm" catchtap="confirmProperties" hover-class="sku-size-btn-confirm-hover">确认</button>
       </view>
     </view>

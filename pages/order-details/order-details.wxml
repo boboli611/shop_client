@@ -87,7 +87,7 @@
   </view>
 
   <view class="footer">
-    <button class="btn">删除订单</button>
+    <!-- <button class="btn">删除订单</button> -->
     <button class="btn btn-red">再来一单</button>
   </view>
 </view>

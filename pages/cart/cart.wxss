@@ -2,8 +2,32 @@
 .page-container{
   width: 100%;
   min-height: 100vh;
+  box-sizing: border-box;
   padding-top: 90rpx;
   padding-bottom: 100rpx;
+}
+.empty-container{
+  width: 100vw;
+  height: calc(100vh - 190rpx);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.icon-empty{
+  margin-top: -80rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+.empty-tip1{
+  font-size: 30rpx;
+  color: #999;
+  margin: 20rpx 0;
+}
+.empty-tip2{
+  font-size: 24rpx;
+  color: #ccc;
 }
 .header{
   width: 100%;
@@ -162,9 +186,17 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.icon-edit-container{
+  width: 64rpx;
+  height: 60rpx;
+  position: relative;
+}
 .icon-edit{
-  width: 32rpx;
-  height: 32rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width:32rpx;
+  height:32rpx;
 }
 .gray{
   color: #999;

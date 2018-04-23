@@ -164,6 +164,14 @@ Page({
       title: this.data.title,
       selectedProperties: this.data.selectedProperties
     })
+    // 清空选择的尺寸
+    this.setData({
+      selectedProperties: {
+        style: null,
+        size: null,
+        num: 1,
+      }
+    })
   },
   // 尺寸框确认按钮
   confirmProperties(){
