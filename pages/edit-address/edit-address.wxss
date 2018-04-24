@@ -23,6 +23,10 @@
 label{
   margin-right: 20rpx;
 }
+.icon-arrow{
+  width: 32rpx;
+  height: 50rpx;
+}
 
 .input{
   flex: 1;
@@ -31,7 +35,7 @@ label{
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
-  color: #ccc;
+  color: #333;
 }
 .save{
   width: calc(100vw - 60rpx);

@@ -49,7 +49,8 @@ Page({
         }
       }
       let cartLength = Object.keys(newCart).length;
-      this.changeData({ normalSelectMap, cartLength });
+      let { manageSelectMap } = this.data;
+      this.changeData({ normalSelectMap, manageSelectMap, cartLength });
     },
     manageSelectMap( newManageSelectMap ){
       let selectedSkuLength = 0;
@@ -207,6 +208,12 @@ Page({
   },
   // 删除管理状态下 选中的商品
   deleteManageSelectSku(){
+    if( Object.keys(this.data.manageSelectMap).length === 0 ){
+      return  wx.showToast({
+        icon: 'none',
+        title: '请选择需要删除的商品'
+      })
+    }
     for( let skuKey in this.data.manageSelectMap ){
       if( this.data.manageSelectMap[skuKey] === true ){
         store.dispatchEvent('deleteCartSkuByKey', skuKey);

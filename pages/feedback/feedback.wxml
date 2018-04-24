@@ -1,6 +1,6 @@
 <view class="page-container">
 
-  <textarea class="feedback" placeholder="请输入"></textarea>
+  <textarea class="feedback" placeholder="请输入" placeholder-style="color: #ccc;"></textarea>
 
   <view class="input-container">
     <label>联系电话</label>

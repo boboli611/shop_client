@@ -47,6 +47,7 @@
   border-radius: 4rpx;
   background: #BF4251;
   color: #fff;
+  font-size: 30rpx;
 }
 .save-disabled{
 

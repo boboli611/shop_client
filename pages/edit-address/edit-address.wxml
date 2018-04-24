@@ -3,12 +3,12 @@
   <form bindsubmit="formSubmit">
     <view class="input-container">
       <label>收货人</label>
-      <input class="input" placeholder="请输入" value="{{name}}" name="name" ></input>
+      <input class="input" placeholder="请输入" placeholder-style="color: #ccc;" value="{{name}}" name="name" ></input>
     </view>
 
     <view class="input-container">
       <label>联系电话</label>
-      <input class="input" placeholder="请输入" value="{{mobile}}" name="mobile" type="number" ></input>
+      <input class="input" placeholder="请输入" placeholder-style="color: #ccc;" value="{{mobile}}" name="mobile" type="number" ></input>
     </view>
 
     <view class="input-container">
@@ -16,14 +16,18 @@
       <!-- <input class="input" placeholder="请输入"></input> -->
       <picker class="input" name="region" mode="region" bindchange="bindRegionChange" value="{{region}}" >
         <view class="input">
-          {{province}} {{city}} {{county}}
+          <view class="input" wx:if="{{ !province && !city && !county }}">
+            <text style="color: #ccc;">请选择</text>
+            <image class="icon-arrow" src="/assets/icon-arrow-r.png" style="transform: translateY(16rpx)"></image>
+          </view>
+          <text wx:else>{{province}} {{city}} {{county}}</text>
         </view>
       </picker>
     </view>
 
     <view class="input-container">
       <label>详细地址</label>
-      <input class="input" placeholder="请输入" value="{{address}}" name="address" ></input>
+      <input class="input" placeholder="请输入" placeholder-style="color: #ccc;" value="{{address}}" name="address" ></input>
     </view>
 
     <button form-type="submit" class="save">保存</button>

@@ -110,13 +110,14 @@
       <view class="sku-info-cover-title">
         <text>{{title}}</text>
       </view>
+      <view class="line"></view>
       <view class="sku-info-cover-list">
         <view class="sku-info-cover-row" wx:for="{{skuInfo}}" wx:for-item="info" wx:key="{{info.name}}">
           <text space="emsp" class="label">{{info.name}}</text>
           <view class="sku-info-cover-content">{{info.value}}</view>
         </view>
       </view>
-      <button class="sku-info-cover-confirm" catchtap="switchSkuInfo">确认</button>
+      <view class="sku-info-cover-confirm" catchtap="switchSkuInfo">确认</view>
     </view>
   </cover-card>
 </view>
