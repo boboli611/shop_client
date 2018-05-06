@@ -1,5 +1,5 @@
 // pages/cat-sku-list/cat-sku-list.js
-const service = require('../../service/service.js');
+const service = require('../../mock-service/search.js');
 
 Page({
 
@@ -58,7 +58,7 @@ Page({
     service
       .searchService(this.data.title, this.data.currentPage)
       .then((res)=>{
-        // console.log(res)
+         console.log(res)
         if( res.data.search ){
           this.setData({
             skuList: res.data.list,
@@ -66,6 +66,8 @@ Page({
           })
         }else{
           this.setData({
+            //skuList: res.data.list,
+            //currentPage: this.data.currentPage + 1,
             loadingNext: -1
           })
         }

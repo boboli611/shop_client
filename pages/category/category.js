@@ -21,16 +21,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.showLoading({
-      title: '加载中...',
-    })
     service
       .categoryService()
       .then((res)=>{
         this.setData({
           list: res.data.list
         });
-        wx.hideLoading()
       })
       .catch((err)=>{
         wx.hideLoading();

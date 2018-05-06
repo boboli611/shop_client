@@ -25,7 +25,14 @@
       <label>详细地址</label>
       <input class="input" placeholder="请输入" value="{{address}}" name="address" ></input>
     </view>
-
+    
+    <view class="input-container">
+      <button class="default" bindtap="switchSelect">
+          <image wx:if="{{status === 1}}" src="/assets/icon-xuan-r.png" class="icon-selector"></image>
+          <image wx:else src="/assets/icon-xuan-g.png" class="icon-selector"></image>
+          <text>设为默认</text>
+        </button>
+    </view>
     <button form-type="submit" class="save">保存</button>
   </form>
 </view>

@@ -1,3 +1,4 @@
+const order = require('../../mock-service/order.js');
 // pages/order-details/order-details.js
 Page({
 
@@ -5,14 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    random: Math.random()
+    random: Math.random(),
+    product:[],
+    orderInfo:[],
+    sucess:0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      id: options.id,
+      sucess:options.sucess,
+    })
   },
 
   /**
@@ -28,7 +35,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var id = this.data.id
+    order.orderInfo(id).then((res) => {
+      console.log(res.data)
+      this.setData({
+        product: res.data.goods,
+        orderInfo: res.data.info
+      })
+    })
   },
 
   /**

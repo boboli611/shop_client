@@ -1,3 +1,5 @@
+const expressage = require('../../mock-service/expressage.js');
+const utils = require('../../utils/util.js');
 // pages/update-delivery/update-delivery.js
 Page({
 
@@ -5,14 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    company:[],
+    companyIds:[],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    expressage.companyList().then((res)=>{
+        this.setData({
+          company:res.data.name,
+          companyIds: res.data.id,
+        })
+    })
   },
 
   /**

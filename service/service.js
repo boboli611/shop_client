@@ -28,6 +28,7 @@ const addressService = () => {
     add: (addressObj) => apiFactory('addAddress', addressObj),
     update: (addressObj) => apiFactory('updateAddress', addressObj),
     delete: (addressId) => apiFactory('deleteAddress', addressId),
+    updateStatus: (addressObj) => apiFactory('updateStatusAddress', addressObj),
   }
 }
 

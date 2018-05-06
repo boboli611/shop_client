@@ -1,6 +1,8 @@
 // pages/cart/cart.js
 const store = require('../../store/store.js');
 const Watcher = require('../../watcher/watcher.js');
+const service = require('../../mock-service/cart.js');
+const utils = require('../../utils/util.js')
 Page({
   /**
    * 页面的初始数据
@@ -24,70 +26,6 @@ Page({
     // 编辑详情的商品在购物车中的key
     editSkuInfoKey: null,
   },
-  watch: {
-    state( newState ){
-      if( newState === 'normal' ){
-        this.watch.normalSelectMap( this.data.normalSelectMap );
-      }else{
-        this.changeData({
-          editMap: {}
-        })
-        this.watch.manageSelectMap( this.data.manageSelectMap );
-      }
-    },
-    cart( newCart ){
-      let normalSelectMap = {};
-      if( Object.keys(newCart).length > 0 ){
-        normalSelectMap = this.data.normalSelectMap;
-        for( let key in newCart ){
-          if( !normalSelectMap.hasOwnProperty(key) ){
-            normalSelectMap[key] = true;
-          }
-        }
-      }
-      this.changeData({ normalSelectMap });
-    },
-    manageSelectMap( newManageSelectMap ){
-      let selectedSkuLength = 0;
-      for(let key in newManageSelectMap ){
-        if( newManageSelectMap[key] ){
-          selectedSkuLength++;
-        }
-      }
-      let isSelectedAll = Object.keys(this.data.cart).length === selectedSkuLength;
-      if( this.data.isSelectedAll !== isSelectedAll ){
-        this.changeData({
-          isSelectedAll
-        })
-      }
-    },
-    normalSelectMap( newNormalSelectMap ){
-      // 计算商品数量
-      let skuCount = 0;
-      let selectedSkuLength = 0;
-      let cart = this.data.cart;
-      if( Object.keys(cart).length > 0 ){
-        for(let key in newNormalSelectMap ){
-          if( newNormalSelectMap[key] ){
-            let sku = cart[key];
-            selectedSkuLength++;
-            skuCount += sku.selectedProperties.num;
-          }
-        }
-      }
-      this.changeData({
-        skuCount
-      });
-      let len = Object.keys(this.data.cart).length;
-      let isSelectedAll = len === 0? false : len === selectedSkuLength;
-      if( this.data.isSelectedAll !== isSelectedAll ){
-        // 计算全选状态
-        this.changeData({
-          isSelectedAll
-        })
-      }
-    }
-  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -108,22 +46,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getList()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    this.setData({
+      data: {
+        state: 'normal', 
+        editMap: {},
+        cart: {},
+        manageSelectMap: {},
+        normalSelectMap: {},
+        skuCount: 0,
+        sumPrice: 0,
+        isSelectedAll: false,
+        editSkuInfoKey: null,
+      },
+    })
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    store.delWatcher('cart', this);
-    this.watcher = null;
+
   },
 
   /**
@@ -164,14 +113,26 @@ Page({
   },
   // 全选 | 全不选
   selectAll(){
+    var sumPrice = 0
+    var skuCount = 0
     let value = !this.data.isSelectedAll;
     let mapKey = this.data.state === 'normal'? 'normalSelectMap' : 'manageSelectMap';
     for( let key in this.data.cart ){
       this.data[mapKey][key] = value;
+      sumPrice += this.data.cart[key].price * 100 * this.data.cart[key].num
+      skuCount++
     }
+
+    if (value == false){
+      sumPrice = 0;
+      skuCount = 0;
+    }
+    
     this.changeData({
       [mapKey]: this.data[mapKey],
-      isSelectedAll: value
+      isSelectedAll: value,
+      sumPrice: sumPrice / 100,
+      skuCount: skuCount,
     });
   },
   // 切换单个商品的选中状态
@@ -180,10 +141,26 @@ Page({
 
     if( this.data.state === 'normal' ){
       this.data.normalSelectMap[key] = !this.data.normalSelectMap[key];
+      var sku = this.data.cart[key]
+      var sumPrice = this.data.sumPrice
+      var skuCount = this.data.skuCount
+      if (this.data.normalSelectMap[key] == false){
+        skuCount--;
+        sumPrice = sumPrice * 100 - sku.price * 100 * sku.num
+      }else{
+        skuCount++;
+        sumPrice = sumPrice * 100 + sku.price * 100 * sku.num
+      }
+      console.log("sumPrice:" , sumPrice)
+      console.log("skuCount:", skuCount)
       this.changeData({
-        normalSelectMap: this.data.normalSelectMap
+        normalSelectMap: this.data.normalSelectMap,
+        skuCount: skuCount,
+        sumPrice: sumPrice / 100,
+        isSelectedAll: false,
       })
     }else{
+
       this.data.manageSelectMap[key] = !this.data.manageSelectMap[key];
       this.setData({
         manageSelectMap: this.data.manageSelectMap
@@ -192,9 +169,23 @@ Page({
   },
   // 删除管理状态下 选中的商品
   deleteManageSelectSku(){
+    var id = [];
+    
     for( let skuKey in this.data.manageSelectMap ){
-      store.dispatchEvent('deleteCartSkuByKey', skuKey);
+      id.push(this.data.cart[skuKey].shop_id)
+      
     }
+    console.log(id)
+    
+    service
+      .drop(id)
+    .then((res) => {
+      this.setData({
+        manageSelectMap:[]
+      })
+      this.getList()
+    })
+
   },
   // 在管理状态和普通状态间切换
   switchPageState(){
@@ -221,24 +212,69 @@ Page({
     if( !editMap[key] ){
       return;
     }
-    editMap[key] = false;
-    this.setData({
-      editMap
-    })
+    
+    var sku = this.data.cart[key]
+    service
+      .update(sku.shop_id, sku.storage_id, sku.num)
+      .then(res => {
+        editMap[key] = false;
+        this.setData({
+          editMap
+        })
+      })
+    
   },
   // 减少数量
   minusNum(event){
-    let baseSku = event.currentTarget.dataset.baseSku;
-    if( baseSku.selectedProperties.num <= 1 ){
+    let index = event.currentTarget.dataset.baseSku;
+    var sku = this.data.cart;
+    
+    if (sku[index].num <= 1 ){
       return;
     }
-    baseSku.selectedProperties.num--;
-    store.dispatchEvent('updateCartSku', baseSku);
+    sku[index].num--;
+    this.setData({
+      cart: sku,
+    })
+  },
+  // 增加数量
+  maxusNum(event) {
+    let index = event.currentTarget.dataset.baseSku;
+    var sku = this.data.cart;
+    sku[index].num++;
+    this.setData({
+      cart: sku,
+    })
   },
   // 付款按钮
   pay(){
+
+    var ids = []
+    for (let key in this.data.normalSelectMap) {
+
+      if (this.data.normalSelectMap[key] == false){
+        continue
+      }
+
+      ids.push(this.data.cart[key].shop_id)
+    }
+
+    if (ids.length == 0){
+      utils.showError("请选择购物车商品")
+      return
+    }
+
     wx.navigateTo({
-      url: '../order-confirm/order-confirm'
+      url: '../cart-confirm/cart-confirm?ids=' + ids.join(',')
     })
+  },
+  getList(){
+    service
+      .list()
+      .then((res) => {
+        this.setData({
+          cart: res.data.info
+        });
+      })
   }
 })

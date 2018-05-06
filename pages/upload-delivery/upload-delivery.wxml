@@ -2,8 +2,8 @@
   <form >
     <view class="input-container">
       <label>选择快递方式</label>
-      <picker class="input">
-        <view class="input"></view>
+      <picker class="input" value="{{index}}" range="{{company}}">
+        <view class="input">{{company[index]}}</view>
       </picker>
     </view>
 

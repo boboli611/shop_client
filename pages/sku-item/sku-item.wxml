@@ -28,7 +28,9 @@
 
   <view class="sku-desc">
     <text class="sku-desc-title">图片详情</text>
-    <rich-text nodes="{{desc}}" class="rich-container"></rich-text>
+    <!--<rich-text nodes="{{desc}}" class="rich-container"></rich-text>-->
+    <import src="/utils/wxParse/wxParse.wxml" />
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />  
   </view>
 
   <view class="recommend-container">
@@ -57,7 +59,8 @@
     </navigator>
 
     <button class="add-cart" hover-class="add-cart-hover" bindtap="addCart">加入购物袋</button>
-    <navigator class="buy" hover-class="buy-hover">购买</navigator>
+    <button class="buy" hover-class="buy-hover" bindtap="buy">购买</button>
+    <!--<navigator class="buy" hover-class="buy-hover" >购买</navigator>-->
   </view>
 
   <image class="animation" wx:if="{{addCartAnimation}}" src="{{cover[0]}}"></image>

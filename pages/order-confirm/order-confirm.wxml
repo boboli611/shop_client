@@ -2,12 +2,12 @@
   <navigator class="address-container" url="../my-address/my-address">
     <view class="normal">
       <view class="user-info">
-        <text>收货人: 小王</text>
-        <text>13738000000</text>
+        <text>收货人: {{address.name}}</text>
+        <text>{{address.mobile}}</text>
       </view>
       <view class="address-detail">
         <image src="/assets/icon-dingwei.png" class="address-icon"></image>
-        <text class="address-detail-text">浙江省杭州市萧山区XX街道闻堰镇万达路28号XX小区刚刚好的XXX室</text>
+        <text class="address-detail-text">{{address.full_addres + address.address}}</text>
         <image src="/assets/icon-arrow-r.png" class="icon-arrow"></image>
       </view>
     </view>
@@ -16,21 +16,21 @@
   <view class="sku-list">
 
     <view class="sku-container">
-      <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      <image class="sku-img" src="{{product.cover}}"></image>
       <view class="sku-info">
         <view class="sku-info-row sku-name">
-          <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+          <text>{{product.title}}</text>
         </view>
         <view class="sku-info-row">
           <text class="sku-detial gray">颜色</text>
-          <text class="sku-detial black">中蓝</text>
+          <text class="sku-detial black">{{product.style}}</text>
           <text class="sku-detial gray"> | </text>
           <text class="sku-detial gray">尺码</text>
-          <text class="sku-detial black">M</text>
+          <text class="sku-detial black">{{product.size}}</text>
         </view>
         <view class="sku-price-and-number">
-          <text class="sku-price">¥399</text>
-          <text class="sku-number">x1</text>
+          <text class="sku-price">¥{{product.price}}</text>
+          <text class="sku-number">x{{product.buy_num}}</text>
         </view>
       </view>
     </view>
@@ -39,30 +39,35 @@
 
   <view class="other-list">
 
-    <view class="other-row">
+    <!--<view class="other-row">
       <text>配送方式</text>
       <picker class="other-input" mode="selector" range="{{['包邮', '包你妹']}}">
         <view style="display:flex;align-items: center;justify-content: flex-end;">
-          <text style="color:#333;">包你妹的邮</text>
+          <text style="color:#333;">包邮</text>
           <image class="icon-arrow" src="/assets/icon-arrow-r.png"></image>
         </view>
       </picker>
+    </view>-->
+
+    <view class="other-row">
+      <text>配送方式</text>
+      <text class="other-input" style="color:#333;">{{order.carriage}}</text>
     </view>
 
     <view class="other-row">
       <text>买家留言</text>
-      <input class="other-input" placeholder="在这里留言"></input>
+      <input class="other-input" bindinput="bindContent" placeholder="在这里留言"></input>
     </view>
 
     <view class="other-row">
-      <text class="other-input">共1件商品 小计: ¥399</text>
+      <text class="other-input">共{{product.buy_num}}件商品 小计: ¥{{order.price}}</text>
     </view>
 
   </view>
 
 
   <view class="footer">
-    <text style="flex: 1;">合计: ¥ 3000</text>
+    <text style="flex: 1;">合计: ¥ {{order.price}}</text>
     <button class="pay-btn" bindtap="pay">结算</button>
   </view>
 </view>

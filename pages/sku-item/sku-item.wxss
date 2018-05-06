@@ -76,6 +76,9 @@
   margin-top: 20rpx;
   overflow: hidden;
 }
+.sku-desc img{
+width: 100%;
+}
 .sku-desc-title{
   display: block;
   width: 100%;
@@ -92,9 +95,13 @@
   margin: 0 30rpx;
 }
 .rich-container{
+  width: 100%;
+}
+/*
+.rich-container{
   width: 100vw;
   overflow: hidden;
-}
+}*/
 /* 相关推荐 */
 .recommend-container{
   width: 100%;

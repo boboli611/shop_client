@@ -1,3 +1,5 @@
+const order = require('../../mock-service/order.js');
+const utils = require('../../utils/util.js');
 // pages/payback-state/payback-state.js
 Page({
 
@@ -5,14 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    random: 0
+    id:0,
+    random: 0,
+    order:{},
+    product:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      id:options.id,
+    })
 
+    order.RefundDetail(options.id).then((res)=>{
+      this.setData({
+        product:res.data.product,
+        order:res.data.order,
+      })
+    })
   },
 
   /**
@@ -28,7 +42,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
   },
 
   /**

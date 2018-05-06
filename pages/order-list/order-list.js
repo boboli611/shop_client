@@ -1,3 +1,4 @@
+const order = require('../../mock-service/order.js');
 // pages/order-list/order-list.js
 Page({
 
@@ -5,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    state: '全部',
+    state: 0,
+    page: 1,
+    orderList:[],
     headerLine: {
       left: 0,
       width: 0
@@ -41,7 +44,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getList();
   },
 
   /**
@@ -69,7 +72,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.getList()
   },
 
   /**
@@ -82,9 +85,28 @@ Page({
     let stateName = event.currentTarget.dataset.stateName;
 
     this.setData({
-      state: stateName
+      state: stateName,
+      page:1,
+      orderList:[],
     }, this.updateHeaderLine);
-
+    this.getList()
     // this.updateHeaderLine();
+  },
+  getList(){
+    var t = this.data.state
+    var page = this.data.page
+    order.orderList(t, page).then((res) => {
+      if (res.errno !== 0) {
+        return
+      }
+      if (res.data.length <= 0) {
+        return
+      }
+      page++
+      this.setData({
+        orderList: this.data.orderList.concat(res.data),
+        page: page,
+      })
+    })
   }
 })

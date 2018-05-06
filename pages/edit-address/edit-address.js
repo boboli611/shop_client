@@ -14,7 +14,8 @@ Page({
     address: '',
     province: '',
     city: '',
-    county: ''
+    county: '',
+    status:0
   },
   watch: {
     region( newRegion ){
@@ -39,13 +40,13 @@ Page({
       let addressList = store.getData('addressList');
       let address = addressList.find( address => address.id == addressId );
 
-      console.log(addressId, addressList, address)
       this.changeData({
         id: addressId,
         region: [ address.province, address.city, address.county ],
         name: address.name,
         mobile: address.mobile,
         address: address.address,
+        status: address.status,
       })
     }
 
@@ -105,7 +106,21 @@ Page({
       region: region,
     })
   },
+  switchSelect(){
+    var status
+    if (this.data.status == 0){
+      status = 1
+    }else{
+      status = 0
+    }
+    
+    this.setData({
+      status: status,
+    })
+  },
   formSubmit(e){
+    console.log(e.detail.value)
+    var status = this.data.status
     let { name, mobile, region, address } = e.detail.value;
     let mobileReg = /^[1][3,4,5,7,8][0-9]{9}$/;
     new Promise((res, rej)=>{
@@ -125,10 +140,10 @@ Page({
     })
     .then(()=>{
       wx.showLoading({title: '地址修改中...', mask: true})
-      let addressObj = { name, mobile, region, address };
+      let addressObj = { name, mobile, region, address, status};
+      console.log(addressObj)
       if( this.data.id ){
         addressObj['id'] = this.data.id;
-        console.log('updateAddress')
         return store.dispatchEvent('updateAddress', addressObj);
       }else{
         return store.dispatchEvent('addAddress', addressObj);
@@ -137,6 +152,9 @@ Page({
     .then((res)=>{
       wx.hideLoading();
       console.log(res);
+      wx.navigateBack({
+        url:-1
+      })
     })
     .catch((err)=>{
       wx.showToast({

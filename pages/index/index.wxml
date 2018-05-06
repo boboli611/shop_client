@@ -62,14 +62,14 @@
     </view>
   </view>
   <!-- sku列表 -->
-  <view class="sku-list" wx:if="{{list.length > 0}}">
+  <view class="sku-list" wx:if="{{recommend.length > 0}}">
     <text class="sku-list-title">新品推荐</text>
-    <sku-list skuList="{{list}}"></sku-list>
+    <sku-list skuList="{{recommend}}"></sku-list>
   </view>
 
-  <view class="sku-list" wx:if="{{recommend.length > 0}}">
+  <view class="sku-list" wx:if="{{list.length > 0}}">
     <text class="sku-list-title">热销榜</text>
-    <sku-list skuList="{{recommend}}"></sku-list>
+    <sku-list skuList="{{list}}"></sku-list>
   </view>
   <!-- 占位 -->
   <view style="background: #fff;margin-top: 20px;"></view>

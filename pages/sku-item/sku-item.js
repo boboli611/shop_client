@@ -1,5 +1,7 @@
 const service = require('../../service/service.js');
 const store = require('../../store/store.js');
+const cart = require('../../mock-service/cart.js');
+var WxParse = require('../../utils/wxParse/wxParse.js');
 // pages/sku-item/sku-item.js
 Page({
 
@@ -21,10 +23,12 @@ Page({
     recommend: [],
     skuInfo: [],
     sell: 0,
+    actionType : "",
     selectedProperties: {
       style: null,
       size: null,
       num: 1,
+      id:null,
     }
   },
 
@@ -32,7 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log( options.id )
+    let that = this
     this.setData({
       title: options.title,
       id: options.id
@@ -70,12 +74,12 @@ Page({
           }
         })
 
+        WxParse.wxParse('article', 'html', info.desc, that, 0);
         this.setData({
           id: info.id,
           cover: info.cover,
           title: info.title,
           price: info.price,
-          desc: info.desc,
           storage: info.storage,
           style,
           size,
@@ -107,7 +111,26 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    var selectedProperties =  {
+      style: null,
+      size: null,
+      num: 1,
+      id: null,
+    }
+    var size, style
+    for (let s in this.data.size) {
+      this.data.size[s].stock = this.data.size[s].maxNum;
+    }
 
+    for (let s in this.data.style) {
+        this.data.style[s].stock = this.data.style[s].maxNum;
+    }
+
+    this.setData({
+      selectedProperties: selectedProperties,
+      style: this.data.style,
+      size: this.data.size
+    })
   },
 
   /**
@@ -137,32 +160,83 @@ Page({
   onShareAppMessage: function () {
 
   },
-  // 加入购物车
-  addCart(){
-    if( !this.data.selectedProperties.size || !this.data.selectedProperties.style ){
-      if( !this.data.detailsVisible ){
+  showTemp(){
+    if (!this.data.selectedProperties.size || !this.data.selectedProperties.style) {
+      if (!this.data.detailsVisible) {
         this.switchDetails()
       }
-      return;
+      return false;
     }
     let stock = this.getRealStock({ id: this.data.id, storage: this.data.storage, style: this.data.selectedProperties.style, size: this.data.selectedProperties.size });
-    if( stock <= 0 ){
-      wx.showToast({title: '库存不够了', icon: 'none'})
-      return;
+    if (stock <= 0) {
+      wx.showToast({ title: '库存不够了', icon: 'none' })
+      return false;
     }
+
+    var storage_id = 0
+    var newSelectedProperties = this.data.selectedProperties
+    this.data.storage.forEach((st) => {
+      if (newSelectedProperties.size == st.size &&
+        newSelectedProperties.style == st.style) {
+        storage_id = st.id
+        return
+      }
+    })
+    
+    return storage_id
+  },
+  // 加入购物车
+  addCart(){
+    this.data.actionType = "cart"
+    
+    var storage_id = this.showTemp();
+    if (!storage_id) {
+      return false;
+    }
+
     // 动画
     this.setData({
       addCartAnimation: true
     });
+
+    console.log(this.data.selectedProperties, storage_id)
+    cart.
+      addCart(storage_id, this.data.selectedProperties.num).
+        then((res)=>{
+          console.log(res)
+          this.setData({
+            selectedProperties:{},
+          })
+        })
+
+
     setTimeout(()=>{
       this.setData({
         addCartAnimation: false
       })
     }, 1000);
+    /*
     store.dispatchEvent('addSkuToCart', {
       id: this.data.id,
       title: this.data.title,
       selectedProperties: this.data.selectedProperties
+    })*/
+  },
+  buy(){
+    this.data.actionType = "buy"
+    var storage_id = this.showTemp();
+    if (!storage_id){
+      return  false;
+    }
+
+    // 动画
+    this.setData({
+      addCartAnimation: true
+    });
+
+    var num = this.data.selectedProperties.num
+    wx.navigateTo({
+      url: '/pages/order-confirm/order-confirm?id=' + storage_id + "&num=" + num,
     })
   },
   // 尺寸框确认按钮
@@ -175,7 +249,14 @@ Page({
       wx.showToast({title: '请先选择尺寸', icon: 'none', mask: true});
       return;
     }
-    this.addCart()
+
+    if (this.data.actionType == "cart"){
+      this.addCart()
+    }else{
+      console.log("buy")
+      this.buy()
+    }
+    
     this.switchDetails();
   },
   // 切换商品细节是否显示 颜色尺寸
@@ -235,6 +316,7 @@ Page({
 
     let newSelectedProperties = this.data.selectedProperties;
     newSelectedProperties.style = style;
+    newSelectedProperties.num = 1;
     this.setData({
       selectedProperties: newSelectedProperties,
       style: this.data.style,
@@ -270,6 +352,7 @@ Page({
 
     let newSelectedProperties = this.data.selectedProperties;
     newSelectedProperties.size = size;
+    newSelectedProperties.num = 1;
     this.setData({
       selectedProperties: newSelectedProperties,
       style: this.data.style,

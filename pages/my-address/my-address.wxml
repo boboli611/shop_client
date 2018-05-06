@@ -26,18 +26,18 @@
       </view>
       <!-- address-editor end -->
       <view class="address-editor" wx:if="{{state === 'edit'}}">
-        <button class="default">
+        <view class="default" bindtap="switchChange" data-index="{{index}}">
           <image wx:if="{{address.status === 1}}" src="/assets/icon-xuan-r.png" class="icon-selector"></image>
           <image wx:else src="/assets/icon-xuan-g.png" class="icon-selector"></image>
           <text>设为默认</text>
-        </button>
+        </view>
 
         <view class="button-group">
           <navigator class="edit" url="../edit-address/edit-address?addressId={{ address.id }}">
             <image class="icon-button"  src="/assets/icon-bianji.png"></image>
             <text>编辑</text>
           </navigator>
-          <view class="delete">
+          <view class="delete" bindtap="switchDelete" data-index="{{index}}">
             <image class="icon-button" style="width: 30rpx;height:35rpx;"  src="/assets/icon-d-b.png"></image>
             <text>删除</text>
           </view>

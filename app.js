@@ -1,4 +1,5 @@
 //app.js
+const user = require('mock-service/user.js');
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -6,6 +7,8 @@ App({
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
 
+    //登陆
+    user.wxLogin()
     // 登录
     // wx.login({
     //   success: res => {

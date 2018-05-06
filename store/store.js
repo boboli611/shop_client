@@ -231,7 +231,11 @@ store.registerEvent('clearCart', ()=>{
 
 store.addData('addressList', []);
 store.registerEvent('addAddress', (addressObj)=>{
-
+  console.log('addAddress', addressObj)
+  let promise = service
+    .addressService()
+    .add(addressObj)
+  return promise;
 });
 store.registerEvent('updateAddress', (addressObj)=>{
   console.log('updateAddress', addressObj)

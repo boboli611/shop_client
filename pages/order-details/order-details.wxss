@@ -8,7 +8,13 @@
   text-align: center;
   color: #fff;
   font-size: 30rpx;
+  background-color: #BF4251;
 }
+
+.order-state-color{
+   background-color:#C0A588; 
+}
+
 .address-container{
   width: 100%;
   box-sizing: border-box;

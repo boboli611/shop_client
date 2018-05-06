@@ -1,5 +1,5 @@
 const app = getApp();
-const service = require('../../service/service.js');
+const service = require('../../mock-service/index.js');
 
 Page({
   /**
@@ -11,6 +11,7 @@ Page({
     list: [],
     recommend: [],
     ticket: [],
+    page:1,
   },
 
   /**
@@ -24,7 +25,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    wx.startPullDownRefresh();
+    service
+      .indexService()
+      .then((res) => {
+        let { data } = res;
+        this.setData({
+          banner: data.banner,
+          item: data.item,
+          list: data.list,
+          recommend: data.recommend,
+          ticket: data.ticket
+        })
+        wx.stopPullDownRefresh();
+      })
+      .catch((err) => {
+        wx.onReachBottom();
+      })
   },
 
   /**
@@ -52,30 +68,30 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    service
-      .indexService()
-      .then((res)=>{
-        let { data } = res;
-        console.log(data);
-        this.setData({
-          banner: data.banner,
-          item: data.item,
-          list: data.list,
-          recommend: data.recommend,
-          ticket: data.ticket
-        })
-        wx.stopPullDownRefresh();
-      })
-      .catch((err)=>{
-        wx.stopPullDownRefresh();
-      })
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    let that = this
+    var page = this.data.page + 1;
+    service
+      .indexProductList(page)
+      .then((res) => {
+        let { data } = res;
+        console.log(data);
+        if (data.list.length > 0){
+          this.data.page++;
+        }
+        this.setData({
+          list: that.data.list.concat(data.list),
+        })
+        //wx.stopPullDownRefresh();
+      })
+      .catch((err) => {
+        wx.onReachBottom();
+      })
   },
 
   /**

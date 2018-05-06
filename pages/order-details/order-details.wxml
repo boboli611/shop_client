@@ -1,40 +1,43 @@
 <view class="page-container">
 
-  <view class="order-state">交易成功</view>
+  <view class="order-state" wx:if="{{sucess}}">交易成功</view>
+  <view class="order-state order-state-color" wx:if="{{orderInfo.status == 1}}">待付款</view>
+  <view class="order-state order-state-color" wx:if="{{sucess == 0 && orderInfo.status == 2}}">待发货</view>
+  <view class="order-state order-state-color" wx:if="{{orderInfo.status == 3}}">已发货</view>
+  <view class="order-state order-state-color" wx:if="{{orderInfo.status == 4}}">已完成</view>
 
   <view class="address-container">
     <view class="normal">
       <view class="user-info">
-        <text>收货人: 小王</text>
-        <text>13738000000</text>
+        <text>收货人: {{orderInfo.consignee}}</text>
+        <text>{{orderInfo.mobile}}</text>
       </view>
       <view class="address-detail">
         <image src="/assets/icon-dingwei.png" class="address-icon"></image>
-        <text class="address-detail-text">浙江省杭州市萧山区XX街道闻堰镇万达路28号XX小区刚刚好的XXX室</text>
+        <text class="address-detail-text">{{orderInfo.address}}</text>
       </view>
     </view>
   </view>
 
   <view class="sku-list">
-
-    <view class="sku-container">
-      <image class="sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+    <view class="sku-container" wx:for="{{product}}" wx:key="index" wx:for-item="item">
+      <image class="sku-img" src="{{item.cover}}"></image>
       <view class="sku-info">
         <view class="sku-info-row sku-name">
-          <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+          <text>{{item.title}}</text>
         </view>
         <view class="sku-info-row">
           <text class="sku-detial gray">颜色</text>
-          <text class="sku-detial black">中蓝</text>
+          <text class="sku-detial black">{{item.style}}</text>
           <text class="sku-detial gray"> | </text>
           <text class="sku-detial gray">尺码</text>
-          <text class="sku-detial black">M</text>
+          <text class="sku-detial black">{{item.size}}</text>
         </view>
         <view class="sku-price-and-number">
-          <text class="sku-price">¥399</text>
-          <text class="sku-number">x1</text>
-          <navigator class="sku-after-sell" wx:if="{{random > 0.5}}" url="/pages/apply-payback/apply-payback">售后</navigator>
-          <navigator class="sku-after-sell sku-after-sell-red" wx:else url="/pages/payback-state/payback-state">退款中</navigator>
+          <text class="sku-price">¥{{item.pay_price}}</text>
+          <text class="sku-number">x{{item.num}}</text>
+          <navigator class="sku-after-sell" wx:if="{{item.refound_status == 0}}" url="/pages/apply-payback/apply-payback?id={{orderInfo.order_id}}&storage_id={{item.storage_id}}">售后</navigator>
+          <navigator class="sku-after-sell sku-after-sell-red" wx:else url="/pages/payback-state/payback-state?id={{item.refound_id}}">退款中</navigator>
         </view>
       </view>
     </view>
@@ -43,18 +46,18 @@
 
   <view class="other-list">
 
-    <view class="other-row">
+    <!--<view class="other-row">
       <text>配送方式</text>
       <text class="other-input" >包你妹的邮</text>
-    </view>
+    </view>-->
 
     <view class="other-row">
       <text>买家留言</text>
-      <text class="other-input">在这里留言</text>
+      <text class="other-input">{{orderInfo.content}}</text>
     </view>
 
     <view class="other-row" style="color: #BB2638;">
-      <text class="other-input">共1件商品 小计: ¥399</text>
+      <text class="other-input">共1件商品 小计: ¥{{orderInfo.total}}</text>
     </view>
 
   </view>
@@ -66,23 +69,23 @@
   <view class="order-detail-list">
     <view class="order-detail">
       <text class="title">订单号</text>
-      <text class="value">123455678900123921931931</text>
+      <text class="value">{{orderInfo.order_id}}</text>
     </view>
     <view class="order-detail">
-      <text class="title">订单号</text>
-      <text class="value">123455678900123921931931</text>
+      <text class="title">创建时间</text>
+      <text class="value">{{orderInfo.created_at}}</text>
     </view>
-    <view class="order-detail">
-      <text class="title">订单号</text>
-      <text class="value">123455678900123921931931</text>
+    <view class="order-detail" wx:if="{{orderInfo.status >= 2}}">
+      <text class="title">支付时间</text>
+      <text class="value">{{orderInfo.pay_time}}</text>
     </view>
-    <view class="order-detail">
-      <text class="title">订单号</text>
-      <text class="value">123455678900123921931931</text>
+    <view class="order-detail" wx:if="{{orderInfo.status >= 3}}">
+      <text class="title">发货时间</text>
+      <text class="value">{{orderInfo.send_time}}</text>
     </view>
-    <view class="order-detail">
-      <text class="title">订单号</text>
-      <text class="value">123455678900123921931931</text>
+    <view class="order-detail" wx:if="{{orderInfo.status >= 4}}">
+      <text class="title">成交时间</text>
+      <text class="value">{{orderInfo.end_time}}</text>
     </view>
   </view>
 

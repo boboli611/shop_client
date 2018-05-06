@@ -1,11 +1,11 @@
 <view class="page-container">
 
   <view class="header">
-    <text class="order-type {{ state === '全部'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="全部">全部</text>
-    <text class="order-type {{ state === '待付款'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="待付款">待付款</text>
-    <text class="order-type {{ state === '待发货'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="待发货">待发货</text>
-    <text class="order-type {{ state === '已发货'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="已发货">已发货</text>
-    <text class="order-type {{ state === '已完成'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="已完成">已完成</text>
+    <text class="order-type {{ state === '0'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="0">全部</text>
+    <text class="order-type {{ state === '1'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="1">待付款</text>
+    <text class="order-type {{ state === '2'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="2">待发货</text>
+    <text class="order-type {{ state === '3'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="3">已发货</text>
+    <text class="order-type {{ state === '4'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="4">已完成</text>
 
     <view class="header-order-line" style="width: {{headerLine.width}}px; transform: translateX({{headerLine.left}}px)"></view>
   </view>
@@ -14,28 +14,28 @@
   <view wx:if="{{!loading}}">
 
 
-    <navigator url="/pages/order-details/order-details" class="order-container" wx:for="{{[1, 2, 3, 4, 5, 6]}}">
+    <navigator url="/pages/order-details/order-details?id={{order.order_id}}" class="order-container" wx:for="{{orderList}}" wx:for-item="order" wx:key="index">
       <view class="order-title">
-        <text class="black order-number">订单编号: kjl12345678901234556566</text>
-        <text class="gray order-state">待付款</text>
+        <text class="black order-number">订单编号: {{order.order_id}}</text>
+        <text class="gray order-state">{{order.order_status_text}}</text>
       </view>
-      <view class="order-sku" wx:for="{{[1, 2, 3]}}">
-        <image class="order-sku-img" src="https://bpic.588ku.com/back_pic/00/15/30/5756ebe404845bb.jpg!ww800"></image>
+      <view class="order-sku" wx:for="{{order.goodsList}}" wx:for-item="good" wx:key="goodIndex">
+        <image class="order-sku-img" src="{{good.cover}}"></image>
         <view class="order-sku-details">
           <view class="sku-name black">
-            <text>INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤INS款牛仔裤</text>
+            <text>{{good.title}}</text>
           </view>
           <view>
             <text class="gray" style="margin-right: 20rpx;"> 颜色 </text>
-            <text class="black" style="margin-right: 20rpx;"> 中蓝 </text>
+            <text class="black" style="margin-right: 20rpx;"> {{good.style}} </text>
             <text class="gray" style="margin-right: 20rpx;"> | </text>
             <text class="gray" style="margin-right: 20rpx;"> 尺码 </text>
-            <text class="black"> M </text>
+            <text class="black"> {{good.size}} </text>
           </view>
 
           <view class="price-and-number">
-            <text style="color:#A38064">¥49999</text>
-            <text class="black">x1</text>
+            <text style="color:#A38064">¥{{good.price}}</text>
+            <text class="black">x{{good.num}}</text>
           </view>
           <!-- price-and-number end -->
         </view>
@@ -43,7 +43,7 @@
       </view>
       <!-- order-sku end -->
       <view class="order-operation">
-        <text class="gray">共1件商品</text>
+        <text class="gray">共{{order.num}}件商品  ¥{{order.total}}</text>
         <view class="button-group">
           <button class="button button-red">提醒发货</button>
           <button class="button button-black">取消订单</button>

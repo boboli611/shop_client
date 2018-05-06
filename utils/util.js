@@ -16,11 +16,20 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const showError = message =>{
+  wx.showToast({
+    title: message,
+    icon: 'none',
+    duration: 2000
+  })
+}
+
 const rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 const trimString = str => (str + '').replace(rtrim, '');
 
 module.exports = {
   formatTime,
   trimString,
-  array
+  array,
+  showError,
 }

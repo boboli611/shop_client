@@ -37,6 +37,9 @@ const updateAddress = (...argvs) => {
 const deleteAddress = (...argvs) => {
   return mockServiceFactory( mockAddresssService.delete(...argvs) );
 }
+const updateStatusAddress = (...argvs) => {
+  return mockServiceFactory(mockAddresssService.updateStatus(...argvs));
+}
 
 module.exports = {
   index,
@@ -47,4 +50,5 @@ module.exports = {
   addAddress,
   updateAddress,
   deleteAddress,
+  updateStatusAddress,
 }

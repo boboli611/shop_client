@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/search/search",
     "pages/logs/logs",
@@ -12,6 +13,7 @@
     "pages/order-list/order-list",
     "pages/feedback/feedback",
     "pages/cart/cart",
+    "pages/cart-confirm/cart-confirm",
     "pages/order-confirm/order-confirm",
     "pages/order-details/order-details",
     "pages/pay-back/pay-back",

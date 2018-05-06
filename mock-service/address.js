@@ -1,50 +1,5 @@
-// status: 1默认地址,0非默认
-const getAddressData = {
-  "sucess":true,
-  "msg":"",
-  "data":[
-    {
-      "id":19,
-      "user_id":7,
-      "name":"werwe",
-      "mobile":"13738055766",
-      "province": "广东省",
-      "city": "广州市",
-      "county": "天河区",
-      "address":"某小区4栋 3单元 201室某小区4栋 3单元 201室某小区4栋 3单元 201室",
-      "status":0,
-      "updated_at":"2018-03-12 23:39:24",
-      "created_at":"2018-01-28 23:21:00"
-    },
-    {
-      "id":20,
-      "user_id":7,
-      "name":"werwe",
-      "mobile":"13738055766",
-      "province": "广东省",
-      "city": "广州市",
-      "county": "天河区",
-      "address":"某小区4栋 3单元 201室2222",
-      "status":1,
-      "updated_at":"2018-03-12 23:39:24",
-      "created_at":"2018-01-28 23:21:00"
-    },
-    {
-      "id":211,
-      "user_id":7,
-      "name":"werwe",
-      "mobile":"13738055766",
-      "province": "广东省",
-      "city": "广州市",
-      "county": "天河区",
-      "address":"某小区4栋 3单元 201室33333",
-      "status": 0,
-      "updated_at":"2018-03-12 23:39:24",
-      "created_at":"2018-01-28 23:21:00"
-    }
-  ],
-  "errno":0
-};
+const api = require('../config/api.js');
+const network = require('../utils/network.js');
 
 const updateAddressData = {
   "sucess":true,
@@ -58,20 +13,67 @@ const updateAddressData = {
 
 const mockAddresssService = {
   get(){
-    getAddressData.msg = 'get';
-    return JSON.parse(JSON.stringify(getAddressData));
+    return new Promise(function (resolve) {
+      network.get(api.AddressList, {}).then(function (res) {
+        res.msg = 'get'
+        resolve(res)
+      })
+    })
   },
-  add(){
-    getAddressData.msg = 'add';
+  add(params){
+    console.log(params)
+    return new Promise(function (resolve) {
+      var data = {}
+      data.name = params.name
+      data.mobile = params.mobile
+      data.province = params.region[0]
+      data.city = params.region[1]
+      data.county = params.region[2]
+      data.address = params.address
+      data.status = params.status
+      network.post(api.AddressSave, data).then(function (res) {
+        res.msg = 'add'
+        resolve(res)
+      })
+    })
+  },
+  update(params){
+    return new Promise(function (resolve) {
+      var data = {}
+      data.id = params.id
+      data.name = params.name
+      data.mobile = params.mobile
+      data.province = params.region[0]
+      data.city = params.region[1]
+      data.county = params.region[2]
+      data.address = params.address
+      data.status = params.status
+      network.post(api.AddressSave, data).then(function (res) {
+        res.msg = 'update'
+        resolve(res)
+      })
+    })
     return JSON.parse(JSON.stringify(updateAddressData));
   },
-  update(){
-    getAddressData.msg = 'update';
+  updateStatus(id, status) {
+    return new Promise(function (resolve) {
+      var data = {}
+      data.id = id
+      data.status = status
+      network.post(api.AddressSaveStatus, data).then(function (res) {
+        res.msg = 'update'
+        resolve(res)
+      })
+    })
     return JSON.parse(JSON.stringify(updateAddressData));
   },
-  delete(){
-    getAddressData.msg = 'delete';
-    return JSON.parse(JSON.stringify(updateAddressData));
+  delete(id){
+    return new Promise(function (resolve) {
+      network.get(api.AddressDelete, {"id":id}, true).then(function (res) {
+        res.msg = 'get'
+        resolve(res)
+      })
+    })
   }
 }
 module.exports = mockAddresssService;
