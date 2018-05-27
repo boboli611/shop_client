@@ -5,7 +5,7 @@
     <swiper class="banner-img" autoplay indicator-dots indicator-color="rgba(255, 255, 255, 0.7)" indicator-active-color="rgba(255,255,255, 1)">
       <block wx:for="{{banner}}" wx:key="index" wx:for-item="bannerImage" wx:for-index="index" >
         <swiper-item>
-          <image mode="aspectFill" class="banner-img" src="{{bannerImage}}" />
+          <image mode="aspectFill" bindtap='banner' data-productid='{{bannerImage.product_id}}' class="banner-img" src="{{bannerImage.img}}" />
         </swiper-item>
       </block>
     </swiper>

@@ -1,3 +1,5 @@
+const expressage = require('../../mock-service/expressage.js')
+const utils = require("../../utils/util.js")
 // pages/payback-details/payback-details.js
 Page({
 
@@ -5,14 +7,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    id:"",
+    express:{},
+    product:{},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.setData({
+      id: options.id
+    })
+
+    expressage.expressageInfo(options.id).then((res) => {
+      console.log(res.data.express)
+        this.setData({
+          express: res.data.express,
+          product:res.data.product,
+        })
+    })
   },
 
   /**

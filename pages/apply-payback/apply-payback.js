@@ -116,7 +116,7 @@ Page({
       }
 
       wx.navigateTo({
-        url: '/pages/payback-state/payback-state?id=' + this.data.id + '&storage_id=' + this.data.storage_id,
+        url: '/pages/payback-state/payback-state?id=' + res.data.refund_id + '&storage_id=' + this.data.storage_id,
       })
     })
  

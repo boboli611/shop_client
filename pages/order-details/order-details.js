@@ -1,4 +1,5 @@
 const order = require('../../mock-service/order.js');
+const utils = require("../../utils/util.js")
 // pages/order-details/order-details.js
 Page({
 
@@ -6,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    random: Math.random(),
+    id:"",
     product:[],
     orderInfo:[],
     sucess:0,
@@ -78,5 +79,74 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  expressage(){
+    wx.navigateTo({
+      url: '/pages/payback-details/payback-details?id=' + this.data.id,
+    })
+  },
+
+  pay() {
+
+    var order_id = this.data.id
+    order.OrderPay(order_id).then((res) => {
+      if (res.errno !== 0) {
+        return;
+      }
+
+      
+      wx.requestPayment({
+        'timeStamp': res.data.timeStamp,
+        'nonceStr': res.data.nonceStr,
+        'package': res.data.package,
+        'signType': 'MD5',
+        'paySign': res.data.sign,
+        'success': function (res) {
+          wx.redirectTo({
+            url: '../order-details/order-details?sucess=1&id=' + order_id,
+          })
+        },
+        'fail': function (res) {
+          console.log("fail", res)
+          if (res.errMsg == "requestPayment:fail cancel") {
+            return
+          }
+        }
+      })
+    })
+    return;
+    wx.redirectTo({
+      url: '../order-details/order-details'
+    })
+  },
+  expressage(event) {
+    let order = this.data.id;
+    wx.navigateTo({
+      url: '/pages/payback-details/payback-details?id=' + order,
+    })
+  },
+  notice(event) {
+    let orderId = this.data.id;
+    console.log(orderId)
+    order.orderNotice(orderId).then((res) => {
+      console.log(res)
+      if (res.errno != 0) {
+        utils.showError(res.msg)
+        return
+      }
+
+      utils.showError("提醒成功")
+    })
+  },
+  del(event) {
+    var order_id = this.data.id;
+    console.log(order_id, event)
+    order.orderDelete(order_id).then((res) => {
+      if (res.errno != 0) {
+        utils.showError(res.msg)
+        return
+      }
+      this.getList();
+    })
+  },
 })

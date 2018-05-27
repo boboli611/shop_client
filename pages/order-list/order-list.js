@@ -1,4 +1,5 @@
 const order = require('../../mock-service/order.js');
+const utils = require("../../utils/util.js")
 // pages/order-list/order-list.js
 Page({
 
@@ -81,6 +82,17 @@ Page({
   onShareAppMessage: function () {
 
   },
+  del(event){
+    var order_id = event.currentTarget.dataset.orderid;
+    console.log(order_id,event)
+    order.orderDelete(order_id).then((res)=>{
+      if (res.errno != 0){
+          utils.showError(res.msg)
+          return
+      }
+      this.getList();
+    })
+  },
   switchOrderState(event){
     let stateName = event.currentTarget.dataset.stateName;
 
@@ -107,6 +119,25 @@ Page({
         orderList: this.data.orderList.concat(res.data),
         page: page,
       })
+    })
+  },
+  expressage(event) {
+    let orderid = event.currentTarget.dataset.orderid;
+    wx.navigateTo({
+      url: '/pages/payback-details/payback-details?id=' + orderid,
+    })
+  },
+  notice(event){
+    let orderId = event.currentTarget.dataset.orderid;
+    console.log(orderId)
+    order.orderNotice(orderId).then((res)=>{
+      console.log(res)
+      if (res.errno != 0){
+        utils.showError(res.msg)
+        return
+      }
+
+      utils.showError("提醒成功")
     })
   }
 })

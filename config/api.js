@@ -28,7 +28,12 @@ module.exports = {
   OrderDetail: NewApiRootUrl + 'order/detail',  //订单详情
   OrderRefund: NewApiRootUrl + 'order/refund',  //退货
   OrderReceve: NewApiRootUrl + 'order/receve',  //收货
+  OrderDelete: NewApiRootUrl + 'order/delete',  //收货
+  OrderNotice: NewApiRootUrl + 'order/notice',  //收货
   OrderRefundDetail: NewApiRootUrl + 'order/refund-detail',  //退货
   orderRefundApply: NewApiRootUrl + 'order/refund-apply',
+  orderUploadExpressage: NewApiRootUrl + 'order/upload-expressage',//上传快递单号
+  orderCancelRefund: NewApiRootUrl + 'order/cancel-refund',//取消退款
   ExpressCompany: NewApiRootUrl + 'express/company-list',
+  ExpressInfo: NewApiRootUrl + 'express/get',
 };

@@ -44,7 +44,7 @@
       <image src="/assets/icon-kefu.png" class="icon-service"></image>
       <text>联系客服</text>
     </button>
-    <navigator url="/pages/upload-delivery/upload-delivery?id={{id}}" wx:if="order.expressage_status == 4 && !order.expressage_num" class="save">上传单号</navigator>
-    <button  wx:else if="{{ order.expressage_status != 5 }}" class="save">取消退款</button>
+    <navigator url="/pages/upload-delivery/upload-delivery?id={{id}}" wx:if="{{order.expressage_status == 4 && !order.expressage_num}}" class="save">上传单号</navigator>
+    <button bindtap='cancel' wx:elif="{{order.expressage_status != 5}}" class="save">取消退款</button>
   </view>
 </view>

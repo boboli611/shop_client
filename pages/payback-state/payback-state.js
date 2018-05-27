@@ -20,28 +20,24 @@ Page({
     this.setData({
       id:options.id,
     })
-
-    order.RefundDetail(options.id).then((res)=>{
-      this.setData({
-        product:res.data.product,
-        order:res.data.order,
-      })
-    })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.setData({
-      random: Math.random()
-    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    order.RefundDetail(this.data.id).then((res) => {
+      this.setData({
+        product: res.data.product,
+        order: res.data.order,
+      })
+    })
   },
 
   /**
@@ -77,5 +73,26 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  cancel(){
+    var order_id = this.data.order.order_id
+    var storage_id = this.data.product.storage_id
+
+    order.CancelRefund(order_id, storage_id).then((res) =>{
+      console.log(res)
+
+      if (res.errno != 0){
+        utils.showError(res.msg)
+        return
+      }
+
+      utils.showError("取消成功")
+      var orderInfo = this.data.order
+      orderInfo.expressage_status = 5
+      console.log(orderInfo)
+      this.setData({
+        order:orderInfo,
+      })
+    })
   }
 })

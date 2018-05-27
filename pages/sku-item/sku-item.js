@@ -38,7 +38,7 @@ Page({
   onLoad: function (options) {
     let that = this
     this.setData({
-      title: options.title,
+      //title: options.title,
       id: options.id
     })
     service

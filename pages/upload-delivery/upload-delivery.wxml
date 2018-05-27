@@ -2,21 +2,21 @@
   <form >
     <view class="input-container">
       <label>选择快递方式</label>
-      <picker class="input" value="{{index}}" range="{{company}}">
+      <picker class="input" value="{{index}}" range="{{company}}" bindchange="bindCompany">
         <view class="input">{{company[index]}}</view>
       </picker>
     </view>
 
     <view class="input-container">
       <label>快递单号</label>
-      <input type="text" class="input"/>
+      <input type="text" class="input" bindinput="bindExpressage"/>
     </view>
 
     <view class="input-container">
       <label>联系方式</label>
-      <input type="text" class="input"/>
+      <input type="text" class="input" bindinput="bindMobile"/>
     </view>
-    <navigator url="/pages/payback-details/payback-details" class="save">确认</navigator>
-
+    <!--<navigator url="/pages/payback-details/payback-details" class="save">确认</navigator>-->
+    <button bindtap="submit" class="save">提交</button>
   </form>
 </view>

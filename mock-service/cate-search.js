@@ -1,9 +1,9 @@
 const api = require('../config/api.js');
 const network = require('../utils/network.js');
 
-const mockSearchService = ( keyword, page ) => {
+const mockSearchService = (keyword, page) => {
   return new Promise(function (resolve) {
-    
+
     if (!keyword) {
       return {
         sucess: false,
@@ -12,11 +12,13 @@ const mockSearchService = ( keyword, page ) => {
       }
     }
 
-    network.get(api.GoodsSearch, { "word": keyword, "page": page}).then(function (res) {
+    network.get(api.GoodsSearch, { "word": keyword, "page": page }).then(function (res) {
       resolve(res)
       return res
     })
   })
 }
 
-module.exports = mockSearchService;
+module.exports = {
+  mockSearchService,
+};

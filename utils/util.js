@@ -24,6 +24,15 @@ const showError = message =>{
   })
 }
 
+
+const isMobile = (mobile) =>{
+  var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
+  if (!myreg.test(mobile)) {
+    return false;
+  } else {
+    return true;
+  }
+}  
 const rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
 const trimString = str => (str + '').replace(rtrim, '');
 
@@ -32,4 +41,5 @@ module.exports = {
   trimString,
   array,
   showError,
+  isMobile,
 }

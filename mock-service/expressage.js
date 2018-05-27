@@ -11,6 +11,16 @@ const companyList = () => {
   })
 }
 
+const expressageInfo = (id) => {
+
+  return new Promise(function (resolve) {
+    network.get(api.ExpressInfo, {"id":id}).then(function (res) {
+      resolve(res)
+    })
+  })
+}
+
 module.exports = {
   companyList,
+  expressageInfo,
 }

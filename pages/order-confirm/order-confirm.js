@@ -1,5 +1,6 @@
 // pages/order-confirm/order-confirm.js
 const order = require('../../mock-service/order.js');
+const utils = require('../../utils/util.js')
 Page({
 
   /**
@@ -94,6 +95,7 @@ Page({
 
     order.orderCreate(parmas).then((res) => {
       if (res.errno !== 0) {
+        utils.showError(res.msg)
         return;
       }
 

@@ -30,7 +30,7 @@
 
       <navigator class="type" url="../order-list/order-list?state=3">
         <image class="type-icon" src="./assets/icon-daifukuan.png"></image>
-        <text class="type-name">已发货</text>
+        <text class="type-name">待收货</text>
       </navigator>
 
       <navigator class="type" url="../order-list/order-list?state=4">

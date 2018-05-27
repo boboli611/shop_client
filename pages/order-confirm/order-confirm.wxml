@@ -50,7 +50,7 @@
     </view>-->
 
     <view class="other-row">
-      <text>配送方式</text>
+      <text>配送价格</text>
       <text class="other-input" style="color:#333;">{{order.carriage}}</text>
     </view>
 

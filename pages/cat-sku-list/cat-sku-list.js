@@ -1,5 +1,5 @@
 // pages/cat-sku-list/cat-sku-list.js
-const service = require('../../mock-service/search.js');
+const service = require('../../mock-service/cate-search.js');
 
 Page({
 
@@ -56,7 +56,7 @@ Page({
    */
   onPullDownRefresh: function () {
     service
-      .searchService(this.data.title, this.data.currentPage)
+      .mockSearchService(this.data.title, this.data.currentPage)
       .then((res)=>{
          console.log(res)
         if( res.data.search ){
@@ -90,7 +90,7 @@ Page({
       loadingNext: 1,
     }, ()=>{
       service
-        .searchService( this.data.title, this.data.currentPage+1 )
+        .mockSearchService( this.data.title, this.data.currentPage+1 )
         .then((res)=>{
           if( res.data.search ){
             this.setData({

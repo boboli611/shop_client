@@ -18,7 +18,7 @@
     </view>
   </view>
   <!-- 热门搜索 -->
-  <view class="recommend-container" wx:if="{{pageState === 'wait'}}" style="margin-top: 60rpx">
+  <view  class="recommend-container" wx:if="{{pageState === 'wait' && false}}" style="margin-top: 60rpx">
     <view class="recommend-header">
       <text>热门搜索词</text>
       <!-- <image src=""></image> -->
@@ -27,10 +27,10 @@
       <view class="recommend-keywords">搜索记录搜索记录</view>
     </view>
   </view>
-
   <!-- 搜索结果 -->
   <view wx:if="{{pageState === 'result'}}" class="search-result-container">
-    <sku-list wx:if="{{searchResult.length > 0}}" skuList="{{searchResult}}"></sku-list>
-    <view class="no-search-result-tip" wx:else>没有搜索到商品</view>
+    <view class="no-search-result-tip" wx:if="{{!searchStatus}}">没有搜索到商品,以下是推荐商品</view>
+    <sku-list skuList="{{searchResult}}"></sku-list>
+   
   </view>
 </view>

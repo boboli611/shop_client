@@ -1,10 +1,10 @@
 <view class="page-container">
 
   <view class="order-state" wx:if="{{sucess}}">交易成功</view>
-  <view class="order-state order-state-color" wx:if="{{orderInfo.status == 1}}">待付款</view>
-  <view class="order-state order-state-color" wx:if="{{sucess == 0 && orderInfo.status == 2}}">待发货</view>
-  <view class="order-state order-state-color" wx:if="{{orderInfo.status == 3}}">已发货</view>
-  <view class="order-state order-state-color" wx:if="{{orderInfo.status == 4}}">已完成</view>
+  <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 1}}">待付款</view>
+  <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 2}}">待发货</view>
+  <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 3}}">已发货</view>
+  <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 4}}">已完成</view>
 
   <view class="address-container">
     <view class="normal">
@@ -36,8 +36,8 @@
         <view class="sku-price-and-number">
           <text class="sku-price">¥{{item.pay_price}}</text>
           <text class="sku-number">x{{item.num}}</text>
-          <navigator class="sku-after-sell" wx:if="{{item.refound_status == 0}}" url="/pages/apply-payback/apply-payback?id={{orderInfo.order_id}}&storage_id={{item.storage_id}}">售后</navigator>
-          <navigator class="sku-after-sell sku-after-sell-red" wx:else url="/pages/payback-state/payback-state?id={{item.refound_id}}">退款中</navigator>
+          <navigator class="sku-after-sell" wx:if="{{orderInfo.status != 1 && item.refound_status == 0}}" url="/pages/apply-payback/apply-payback?id={{orderInfo.order_id}}&storage_id={{item.storage_id}}">售后</navigator>
+          <navigator class="sku-after-sell sku-after-sell-red" wx:elif="{{orderInfo.status != 1}}" url="/pages/payback-state/payback-state?id={{item.refound_id}}">退款中</navigator>
         </view>
       </view>
     </view>
@@ -57,7 +57,7 @@
     </view>
 
     <view class="other-row" style="color: #BB2638;">
-      <text class="other-input">共1件商品 小计: ¥{{orderInfo.total}}</text>
+      <text class="other-input">共1件商品 小计: ¥{{orderInfo.total + orderInfo.freight}}</text>
     </view>
 
   </view>
@@ -90,7 +90,9 @@
   </view>
 
   <view class="footer">
-    <button class="btn">删除订单</button>
-    <button class="btn btn-red">再来一单</button>
+  <button class="btn btn-red" bindtap='pay' wx:if="{{orderInfo.status == 1}}">立即付款</button>
+  <button class="btn btn-red" bindtap="notice" wx:if="{{orderInfo.status == 2}}">提醒发货</button>
+  <button class="btn btn-red" bindtap="expressage" wx:if="{{orderInfo.status >= 3}}">查看物流</button>
+    <button bindtap="del" class="btn">删除订单</button>
   </view>
 </view>

@@ -1,5 +1,5 @@
 .page-container{
-  border-top: 1px solid #e5e5e5;
+  border-top: 1rpx solid #e5e5e5;
   padding-bottom: 120rpx;
 }
 .swiper{

@@ -4,7 +4,7 @@
     <text class="order-type {{ state === '0'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="0">全部</text>
     <text class="order-type {{ state === '1'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="1">待付款</text>
     <text class="order-type {{ state === '2'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="2">待发货</text>
-    <text class="order-type {{ state === '3'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="3">已发货</text>
+    <text class="order-type {{ state === '3'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="3">待收货</text>
     <text class="order-type {{ state === '4'? 'order-type-current' : '' }}" bindtap="switchOrderState" data-state-name="4">已完成</text>
 
     <view class="header-order-line" style="width: {{headerLine.width}}px; transform: translateX({{headerLine.left}}px)"></view>
@@ -45,8 +45,10 @@
       <view class="order-operation">
         <text class="gray">共{{order.num}}件商品  ¥{{order.total}}</text>
         <view class="button-group">
-          <button class="button button-red">提醒发货</button>
-          <button class="button button-black">取消订单</button>
+          <button class="button button-red" wx:if="{{order.status == 1}}">立即付款</button>
+          <button catchtap="notice" data-orderId='{{order.order_id}}' class="button button-red" wx:elif="{{order.status == 2}}">提醒发货</button>
+          <button class="button button-red" catchtap='expressage' data-orderId="{{order.order_id}}" wx:elif="{{order.status >= 3}}">查看物流</button>
+          <button catchtap="del" data-orderId='{{order.order_id}}' class="button button-black">删除订单</button>
         </view>
       </view>
     </navigator>

@@ -99,5 +99,12 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  banner(event){
+    console.log(event)
+    var id = event.currentTarget.dataset.productid
+    wx.navigateTo({
+      url: '/pages/sku-item/sku-item?id='+id + '&title=',
+    })
   }
 })

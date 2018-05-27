@@ -11,6 +11,7 @@ Page({
   data: {
     keyword: '',
     pageState: 'wait', // wait: 等待输入（显示推荐、历史记录）, input:正在输入, result: 搜索结果
+    searchStatus:true,
     searchHistory: [],
     searchResult: [],
     currentPage: 1,
@@ -110,8 +111,9 @@ Page({
       title: '搜索中',
     })
     service
-      .searchService(keyword, this.data.currentPage+1)
+      .searchService(keyword, this.data.currentPage)
       .then((res)=>{
+
         let searchHistoryList = store.getData('searchHistory');
         if ( searchHistoryList.indexOf(keyword) < 0) {
           searchHistoryList.unshift(keyword);
@@ -120,9 +122,9 @@ Page({
 
         setTimeout(()=>{
           this.setData({
-            searchResult: res.data.search? res.data.list : [],
+            searchResult: res.data.list,
             pageState: 'result',
-            currentPage: this.data.currentPage+1
+            searchStatus: res.data.search,
           })
           wx.hideLoading();
         })
@@ -153,7 +155,8 @@ Page({
   },
   // 清空搜索历史
   clearSearchHistory(){
-    searchHistory.clear();
+    //searchHistory.clear();
+    store.setData('searchHistory', []);
     this.setData({
       searchHistory: []
     })
