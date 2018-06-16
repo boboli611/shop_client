@@ -137,3 +137,12 @@
   border-color: #333;
   color: #333;
 }
+
+.no-orders{
+  display: block;
+  margin-top: 50vh;
+  text-align: center;
+  transform: translateY(-80rpx);
+  font-size: 30rpx;
+  color: #999;
+}

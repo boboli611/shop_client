@@ -14,7 +14,7 @@
   <view wx:if="{{!loading}}">
 
 
-    <navigator url="/pages/order-details/order-details" class="order-container" wx:for="{{[1, 2, 3, 4, 5, 6]}}">
+    <navigator url="/pages/order-details/order-details" class="order-container" wx:for="{{[]}}">
       <view class="order-title">
         <text class="black order-number">订单编号: kjl12345678901234556566</text>
         <text class="gray order-state">待付款</text>
@@ -50,6 +50,7 @@
         </view>
       </view>
     </navigator>
-
+    <!-- 自定增加判断条件是否显示 -->
+    <text class="no-orders">暂无订单</text>
   </view>
 </view>

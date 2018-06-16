@@ -71,6 +71,9 @@
     <text class="sku-list-title">热销榜</text>
     <sku-list skuList="{{recommend}}"></sku-list>
   </view>
+  <view class="to-top" bindtap="toTop">
+    <image class="to-top-icon" src="./assets/icon-quanbu.png" mode="widthFix"></image>
+  </view>
   <!-- 占位 -->
   <view style="background: #fff;margin-top: 20px;"></view>
 </view>

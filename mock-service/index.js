@@ -15,7 +15,7 @@ const data = {
 　　　　"item":[
 　　　　　　{
 　　　　　　　　"id":4,
-　　　　　　　　"title":"风衣",
+             "title":"风衣衣",
 　　　　　　　　"icon":"http://lipz.oss-cn-hangzhou.aliyuncs.com/upload/image/20171224/76d9d2e97589cbee0892022d12c384df.png",
 　　　　　　　　"sort":4,
 　　　　　　　　"updated_at":"2017-12-24 18:33:05",

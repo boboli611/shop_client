@@ -188,3 +188,21 @@
 .sku-list-title::after{
   margin-left: 30rpx;
 }
+
+.to-top{
+  position: fixed;
+  right: 23rpx;
+  bottom: 70rpx;
+  z-index: 300;
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #fff;
+}
+.to-top-icon{
+  width: 200%;
+  position: absolute;
+  left: -50%;
+  top: -50%;
+  transform: rotateZ(-90deg);
+}

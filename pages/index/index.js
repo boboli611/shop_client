@@ -70,6 +70,11 @@ Page({
         wx.stopPullDownRefresh();
       })
   },
+  toTop: function(){
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  },
 
   /**
    * 页面上拉触底事件的处理函数
