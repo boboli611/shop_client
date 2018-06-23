@@ -8,13 +8,7 @@
   text-align: center;
   color: #fff;
   font-size: 30rpx;
-  background-color: #BF4251;
 }
-
-.order-state-color{
-   background-color:#C0A588; 
-}
-
 .address-container{
   width: 100%;
   box-sizing: border-box;
@@ -44,6 +38,7 @@
 .address-detail-text{
   font-size: 26rpx;
   color: #666;
+  flex: 1;
 }
 
 /* sku */
@@ -161,8 +156,8 @@
   background: #f0f0f0;
 }
 .icon-service{
-  width: 44rpx;
-  height: 44rpx;
+  width: 66rpx;
+  height: 66rpx;
   margin-right: 6rpx;
 }
 /* 订单信息 */

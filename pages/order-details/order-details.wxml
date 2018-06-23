@@ -1,6 +1,6 @@
 <view class="page-container">
 
-  <view class="order-state" wx:if="{{sucess}}">交易成功</view>
+  <view class="order-state" wx:if="{{sucess}}">{{sucessMsg}}</view>
   <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 1}}">待付款</view>
   <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 2}}">待发货</view>
   <view class="order-state order-state-color" wx:elif="{{orderInfo.status == 3}}">已发货</view>
@@ -93,6 +93,6 @@
   <button class="btn btn-red" bindtap='pay' wx:if="{{orderInfo.status == 1}}">立即付款</button>
   <button class="btn btn-red" bindtap="notice" wx:if="{{orderInfo.status == 2}}">提醒发货</button>
   <button class="btn btn-red" bindtap="expressage" wx:if="{{orderInfo.status >= 3}}">查看物流</button>
-    <button bindtap="del" class="btn">删除订单</button>
+    <button bindtap="del" class="btn" wx:if="{{orderInfo.status >= 4}}">删除订单</button>
   </view>
 </view>

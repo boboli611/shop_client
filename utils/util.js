@@ -24,6 +24,14 @@ const showError = message =>{
   })
 }
 
+const showMessage = message => {
+  wx.showToast({
+    title: message,
+    icon: 'none',
+    duration: 2000
+  })
+}
+
 
 const isMobile = (mobile) =>{
   var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
@@ -42,4 +50,5 @@ module.exports = {
   array,
   showError,
   isMobile,
+  showMessage,
 }

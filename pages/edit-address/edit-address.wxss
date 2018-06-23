@@ -16,12 +16,16 @@
   display: flex;
   flex-direction: row;
 }
-.input-container:nth-child(5){
+.input-container:nth-child(4){
   border-bottom: 0;
 }
 
 label{
   margin-right: 20rpx;
+}
+.icon-arrow{
+  width: 32rpx;
+  height: 50rpx;
 }
 
 .input{
@@ -31,6 +35,7 @@ label{
   overflow: hidden;
   text-overflow:ellipsis;
   white-space: nowrap;
+  color: #333;
 }
 .save{
   width: calc(100vw - 60rpx);

@@ -9,7 +9,7 @@
   </view>
 
   <view class="sku-list">
-
+  <view wx:if="{{cart.length > 0}}">
     <view class="sku-container" bindtap="switchSkuSelectedState" data-cartsku-key="{{key}}" wx:for="{{cart}}" wx:key="{{key}}" wx:for-index="key" wx:for-item="baseSku">
       <view class="sku-selector">
         <image src="/assets/icon-xuan-g.png" class="select-icon"
@@ -56,7 +56,19 @@
       </view>
       <button wx:if="{{ editMap[key] }}" data-sku-key="{{key}}" catchtap="completeEdit" class="sku-edit-complete" hover-class="sku-edit-complete-hover">完成</button>
     </view>
-
+    </view>
+    <view class="empty-container" wx:else>
+    <image src="/assets/icon-empty.png" class="icon-empty"></image>
+    <view class="empty-tip1">袋子还是空的噢</view>
+    <view class="empty-tip2">看看其它的吧～</view>
+    <navigator 
+      url="/pages/index/index"
+      open-type="switchTab"
+      class="btn btn-red to-index"
+    >
+      去逛逛
+    </navigator>
+  </view>
   </view>
 
 

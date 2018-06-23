@@ -43,7 +43,7 @@ const list = () => {
 const drop = (id) => {
   console.log(id)
   if (!id) {
-    utils.showError("购物车id为空")
+    utils.showError("请选择要删除商品")
     return
   }
 

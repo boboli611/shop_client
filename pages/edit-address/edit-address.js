@@ -15,7 +15,7 @@ Page({
     province: '',
     city: '',
     county: '',
-    status:0
+    status:1
   },
   watch: {
     region( newRegion ){

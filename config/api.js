@@ -36,4 +36,5 @@ module.exports = {
   orderCancelRefund: NewApiRootUrl + 'order/cancel-refund',//取消退款
   ExpressCompany: NewApiRootUrl + 'express/company-list',
   ExpressInfo: NewApiRootUrl + 'express/get',
+  TicketAdd: NewApiRootUrl + 'ticket/add',
 };

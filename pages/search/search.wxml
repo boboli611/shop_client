@@ -29,7 +29,12 @@
   </view>
   <!-- 搜索结果 -->
   <view wx:if="{{pageState === 'result'}}" class="search-result-container">
-    <view class="no-search-result-tip" wx:if="{{!searchStatus}}">没有搜索到商品,以下是推荐商品</view>
+    <view class="no-search-result-tip" wx:if="{{!searchStatus}}">
+    暂时还木有这个哦,看看其它的吧～
+    <!--<image src="/assets/icon-empty.png" class="icon-empty"></image>
+      <view class="empty-tip1">暂时还木有这个哦</view>
+      <view class="empty-tip2">看看其它的吧～</view>-->
+    </view>
     <sku-list skuList="{{searchResult}}"></sku-list>
    
   </view>

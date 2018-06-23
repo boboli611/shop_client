@@ -48,10 +48,24 @@
           <button class="button button-red" wx:if="{{order.status == 1}}">立即付款</button>
           <button catchtap="notice" data-orderId='{{order.order_id}}' class="button button-red" wx:elif="{{order.status == 2}}">提醒发货</button>
           <button class="button button-red" catchtap='expressage' data-orderId="{{order.order_id}}" wx:elif="{{order.status >= 3}}">查看物流</button>
-          <button catchtap="del" data-orderId='{{order.order_id}}' class="button button-black">删除订单</button>
+          <button  catchtap="del" data-orderId='{{order.order_id}}' class="button button-black" wx:elif="{{order.status == 5 || order.status == 9}}">删除订单</button>
         </view>
       </view>
     </navigator>
+    <!-- 自定增加判断条件是否显示 -->
+     <view class="empty-container">
+    <image src="/assets/icon-empty.png" class="icon-empty"></image>
+    <view class="empty-tip1">订单还是空的噢</view>
+    <view class="empty-tip2">看看其它的吧～</view>
+    <navigator 
+      url="/pages/index/index"
+      open-type="switchTab"
+      class="btn btn-red to-index"
+    >
+      去逛逛
+    </navigator>
+  </view>
+
 
   </view>
 </view>

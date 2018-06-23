@@ -26,7 +26,7 @@
   color: #BF4251;
 }
 .header-order-line{
-  height: 2rpx;
+  height: 4rpx;
   background: #BF4251;
   border-radius: 2rpx;
   position: absolute;
@@ -35,7 +35,7 @@
   transition: all .2s linear;
 }
 .gray{
-  color: #999;
+  color: #333;
 }
 .black{
   color: #333;
@@ -137,3 +137,69 @@
   border-color: #333;
   color: #333;
 }
+
+.no-orders{
+  display: block;
+  margin-top: 50vh;
+  text-align: center;
+  transform: translateY(-80rpx);
+  font-size: 30rpx;
+  color: #999;
+}
+
+.empty-container{
+  width: 100vw;
+  height: calc(100vh - 190rpx);
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.icon-empty{
+  margin-top: -80rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+.empty-tip1{
+  font-size: 30rpx;
+  color: #999;
+  margin: 20rpx 0;
+}
+.empty-tip2{
+  font-size: 24rpx;
+  color: #ccc;
+}
+.to-index{
+  background: transparent !important;
+  margin-top: 20rpx;
+  margin-left: 0 !important;
+}
+.btn{
+  height: 56rpx;
+  line-height: 56rpx;
+  border-radius: 32rpx;
+  border: 1px solid #999;
+  color: #333;
+  background: #fff;
+  text-align: center;
+  box-sizing: content-box;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  margin-left: 30rpx;
+}
+
+.btn-hover{
+  color: #fff;
+  background: #999;
+}
+.btn-red{
+  border-color: #BB2638;
+  color: #BB2638;
+}
+.btn-red-hover{
+  background: #BB2638;
+  color: #fff;
+  border-color: #fff;
+}
+

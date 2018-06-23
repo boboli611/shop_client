@@ -272,6 +272,7 @@ Page({
     service
       .list()
       .then((res) => {
+        console.log("length" + res.data.info.length)
         this.setData({
           cart: res.data.info
         });

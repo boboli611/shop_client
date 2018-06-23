@@ -10,4 +10,8 @@
   <text class="sku-list-title">新品推荐</text>
     <sku-list skuList="{{skuList}}"></sku-list>
   </view>
+
+  <view class="to-top" bindtap="toTop" wx:if="{{topShow == 1}}">
+    <image class="to-top-icon" src="/assets/icon-quanbu.png" mode="widthFix"></image>
+  </view>
 </view>

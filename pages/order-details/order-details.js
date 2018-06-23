@@ -38,10 +38,17 @@ Page({
   onShow: function () {
     var id = this.data.id
     order.orderInfo(id).then((res) => {
-      console.log(res.data)
+      var status = res.data.info.status;
+      var msg
+      if (status == 2) {
+        msg = "付款成功";
+      }else if (status == 4) {
+        msg = "已完成";
+      }
       this.setData({
         product: res.data.goods,
-        orderInfo: res.data.info
+        orderInfo: res.data.info,
+        sucessMsg:msg,
       })
     })
   },

@@ -1,6 +1,7 @@
 const app = getApp();
 const service = require('../../mock-service/index.js');
-
+const ticket = require('../../mock-service/ticket.js');
+const util = require("../../utils/util.js")
 Page({
   /**
    * 页面的初始数据
@@ -25,6 +26,13 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     service
       .indexService()
       .then((res) => {
@@ -41,13 +49,6 @@ Page({
       .catch((err) => {
         wx.onReachBottom();
       })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
   },
 
   /**
@@ -106,5 +107,30 @@ Page({
     wx.navigateTo({
       url: '/pages/sku-item/sku-item?id='+id + '&title=',
     })
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  },
+  ticket:function(e){
+    console.log(e)
+    var id = e.currentTarget.dataset.ticketId;
+    console.log(id)
+    ticket.add(id)
+      .then((res) => {
+        if (res.errno > 0){
+          util.showError(res.msg)
+          return
+        }
+        
+        this.setData({
+          list: that.data.list.concat(data.list),
+        })
+        //wx.stopPullDownRefresh();
+      })
+      .catch((err) => {
+        util.showError("领取失败")
+      })
   }
 })

@@ -11,6 +11,7 @@ Page({
     currentPage: 1,
     title: '',
     loadingNext: 0, // 0: 初始状态, 1: 下一页加载中, -1: 没有下一页了
+    topShow:0,
   },
 
   /**
@@ -60,9 +61,14 @@ Page({
       .then((res)=>{
          console.log(res)
         if( res.data.search ){
+          var topShow = 0
+          if (res.data.list.length >= 6){
+            topShow = 1;
+          }
           this.setData({
             skuList: res.data.list,
-            currentPage: this.data.currentPage + 1
+            currentPage: this.data.currentPage + 1,
+            topShow: topShow,
           })
         }else{
           this.setData({
@@ -118,5 +124,10 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  toTop: function () {
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+  },
 })

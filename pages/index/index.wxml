@@ -56,7 +56,7 @@
       <view class="preference-details">
         <view class="preference-details">
           <text class="preference-description">{{tk.description}}</text>
-          <button class="preference-button" hover-class="preference-button-hover">领取</button>
+          <button bindtap="ticket" data-ticket-id="{{tk.id}}" class="preference-button" hover-class="preference-button-hover">领取</button>
         </view>
       </view>
     </view>
@@ -70,6 +70,9 @@
   <view class="sku-list" wx:if="{{list.length > 0}}">
     <text class="sku-list-title">热销榜</text>
     <sku-list skuList="{{list}}"></sku-list>
+  </view>
+  <view class="to-top" bindtap="toTop">
+    <image class="to-top-icon" src="./assets/icon-quanbu.png" mode="widthFix"></image>
   </view>
   <!-- 占位 -->
   <view style="background: #fff;margin-top: 20px;"></view>
